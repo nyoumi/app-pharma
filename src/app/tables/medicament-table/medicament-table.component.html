@@ -1,0 +1,68 @@
+
+<div fxLayout="column"  class="components-container-gt-xs"  [ngClass.xs]="'components-container-xs'"  fxLayoutGap="20px">
+
+	<div fxFlex class="table-component-holder mat-elevation-z4">
+		<mat-toolbar class="table-header">
+			<h1 class="mat-headline center-align" >Medicament Table</h1>
+		</mat-toolbar>
+		<div class="table-container">
+			<mat-table #table [dataSource]="dataSource">
+
+				<!--- Note that these columns can be defined in any order.
+				The actual rendered columns are set as a property on the row definition" -->
+
+				<!-- ID Column -->
+				<ng-container matColumnDef="medicamentId">
+					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+				</ng-container>
+
+				<!-- Progress Column -->
+				<ng-container matColumnDef="Code_cip">
+					<mat-header-cell *matHeaderCellDef> Code_cip </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.Code_cip}} </mat-cell>
+				</ng-container>
+
+				<!-- Name Column -->
+				<ng-container matColumnDef="medicamentName">
+					<mat-header-cell *matHeaderCellDef> Nom_Medicament </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.Nom_Medicament}} </mat-cell>
+				</ng-container>
+
+				<!-- form Column -->
+				<ng-container matColumnDef="forme">
+					<mat-header-cell *matHeaderCellDef> Forme </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Forme}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Dosage">
+					<mat-header-cell *matHeaderCellDef> Dosage </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Dosage}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Notice">
+					<mat-header-cell *matHeaderCellDef> Notice </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Notice}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Conditionnement">
+					<mat-header-cell *matHeaderCellDef> Conditionnement </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Conditionnement}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Marque">
+					<mat-header-cell *matHeaderCellDef> Marque </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Marque}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Categorie">
+					<mat-header-cell *matHeaderCellDef> Categorie </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Categorie}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Tag">
+					<mat-header-cell *matHeaderCellDef> Tag </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.Tag}} </mat-cell>
+				</ng-container>
+
+			 	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 
+				
+			</mat-table>
+		</div>
+	</div>
+</div>
