@@ -13,10 +13,17 @@ export class MedicamentTableComponent implements OnInit {
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;
+	medicamentService: any;
   	constructor() { }
 
   	ngOnInit() {
   		this.dataSource = new ExampleDataSource(this.exampleDatabase);
+		  this.medicamentService.getAllMedicament().subscribe(data =>{
+			console.log(data)
+		 this.dataSource =data;
+	   }
+
+	   );
     }
 
 }

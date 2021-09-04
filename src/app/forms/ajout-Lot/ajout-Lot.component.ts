@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators,FormBuilder,FormGroup } from '@angular/forms';
+
+
 import { EmailValidator } from '@angular/forms';
 @Component({
-  selector: 'cdk-ajout-Pharmacie',
-  templateUrl: './ajout-Pharmacie.component.html',
-  styleUrls: ['./ajout-Pharmacie.component.scss']
+  selector: 'cdk-ajout-Lot',
+  templateUrl: './ajout-Lot.component.html',
+  styleUrls: ['./ajout-Lot.component.scss']
 })
-export class AjoutPharmacieComponent implements OnInit {
+export class AjoutLotComponent implements OnInit {
   public profileForm:FormGroup;
   submitted = false;
   hide;
@@ -16,7 +18,7 @@ export class AjoutPharmacieComponent implements OnInit {
             validators: [Validators.minLength(6)], 
             updateOn: 'blur'
           }],
-          email:['',  
+          email:['', 
             Validators.required
           ],
           number:[ '', {

@@ -1,45 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators,FormBuilder,FormGroup } from '@angular/forms';
+import { Validators,FormBuilder,FormGroup, AbstractControl } from '@angular/forms';
 import { EmailValidator } from '@angular/forms';
+import { MedicamentService } from '../../medicament.service';
+import { PharmacieService } from '../../pharmacie.service';
 @Component({
   selector: 'cdk-ajout-Medicament',
   templateUrl: './ajout-Medicament.component.html',
   styleUrls: ['./ajout-Medicament.component.scss']
 })
 export class AjoutMedicamentComponent implements OnInit {
+  private username: AbstractControl;
+  private firstname: AbstractControl;
+  private password: AbstractControl;
+  private confirmpassword: AbstractControl;
+  private email: AbstractControl;
+  private userphone: AbstractControl;
+  private ville: AbstractControl;
+  private pays: AbstractControl;
   public profileForm:FormGroup;
   submitted = false;
   hide;
-  constructor(public form: FormBuilder) { 
+  Code_cip: any;
+  constructor(public form: FormBuilder, private medicamentService: MedicamentService) { 
     this.profileForm = this.form.group({
-          username:['', {
-            validators: [Validators.minLength(6)], 
+      code_cip:['', {
+            validators: [ Validators.required], 
             updateOn: 'blur'
           }],
-          email:['', 
+          nom_medoc:['', 
             Validators.required
           ],
-          number:[ '', {
+          forme:[ '', {
             validators: [Validators.minLength(10)], updateOn: 'blur'
           }],
-          pwd:['', 
+          dosage_medoc:['', 
             Validators.required
-          ]
+          ],
+          notice_medoc:[ '', {
+            validators: [Validators.minLength(10)], updateOn: 'blur'
+          }],
+          conditionnement_medoc:[ '', {
+            validators: [Validators.minLength(10)], updateOn: 'blur'
+          }],
+          categories:[ '', {
+            validators: [Validators.minLength(10)], updateOn: 'blur'
+          }],
+          tag:[ '', {
+            validators: [Validators.minLength(10)], updateOn: 'blur'
+          }]
         });
+        this.Code_cip= this.profileForm.controls['Code_cip'];
+        this.firstname= this.profileForm.controls['firstname'];
+        this.email= this.profileForm.controls['email'];
+        this.password= this.profileForm.controls['password'];
+        this.confirmpassword= this.profileForm.controls['confirmpassword'];
+        this.userphone= this.profileForm.controls['userphone'];
+        this.ville= this.profileForm.controls['ville'];
+        this.pays= this.profileForm.controls['pays'];
 
   }
-  get number() {
-  return this.profileForm.get('number');
-}
-get Code_cip(){
-  return this.profileForm.get('Code_cip');
-}
-  get username() {
-  return this.profileForm.get('username');
-}
- get email() {
-  return this.profileForm.get('email');
-}
+  
+
   // checkUserExists() {
     
        

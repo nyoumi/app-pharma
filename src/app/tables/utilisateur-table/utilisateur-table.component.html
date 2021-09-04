@@ -13,42 +13,42 @@
 
 				<!-- ID Column -->
 				<ng-container matColumnDef="userId">
-					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+					<mat-header-cell *matHeaderCellDef > ID </mat-header-cell>
+					<mat-cell *matCellDef="let row" style="margin-right: 20px;"> {{row.id}} </mat-cell>
 				</ng-container>
 
 				<!-- Progress Column -->
 				<ng-container matColumnDef="userName">
 					<mat-header-cell *matHeaderCellDef> userName </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.userName}} </mat-cell>
+					<mat-cell *matCellDef="let row"> {{row.username}} </mat-cell>
 				</ng-container>
 
 				<!-- Name Column -->
 				<ng-container matColumnDef="firstName">
 					<mat-header-cell *matHeaderCellDef> firstName</mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.firstName}} </mat-cell>
+					<mat-cell *matCellDef="let row"> {{row.firstname}} </mat-cell>
 				</ng-container>
 
 				<!-- form Column -->
 				<ng-container matColumnDef="Email">
 					<mat-header-cell *matHeaderCellDef></mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Email}} </mat-cell>
+					<mat-cell *matCellDef="let row" > {{row.email}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="userPhone">
-					<mat-header-cell *matHeaderCellDef> userPhone </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.userPhone}} </mat-cell>
+					<mat-header-cell *matHeaderCellDef> Phone Number </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.userphone}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="etatUser">
 					<mat-header-cell *matHeaderCellDef> etatUser </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.etatUser}} </mat-cell>
+					<mat-cell *matCellDef="let row" > {{row.etatuser}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="statutUser">
 					<mat-header-cell *matHeaderCellDef> statutUser </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.statutUser}} </mat-cell>
+					<mat-cell *matCellDef="let row" > {{row.statutuser}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="adresse">
 					<mat-header-cell *matHeaderCellDef> adresse </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.adresse}} </mat-cell>
+					<mat-cell *matCellDef="let row" > {{row.adresse.ville}} </mat-cell>
 				</ng-container>
 				
 

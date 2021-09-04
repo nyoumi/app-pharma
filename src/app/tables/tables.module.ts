@@ -37,6 +37,7 @@ import { FixedTableComponent } from './fixed-table/fixed-table.component';
 import { MedicamentTableComponent } from './medicament-table/medicament-table.component';
 import { UtilisateurTableComponent } from './utilisateur-table/utilisateur-table.component';
 import { PharmacieTableComponent } from './pharmacie-table/pharmacie-table.component';
+import { LotTableComponent } from './lot-table/lot-table.component';
 export function highlightJsFactory(): any {
   return {
     coreLibraryLoader: () => import('highlight.js/lib/core'),
@@ -80,7 +81,8 @@ export function highlightJsFactory(): any {
    //MedicamentComponent,
    MedicamentTableComponent,
    UtilisateurTableComponent,
-   PharmacieTableComponent
+   PharmacieTableComponent,
+   LotTableComponent
   ],
   providers: [
     {

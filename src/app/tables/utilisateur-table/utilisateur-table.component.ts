@@ -1,6 +1,9 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
+//import { User } from '../../forms/template-driven-forms/user';
+import { User } from '../../user';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-utilisateur-table',
@@ -11,12 +14,17 @@ export class UtilisateurTableComponent implements OnInit {
 	public displayedColumns = ['userId', 'userName', 'firstName', 
 	'userPhone','etatUser','statutUser','adresse'];
 	public exampleDatabase = new ExampleDatabase();
-	public dataSource: ExampleDataSource | null;
+	public dataSource: Array<User>;
   	public showFilterTableCode;
-  	constructor() { }
+  	constructor(private userService:UserService) { }
 
   	ngOnInit() {
-  		this.dataSource = new ExampleDataSource(this.exampleDatabase);
+  		 this.userService.getAllUser().subscribe(data =>{
+			   console.log(data)
+			this.dataSource =data;
+		  }
+
+		  );
     }
 
 }

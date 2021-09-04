@@ -137,7 +137,7 @@ export const menus = [
             {
                 'name': 'Ajout Lot',
                 'icon': 'view_list',
-                'link': 'charts/chartjs',
+                'link': 'forms/lot_forms',
                 'open': false,
 
             },
@@ -145,7 +145,7 @@ export const menus = [
                 'name': 'Lister Lot',
                 'icon': 'show_chart',
                 'open': false,
-                'link': 'charts/ngx-charts',
+                'link': 'tables/lot',
             },
             // {
             //     'name': 'nvd3',
