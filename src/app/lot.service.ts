@@ -5,15 +5,15 @@ import { environment } from '../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class MedicamentService {
+export class LotService {
 
-  constructor(private http: HttpClient) { }
+  constructor( private http:HttpClient) { }
 
-  getAllMedicament(){
+  getAllLot(){
 
     return this.http.get<any>(environment.serverAddress + "all"); 
   }
-  createMedicament(medicament){
-    return this.http.post<any>(environment.serverAddress + "medicament/addMedoc",medicament);
+  createLot(lot){
+    return this.http.post<any>(environment.serverAddress + "lot/addLot",lot);
   }
 }

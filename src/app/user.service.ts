@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from './forms/template-driven-forms/user';
 
 import { environment } from "../environments/environment";
 

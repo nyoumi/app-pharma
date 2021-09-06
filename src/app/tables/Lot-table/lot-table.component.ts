@@ -1,6 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
+import { LotService } from '../../lot.service';
 
 @Component({
   selector: 'app-lot-table',
@@ -13,10 +14,17 @@ export class LotTableComponent implements OnInit {
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;
-  	constructor() { }
+  	constructor(private lotService:LotService) { }
 
   	ngOnInit() {
-  		this.dataSource = new ExampleDataSource(this.exampleDatabase);
+
+  	this.dataSource = new ExampleDataSource(this.exampleDatabase);
+		  this.lotService.getAllLot().subscribe(data =>{
+			console.log(data)
+		 this.dataSource =data;
+	   }
+
+	   );
     }
 
 }

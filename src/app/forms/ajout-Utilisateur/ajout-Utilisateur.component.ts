@@ -88,10 +88,6 @@ createUser(){
       ville:this.ville.value,
       pays:this.pays.value,
     }
-
-     
-
-    
   }
   console.log(this.user)
   this.userService.createUser(this.user).subscribe(data =>{

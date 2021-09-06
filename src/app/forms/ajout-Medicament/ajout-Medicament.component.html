@@ -4,7 +4,7 @@
 		<mat-toolbar class="form-header">
 			<h1 class="mat-headline center-align" >ADD Drug</h1>
 		</mat-toolbar>
-		    <div [hidden]="submitted" fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;">
+		    <div fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;margin: 10px;">
        
 		
         <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
@@ -13,7 +13,7 @@
 			
 			</mat-form-field> -->
 			<mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter Code_cip"  formControlName="Code_cip" required>
+				<input type="text" matInput placeholder="Enter Code_cip"  formControlName="code_cip" required>
 			
 			</mat-form-field>
 			
@@ -34,56 +34,57 @@
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug name"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="nom_medoc" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Form
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Form"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="forme" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter  Drug Dosage
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Dosage"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Drug avis
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Drug avis"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="dosage_medoc" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug conditioning
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug conditioning"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="conditionnement_medoc" required pattern="[0-255]*">
 			</mat-form-field>
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				please enter Drug avis
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder="Enter Drug avis"  
+				formControlName="notice_medoc" required pattern="[0-255]*">
+			</mat-form-field>
+			
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Mark
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Mark"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="marque_medoc" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Drug Category
+				please enter Drug Category separated by comma
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Category"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="categories" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Tag
+				please enter diseases separted by comma
 			</mat-error> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Tag"  
-				formControlName="number" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="disease"  
+				formControlName="tag" required pattern="[0-255]*">
 			</mat-form-field>
 			
 			<!-- <mat-error align="end" style="color: rgb(2, 1, 1);" class="mat-body-1 center-align">
@@ -91,35 +92,15 @@
 					Please enter drug Name
 			</mat-error> -->
 
-			<mat-form-field>
+			<!-- <mat-form-field>
     			   <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pwd" >
     			   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    		</mat-form-field>
-			<button style="font-weight: bold;" mat-raised-button type="submit" *ngIf="username.valid && email.valid && number.valid" class="mat-headline center-align">Submit</button>
+    		</mat-form-field> -->
+			<button style="font-weight: bold; margin-bottom: 30px; background: cornflowerblue;color: white;
+			width: 30%; margin-left: 40%;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
+			
 		</form>
     </div>
-    <div [hidden]="!submitted" style="background-color: white;">
-		<div fxLayout="column" fxLayoutAlign="space-around stretch" >
-			<h2 class="mat-headline center-align">You submitted the following:</h2>
-		<div fxLayout="row"  fxLayoutGap="20px" class="mat-body center-align">
-			<div >Name</div>
-			<div>{{ profileForm.value.username}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div>Number</div>
-			<div>{{profileForm.value.number }}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px"  class="mat-body center-align">
-			<div >Password</div>
-			<div>{{ profileForm.value.pwd}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div >Email</div>
-			<div>{{ profileForm.value.email}}</div>
-		</div>
-		<br>
-		<button mat-raised-button type="submit" (click)="submitted=false">Edit</button>
-	</div>
-	</div>
+ 
 	</div>
 </div>

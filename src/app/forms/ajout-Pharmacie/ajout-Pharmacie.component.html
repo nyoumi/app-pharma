@@ -8,12 +8,12 @@
        
 		
         <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
-			<mat-form-field class="width">
+			<!-- <mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter pharmacieId"  formControlName="pharmacieId" required>
 			
-			</mat-form-field>
+			</mat-form-field> -->
 			<mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter nomPharmacie"  formControlName="nomPharmacie" required>
+				<input type="text" matInput placeholder="Enter nom Pharmacie"  formControlName="nomPharmacie" required  pattern="[0-255]*" >
 			
 			</mat-form-field>
 			
@@ -26,7 +26,7 @@
 
 			
 			  <mat-form-field  class="width">
-				<input type="email" matInput placeholder="Enter  Email"  formControlName="email"  required
+				<input type="email" matInput placeholder="Enter  Email"  formControlName="Email"  required
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
 			</mat-form-field> 
 			<mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
@@ -35,15 +35,15 @@
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="tel" matInput placeholder="Enter phone Pharmacie"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="tel" required pattern="[0-255]*">
 			</mat-form-field>
 			
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter  statutPharmacie
+				please enter  statutPharmacie	
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter statutPharmacie"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="statutPharmacie" required pattern="[0-255]*">
 			</mat-form-field>
 			<div style="text-align: center; width: 100%;">
 				<h1 class="mat-headline center-align" >ADDRESS</h1>
@@ -55,7 +55,7 @@
 			</mat-error> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter adresse"  
-				formControlName="number" required pattern="[0-255]*">
+				formControlName="adresse" required pattern="[0-255]*">
 			</mat-form-field>
 			 
 			
@@ -69,7 +69,11 @@
     			   <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pwd" >
     			   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     		</mat-form-field> -->
-			<button style="font-weight: bold;" mat-raised-button type="submit" *ngIf="username.valid && email.valid && number.valid" class="mat-headline center-align">Submit</button>
+		<!-- 	<button style="font-weight: bold;" mat-raised-button type="submit" 
+			*ngIf="username.valid && email.valid && number.valid" class="mat-headline center-align"
+			>Submit</button> -->
+			<button style="font-weight: bold; margin-bottom: 30px; background: cornflowerblue;color: white;
+			width: 30%; margin-left: 40%;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
 		</form>
     </div>
     <div [hidden]="!submitted" style="background-color: white;">

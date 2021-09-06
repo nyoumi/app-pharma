@@ -42,3 +42,4 @@ import { AjoutLotComponent } from './ajout-lot/ajout-Lot.component';
 	]
 })
 export class FormModule { }
+   

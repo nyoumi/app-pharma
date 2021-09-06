@@ -2,23 +2,24 @@ import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
+import { VenteService } from '../../vente.service';
 
 @Component({
-  selector: 'app-medicament-table',
-  templateUrl: './medicament-table.component.html',
-  styleUrls: ['./medicament-table.component.scss']
+  selector: 'app-vente-table',
+  templateUrl: './vente-table.component.html',
+  styleUrls: ['./vente-table.component.scss']
 })
-export class MedicamentTableComponent implements OnInit {
+export class VenteTableComponent implements OnInit {
 	public displayedColumns = ['medicamentId', 'Code_cip', 'Dosage',
 	'Notice','Conditionnement','Marque','Categorie','Tag','forme'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;
-  	constructor(private medicamentService:MedicamentService) { }
+  	constructor(private venteService:VenteService) { }
 
   	ngOnInit() {
   		this.dataSource = new ExampleDataSource(this.exampleDatabase);
-		  this.medicamentService.getAllMedicament().subscribe(data =>{
+		  this.venteService.getAllVente().subscribe(data =>{
 			console.log(data)
 		 this.dataSource =data;
 	   }

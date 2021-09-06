@@ -4,7 +4,7 @@
 		<mat-toolbar class="form-header">
 			<h1 class="mat-headline center-align" >ADD Lot</h1>
 		</mat-toolbar>
-		    <div [hidden]="submitted" fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;">
+		    <div fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;margin: 10px;">
        
 		
         <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
@@ -12,10 +12,10 @@
 				<input type="text" matInput placeholder="Enter DrugId"  formControlName="Drug_Id" required>
 			
 			</mat-form-field> -->
-			<!-- <mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter Code_cip"  formControlName="Code_cip" required>
+			<mat-form-field class="width">
+				<input type="text" matInput placeholder="Enter Numero_lot"  formControlName="Numero_lot" required>
 			
-			</mat-form-field> -->
+			</mat-form-field>
 			
 			<!-- <mat-error  align="end" style="color: red;" class="mat-body-1 center-align "> 
 				
@@ -30,61 +30,61 @@
 			</mat-form-field> -->
 			<mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
 				
-					Please enter Lot number
+					
 			</mat-error> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Lot number"  
-				formControlName="number" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="Date_Entree_Lot"  
+				formControlName="Date_Entree_Lot" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Lot Amount
+		
 			</mat-error> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Lot Amount"  
-				formControlName="number" required >
+				<input type="text" matInput placeholder="Date_Peremtion_Lot"  
+				formControlName="Date_Peremtion_Lot" required pattern="[0-255]*">
 			</mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter  batch entry date
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="date" matInput placeholder="Enter batch entry date"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter expiration date
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="date" matInput placeholder="Enter expiration date"  
-				formControlName="number" required >
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter recent quantity
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter recent quantity"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter starting quantity
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter starting quantity"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Price Lot
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Price Lot"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Drug
-			</mat-error> 
 			
+			</mat-error> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Drug"  
-				formControlName="number" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="Quantite_Recente"  
+				formControlName="Quantite_Recente" required pattern="[0-255]*">
+			</mat-form-field>
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				please enter Drug conditioning
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder=" Quantite_Depart"  
+				formControlName=" Quantite_Depart" required pattern="[0-255]*">
+			</mat-form-field>
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder="Prix_Lot"  
+				formControlName="Prix_Lot" required pattern="[0-255]*">
+			</mat-form-field>
+			
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				please enter Drug Mark
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder=" Medicament"  
+				formControlName=" Medicament" required pattern="[0-255]*">
+			</mat-form-field>
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder=" Pharmacie"  
+				formControlName=" Pharmacie" required pattern="[0-255]*">
+			</mat-form-field>
+			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+				
+			</mat-error> 
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder="Utilsateur"  
+				formControlName="Utilsateur" required pattern="[0-255]*">
 			</mat-form-field>
 			
 			<!-- <mat-error align="end" style="color: rgb(2, 1, 1);" class="mat-body-1 center-align">
@@ -92,35 +92,15 @@
 					Please enter drug Name
 			</mat-error> -->
 
-			<mat-form-field>
+			<!-- <mat-form-field>
     			   <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pwd" >
     			   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    		</mat-form-field>
-			<button style="font-weight: bold;" mat-raised-button type="submit" *ngIf="username.valid && email.valid && number.valid" class="mat-headline center-align">Submit</button>
+    		</mat-form-field> -->
+			<button style="font-weight: bold; margin-bottom: 30px; background: cornflowerblue;color: white;
+			width: 30%; margin-left: 40%;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
+			
 		</form>
     </div>
-    <div [hidden]="!submitted" style="background-color: white;">
-		<div fxLayout="column" fxLayoutAlign="space-around stretch" >
-			<h2 class="mat-headline center-align">You submitted the following:</h2>
-		<div fxLayout="row"  fxLayoutGap="20px" class="mat-body center-align">
-			<div >Name</div>
-			<div>{{ profileForm.value.username}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div>Number</div>
-			<div>{{profileForm.value.number }}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px"  class="mat-body center-align">
-			<div >Password</div>
-			<div>{{ profileForm.value.pwd}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div >Email</div>
-			<div>{{ profileForm.value.email}}</div>
-		</div>
-		<br>
-		<button mat-raised-button type="submit" (click)="submitted=false">Edit</button>
-	</div>
-	</div>
+ 
 	</div>
 </div>
