@@ -3,7 +3,7 @@ height: 100%;
 background-repeat: no-repeat;
 background-position: center;
 background-size: cover; ">
-<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center" >
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box">
       <mat-card-header>
@@ -13,10 +13,10 @@ background-size: cover; ">
       <form class="example-form" [formGroup]="userForm" (ngSubmit)="login()">
         <mat-card-content>
           <mat-form-field class="example-full-width">
-            <input type="text" id="username" class="input" placeholder="Please enter your username"
-            formControlName="username" required matInput>
+            <input type="email" id="email" class="input" placeholder="Please enter your email"
+            formControlName="email" required matInput>
           </mat-form-field>
-          <div *ngIf="formErrors.username" class="help is-danger">
+          <div *ngIf="formErrors.email" class="help is-danger">
                             {{ formErrors.email }}
         </div>
   
@@ -28,7 +28,7 @@ background-size: cover; ">
             {{ formErrors.password }}
         </div>
         </mat-card-content>
-        <button mat-stroked-button color="accent" [disabled]="!userForm.valid" class="btn-block">Sign-in</button>
+        <button mat-stroked-button color="accent" [disabled]="!userForm.valid" (click)="login()" class="btn-block">Sign-in</button>
       </form>
     </mat-card>
   

@@ -10,7 +10,8 @@ import { LotService } from '../../lot.service';
 })
 export class LotTableComponent implements OnInit {
 	public displayedColumns = ['lotId', 'Numero_lot', 'Date_Enntree_Lot',
-	'Date_Peremtion_Lot','Quantite_Recente','Quantite_Depart','Prix_Lot','Medicament','Pharmacie','Utilsateur'];
+	'Date_Peremtion_Lot','Quantite_Recente','Quantite_Depart','Prix_Lot',
+	'Medicament','Pharmacie','Utilsateur','delete','edit'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;

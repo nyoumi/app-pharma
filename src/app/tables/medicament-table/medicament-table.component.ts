@@ -10,7 +10,7 @@ import { MedicamentService } from '../../medicament.service';
 })
 export class MedicamentTableComponent implements OnInit {
 	public displayedColumns = ['medicamentId', 'Code_cip', 'Dosage',
-	'Notice','Conditionnement','Marque','Categorie','Tag','forme'];
+	'Notice','Conditionnement','Marque','Categorie','Tag','forme','delete','edit'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;

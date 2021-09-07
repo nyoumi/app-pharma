@@ -25,7 +25,7 @@ export const menus = [
             {
                 'name': 'historique vente',
                 'icon': 'view_list',
-                'link': 'charts/chartjs',
+                'link': 'tables/vente',
                 'open': false,
 
             },
@@ -33,7 +33,7 @@ export const menus = [
                 'name': 'nouvelle vente',
                 'icon': 'show_chart',
                 'open': false,
-                'link': 'charts/ngx-charts',
+                'link': 'forms/vente_forms',
             },
             // {
             //     'name': 'nvd3',

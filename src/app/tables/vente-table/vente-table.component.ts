@@ -10,8 +10,7 @@ import { VenteService } from '../../vente.service';
   styleUrls: ['./vente-table.component.scss']
 })
 export class VenteTableComponent implements OnInit {
-	public displayedColumns = ['medicamentId', 'Code_cip', 'Dosage',
-	'Notice','Conditionnement','Marque','Categorie','Tag','forme'];
+	public displayedColumns = ['Date_Vente','Quantit_Sortie','delete','edit'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;

@@ -11,7 +11,7 @@ import { PharmacieService } from '../../pharmacie.service';
 export class PharmacieTableComponent implements OnInit {
 	[x: string]: any;
 	public displayedColumns = [ 'nomPharmacie', 'emailPharmacie', 'telPharmacie',
-	'adresse'];
+	'adresse','delete','edit'];
 	public exampleDatabase = new ExampleDatabase();
 	public dataSource: ExampleDataSource | null;
   	public showFilterTableCode;

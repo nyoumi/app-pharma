@@ -13,12 +13,13 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
   formErrors = {
-    'username': '',
+    'email': '',
     'password': ''
   };
   validationMessages = {
-    'username': {
-      'required': 'Please enter your username',
+    'email': {
+      'required': 'Please enter your email',
+      'email': 'please enter your vaild email'
     },
     'password': {
       'required': 'please enter your password',
@@ -40,8 +41,9 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
     this.userForm = this.fb.group({
-      'username': ['', [
-        Validators.required
+      'email': ['', [
+        Validators.required,
+        Validators.email
       ]
       ],
       'password': ['', [
@@ -84,27 +86,14 @@ export class LoginComponent implements OnInit {
     console.log(this.data)
     this.userService.authenticate(this.data).subscribe(data =>{
       console.log(data)
-      if(data.jwtToken){
+      if(data.id){
         let snackBarRef = this.snackbar.open('Authenticated successfully! You are redirected to dashboard','OK', {
-          duration: 3000,
-          panelClass: ['green-snackbar']
-        });
-        localStorage.setItem("user",JSON.stringify(data.utilisateur));
-        localStorage.setItem("token",data.jwtToken);
-  
-        this.router.navigate(['/auth/dashboard']);
-      }else{
-        let snackBarRef = this.snackbar.open('Authentication error! Username or password incorrect','OK', {
-          duration: 3000,
-          panelClass: ['red-snackbar']
-        });
-      }
-   
-   },error=>{
-     console.log(error)
-     let snackBarRef = this.snackbar.open('Authentication error! Try again','OK', {
           duration: 3000
         });
+  
+        this.router.navigate(['/tables/utilisateur']);
+      }
+   
    })
 
     //this.router.navigate(['/']);

@@ -17,6 +17,8 @@ import { FormsModule }   from '@angular/forms';
 import { AjoutMedicamentComponent } from './ajout-Medicament/ajout-Medicament.component';
 import { AjoutUtilisateurComponent } from './ajout-Utilisateur/ajout-Utilisateur.component';
 import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.component';
+import { AjoutLotComponent } from './ajout-Lot/ajout-Lot.component';
+import { AjoutVenteComponent } from './ajout-Vente/ajout-Vente.component';
 
 @NgModule({
 	imports: [
@@ -37,7 +39,9 @@ import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.compo
 		TemplateDrivenFormsComponent,
 		AjoutMedicamentComponent,
 		AjoutUtilisateurComponent,
-		AjoutPharmacieComponent
+		AjoutPharmacieComponent,
+		AjoutLotComponent,
+		AjoutVenteComponent
 
 	]
 })
