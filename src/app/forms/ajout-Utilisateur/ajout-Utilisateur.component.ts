@@ -52,11 +52,11 @@ export class AjoutUtilisateurComponent implements OnInit {
             updateOn: 'blur'
           }],
           ville:['', {
-            validators: [], 
+           
             updateOn: 'blur'
           }],
          pays:['', {
-            validators: [], 
+          
             updateOn: 'blur'
           }],
           
@@ -97,12 +97,27 @@ createUser(){
     console.log(data)
     if(data.id){
       let snackBarRef = this.snackbar.open('User created successfully!','OK', {
-        duration: 3000
+        duration: 3000,
+        panelClass: ['green-snackbar']
       });
 
       this.route.navigate(['tables/utilisateur']);
+    }else{
+      if (data.code==409 ||data.status==406){
+        let snackBarRef = this.snackbar.open('Username or email already exist!','OK', {
+          duration: 3000,
+          panelClass: ['red-snackbar']
+        });
+      }
     }
  
+ },error=>{
+  if (error.code==409 ||error.status==406){
+    let snackBarRef = this.snackbar.open('Username or email already exist!','OK', {
+      duration: 3000,
+      panelClass: ['red-snackbar']
+    });
+  }
  }
 
  );

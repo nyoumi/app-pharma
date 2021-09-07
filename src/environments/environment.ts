@@ -6,7 +6,7 @@
 export const environment = {
 
   production: false,
-  serverAddress:"  https://dry-temple-95858.herokuapp.com/", 
+  serverAddress:"https://dry-temple-95858.herokuapp.com/", 
   firebase: {
     apiKey: "AIzaSyDYv02aLpqUgtJIP9CbT31mOHpu0a77xLM",
     authDomain: "cdk-admin.firebaseapp.com",

@@ -10,7 +10,12 @@ body {
 	background-color: #e5e5e5;
 	font-family: 'Roboto', sans-serif;
 }
-
+.green-snackbar {
+	background: #13a05e;
+  } 
+  .red-snackbar {
+	background: #dd3b3b;
+  }
 .app-header {
 	justify-content: space-between;
 	position: fixed;
