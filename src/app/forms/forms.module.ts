@@ -19,6 +19,7 @@ import { AjoutUtilisateurComponent } from './ajout-Utilisateur/ajout-Utilisateur
 import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.component';
 import { AjoutLotComponent } from './ajout-Lot/ajout-Lot.component';
 import { AjoutVenteComponent } from './ajout-Vente/ajout-Vente.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
 	imports: [
@@ -33,7 +34,9 @@ import { AjoutVenteComponent } from './ajout-Vente/ajout-Vente.component';
 		 MatInputModule,
 		 ReactiveFormsModule,
 		 FormsModule,
-		 MatSnackBarModule
+		 MatSnackBarModule,
+		 MatSelectModule,
+
 	],
 	declarations: [ReactiveFormsComponent, 
 		TemplateDrivenFormsComponent,
