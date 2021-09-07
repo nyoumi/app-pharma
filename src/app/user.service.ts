@@ -7,6 +7,9 @@ import { environment } from "../environments/environment";
   providedIn: 'root'
 })
 export class UserService {
+  authenticate(data: any) {
+    return this.http.post<any>(environment.serverAddress + "authenticate",data);
+  }
 
   constructor(private http: HttpClient ) { }
 

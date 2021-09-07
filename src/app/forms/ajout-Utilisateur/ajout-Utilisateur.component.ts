@@ -3,6 +3,8 @@ import { Validators,FormBuilder,FormGroup, FormControl, AbstractControl } from '
 import { EmailValidator } from '@angular/forms';
 import { User } from '../../user';
 import { UserService } from '../../user.service';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
+import { ActivatedRoute,Route,Router } from '@angular/router';
 @Component({
   selector: 'cdk-ajout-Utilisateur',
   templateUrl: './ajout-Utilisateur.component.html',
@@ -20,9 +22,10 @@ export class AjoutUtilisateurComponent implements OnInit {
   private ville: AbstractControl;
   private pays: AbstractControl;
   submitted = false;
-  hide;
+  hide=true;
   private user:  User ;
-  constructor(public form: FormBuilder, private userService:UserService) { 
+  constructor(public form: FormBuilder,private route: Router,
+     private userService:UserService,private snackbar:MatSnackBar) { 
     this.profileForm = this.form.group({
           username:['', {
             validators: [Validators.required], 
@@ -92,6 +95,13 @@ createUser(){
   console.log(this.user)
   this.userService.createUser(this.user).subscribe(data =>{
     console.log(data)
+    if(data.id){
+      let snackBarRef = this.snackbar.open('User created successfully!','OK', {
+        duration: 3000
+      });
+
+      this.route.navigate(['tables/utilisateur']);
+    }
  
  }
 
@@ -108,6 +118,15 @@ createUser(){
  	console.log('');
  	this.submitted = true; }
   ngOnInit() {
+    if(this.user){
+      this.username.setValue(this.user.username)
+      this.firstname.setValue(this.user.firstname)
+      this.userphone.setValue(this.user.userphone)
+      this.email.setValue(this.user.email)
+      this.pays.setValue(this.user.adresse.pays)
+      this.ville.setValue(this.user.adresse.ville)
+
+    }
   }
 
 }

@@ -11,12 +11,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import {  ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
 
 import { FormsModule }   from '@angular/forms';
 import { AjoutMedicamentComponent } from './ajout-Medicament/ajout-Medicament.component';
 import { AjoutUtilisateurComponent } from './ajout-Utilisateur/ajout-Utilisateur.component';
 import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.component';
-import { AjoutLotComponent } from './ajout-lot/ajout-Lot.component';
 
 @NgModule({
 	imports: [
@@ -30,14 +30,14 @@ import { AjoutLotComponent } from './ajout-lot/ajout-Lot.component';
 		MatIconModule,
 		 MatInputModule,
 		 ReactiveFormsModule,
-		 FormsModule
+		 FormsModule,
+		 MatSnackBarModule
 	],
 	declarations: [ReactiveFormsComponent, 
 		TemplateDrivenFormsComponent,
 		AjoutMedicamentComponent,
 		AjoutUtilisateurComponent,
-		AjoutPharmacieComponent,
-		AjoutLotComponent
+		AjoutPharmacieComponent
 
 	]
 })

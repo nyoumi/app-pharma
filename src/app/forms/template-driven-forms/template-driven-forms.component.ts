@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../user';
 
 @Component({
   selector: 'cdk-template-driven-forms',
@@ -6,14 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-driven-forms.component.scss']
 })
 export class TemplateDrivenFormsComponent implements OnInit {
-//model = new User(18, 'User','',8086824175);
+model = {name:"nyoumi", pwd:"azerty",number:"677777777777"};
   submitted = false;
  hide;
   onSubmit() { this.submitted = true; }
  
-//  newUser() {
-   // this.model = new User(42, '',' ' , );
- // }
+  newUser() { 
+    this.model = {name:"nyoumi", pwd:"azerty",number:"677777777777"};
+  }
   constructor() { }
 
   ngOnInit() {

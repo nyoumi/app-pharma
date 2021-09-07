@@ -11,7 +11,7 @@ export class MedicamentService {
 
   getAllMedicament(){
 
-    return this.http.get<any>(environment.serverAddress + "all"); 
+    return this.http.get<any>(environment.serverAddress + "medicament/findAllMedoc"); 
   }
   createMedicament(medicament){
     return this.http.post<any>(environment.serverAddress + "medicament/addMedoc",medicament);
