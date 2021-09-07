@@ -17,6 +17,7 @@ import { FormsModule }   from '@angular/forms';
 import { AjoutMedicamentComponent } from './ajout-Medicament/ajout-Medicament.component';
 import { AjoutUtilisateurComponent } from './ajout-Utilisateur/ajout-Utilisateur.component';
 import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
 	imports: [
@@ -31,7 +32,9 @@ import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.compo
 		 MatInputModule,
 		 ReactiveFormsModule,
 		 FormsModule,
-		 MatSnackBarModule
+		 MatSnackBarModule,
+		 MatSelectModule,
+
 	],
 	declarations: [ReactiveFormsComponent, 
 		TemplateDrivenFormsComponent,
