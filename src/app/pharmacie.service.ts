@@ -11,9 +11,9 @@ export class PharmacieService {
 
   getAllPharmacie(){
 
-    return this.http.get<any>(environment.serverAddress + "Pharmacie/findAll"); 
+    return this.http.get<any>(environment.serverAddress + "pharmacie/findAll"); 
   }
   createPharmacie(pharmacie){
-    return this.http.post<any>(environment.serverAddress + "Pharmacie/addPharma",pharmacie);
+    return this.http.post<any>(environment.serverAddress + "pharmacie/addPharma",pharmacie);
   }
 }

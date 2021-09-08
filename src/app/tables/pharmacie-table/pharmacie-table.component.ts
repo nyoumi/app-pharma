@@ -1,5 +1,4 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
 import { PharmacieService } from '../../pharmacie.service';
 
@@ -11,14 +10,12 @@ import { PharmacieService } from '../../pharmacie.service';
 export class PharmacieTableComponent implements OnInit {
 	[x: string]: any;
 	public displayedColumns = [ 'nomPharmacie', 'emailPharmacie', 'telPharmacie',
-	'adresse','delete','edit'];
-	public exampleDatabase = new ExampleDatabase();
-	public dataSource: ExampleDataSource | null;
+	'adresse','delete','edit','add_user'];
+	public dataSource: any | null;
   	public showFilterTableCode;
   	constructor(private pharmacieService:PharmacieService) { }
 
   	ngOnInit() {
-		this.dataSource = new ExampleDataSource(this.exampleDatabase);
 		this.pharmacieService.getAllPharmacie().subscribe(data =>{
 		  console.log(data)
 	   this.dataSource =data;

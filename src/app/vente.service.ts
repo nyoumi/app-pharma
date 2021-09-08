@@ -13,7 +13,7 @@ export class VenteService {
   
   constructor(private http: HttpClient ) { }
 
-  getAllVente(){
+  getAllVente(){ 
 
     return this.http.get<any>(environment.serverAddress + "all"); 
   }
