@@ -2,10 +2,10 @@ export const menus = [
     {
         'name': 'Dashboard',
         'icon': 'dashboard',
-        'link': false,
-        'open': false,
-        'chip': { 'value': 1, 'color': 'accent' },
-        'sub': [
+        'link': '/auth/dashboard',
+        'open': true,
+        //'chip': { 'value': 1, 'color': 'accent' },
+       /*  'sub': [
             {
                 'name': 'Dashboard',
                 'link': '/auth/dashboard',
@@ -13,7 +13,7 @@ export const menus = [
                 'chip': false,
                 'open': true,
             }
-        ]
+        ] */
     },
     {
 
@@ -163,7 +163,7 @@ export const menus = [
         'link': false,      
             
     }, 
-    {
+/*     {
 
         'name': 'Gestion des sorties',
         'icon': 'pie_chart_outlined',
@@ -190,8 +190,8 @@ export const menus = [
             //     'link': 'charts/nvd3-charts',
             // }
         ]
-    }, 
-    {
+    },  */
+   /*  {
         'name': 'Material Widget',
         'icon': 'widgets',
         'link': false,
@@ -319,7 +319,7 @@ export const menus = [
                 'open': false,
             },
         ]
-    },
+    }, */
     // {
     //     'name'   : 'Forms',
     //     'icon'   : 'mode_edit',
@@ -340,7 +340,7 @@ export const menus = [
     //                     }
     //                 ]
     // },
-    {
+   /*  {
         'name': 'Tables',
         'icon': 'list',
         'link': false,
@@ -455,7 +455,7 @@ export const menus = [
             //     'link': 'charts/nvd3-charts',
             // }
         ]
-    }, 
+    },  */
     // {
     //     'name': 'maps',
     //     'icon': 'map',
