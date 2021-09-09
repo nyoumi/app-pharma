@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
     this.onValueChanged();
   }
 
-  onValueChanged(data?: any) {
+  onValueChanged(data?: any) {  
     this.data=data;
     if (!this.userForm) {
       return;
@@ -95,8 +95,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/auth/dashboard']);
       }else{
         let snackBarRef = this.snackbar.open('Authentication error! Username or password incorrect','OK', {
-          duration: 3000,
-          panelClass: ['red-snackbar']
+          duration: 2000,
+          panelClass: ['red-snackbar']  
         });
       }
    
