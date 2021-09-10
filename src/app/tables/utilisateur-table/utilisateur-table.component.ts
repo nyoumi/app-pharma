@@ -1,5 +1,4 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
 //import { User } from '../../forms/template-driven-forms/user';
 import { User } from '../../user';
@@ -12,9 +11,8 @@ import {MatButtonModule,MatButton} from '@angular/material/button';
   styleUrls: ['./utilisateur-table.component.scss']
 })
 export class UtilisateurTableComponent implements OnInit {
-	public displayedColumns = ['userId', 'userName', 'firstName', 
-	'userPhone','adresse','delete','edit'];
-	public exampleDatabase = new ExampleDatabase();
+	public displayedColumns = ['userName',   
+	'userPhone','adresse','pharmacie','details','edit','delete'];
 	public dataSource: Array<User>;
   	public showFilterTableCode;
   	constructor(private userService:UserService) { }
@@ -22,10 +20,25 @@ export class UtilisateurTableComponent implements OnInit {
   	ngOnInit() {
   		 this.userService.getAllUser().subscribe(data =>{
 			   console.log(data)
-			this.dataSource =data;
+			
+			const pharmacies=data[1];
+			data[0].forEach(user => {
+				if(user.id_pharma!=null){
+					let medoc=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
+
+					user.pharma_name=medoc[0].nom_phar;
+					
+				}
+				
+			});
+			this.dataSource =data[0];
 		  }
 
 		  );
     }
+
+	edit(user){
+		console.log(user)
+	}
 
 }

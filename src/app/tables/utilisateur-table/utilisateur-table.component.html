@@ -11,11 +11,8 @@
 				<!--- Note that these columns can be defined in any order.
 				The actual rendered columns are set as a property on the row definition" -->
 
-				<!-- ID Column -->
-				<ng-container matColumnDef="userId">
-					<mat-header-cell *matHeaderCellDef > ID </mat-header-cell>
-					<mat-cell *matCellDef="let row" style="margin-right: 20px;"> {{row.id}} </mat-cell>
-				</ng-container>
+				
+				
 
 				<!-- Progress Column -->
 				<ng-container matColumnDef="userName">
@@ -24,10 +21,7 @@
 				</ng-container>
 
 				<!-- Name Column -->
-				<ng-container matColumnDef="firstName">
-					<mat-header-cell *matHeaderCellDef> first Name</mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.firstname}} </mat-cell>
-				</ng-container>
+				
 
 				<!-- form Column -->
 				<ng-container matColumnDef="Email">
@@ -39,7 +33,10 @@
 					<mat-cell *matCellDef="let row" > {{row.userphone}} </mat-cell>
 				</ng-container>
 				
-				
+				<ng-container matColumnDef="pharmacie">
+					<mat-header-cell *matHeaderCellDef> Pharmacy</mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.pharma_name}} </mat-cell>
+				</ng-container>
 				<ng-container matColumnDef="adresse">
 					<mat-header-cell *matHeaderCellDef> Town </mat-header-cell>
 					<mat-cell *matCellDef="let row" > {{row.adresse.ville}} </mat-cell>
@@ -55,16 +52,25 @@
 					
 				</ng-container>
 				<ng-container matColumnDef="edit">
-					<mat-header-cell *matHeaderCellDef> EDIT </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
 					
 					<mat-cell *matCellDef="let row" > 
-						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						<button id="basic" type="button" mat-icon-button (click)="edit(row)">
 						 
 						<mat-icon class="space">mode_edit </mat-icon> 
 					  </button>
 					</mat-cell>
 				</ng-container>
-
+				<ng-container matColumnDef="details">
+					<mat-header-cell *matHeaderCellDef> details </mat-header-cell>
+					
+					<mat-cell *matCellDef="let row" > 
+						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						 
+						<mat-icon class="space">visibility </mat-icon> 
+					  </button>
+					</mat-cell>
+				</ng-container>
 				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 				

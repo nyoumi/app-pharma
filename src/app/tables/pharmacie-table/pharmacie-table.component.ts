@@ -10,7 +10,7 @@ import { PharmacieService } from '../../pharmacie.service';
 export class PharmacieTableComponent implements OnInit {
 	[x: string]: any;
 	public displayedColumns = [ 'nomPharmacie', 'emailPharmacie', 'telPharmacie',
-	'adresse','delete','edit','add_user'];
+	'adresse','add_user','edit','delete'];
 	public dataSource: any | null;
   	public showFilterTableCode;
   	constructor(private pharmacieService:PharmacieService) { }

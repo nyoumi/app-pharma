@@ -7,7 +7,7 @@
 		    <div [hidden]="submitted" fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;">
        
 		
-        <form [formGroup]="profileForm"  (ngSubmit)="createUser()" fxLayout="column" fxFlex="100" >
+        <form [formGroup]="profileForm"  (ngSubmit)="createUser()" fxLayout="column" fxFlex="100" style="margin-right: 10px;margin-top:20px;" >
 			<mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter userName"  formControlName="username" required>
 			
@@ -22,7 +22,7 @@
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
 			</mat-form-field>  
 			<mat-form-field>
-				<input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="password" >
+				<input matInput placeholder="Enter user password" [type]="hide ? 'password' : 'text'" required formControlName="password" >
 				<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 		 </mat-form-field>
 		 <mat-form-field>
@@ -40,46 +40,48 @@
 
 			
 			  
-			<mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
+			<!-- <mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
 				
 					Please enter phone number
-			</mat-error> 
-			 <mat-form-field  class="width">
-				<input type="number" matInput placeholder="Enter phone nomber"  
-				formControlName="userphone" required pattern="[0-255]*">
-			</mat-form-field> 
-			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter etatUser
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter etatUser"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter  statutUser
 			</mat-error>  -->
-			<!-- <mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter statutUser"  
-				formControlName="number" required pattern="[0-255]*">
-			</mat-form-field> -->
+			 <mat-form-field  class="width">
+				<input type="tel" matInput placeholder="Enter phone number"  
+				formControlName="userphone" required >
+			</mat-form-field> 
+			<mat-form-field>
+				<mat-select  formControlName="pharmacie" placeholder="select store"  required >
+					<mat-option *ngFor="let pharmacie of pharmacies" [value]="pharmacie.id">
+						{{pharmacie.nom_phar}} -- {{pharmacie.adresse.ville}} 
+					  </mat-option>
+				</mat-select>
+			  </mat-form-field>
+
+			  <mat-form-field>
+				<mat-select  formControlName="role" placeholder="select role"  >
+					<mat-option value="PHARMACIEN">PHARMACIST </mat-option>
+					<mat-option value="EMPLOYE_PHARMA">PHARMA_EMPLOYE </mat-option>
+
+				</mat-select>
+			  </mat-form-field>
+			  <mat-divider></mat-divider>
 			<div style="text-align: center; width: 100%;">
 				<h1 class="mat-headline center-align" >ADDRESS</h1>
 
 			</div>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter user adresse
-			</mat-error> 
+			</mat-error>  -->
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter pays"  
-				formControlName="pays" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="Enter country"  
+				formControlName="pays" required >
 				
 			</mat-form-field>
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter ville"  
-				formControlName="ville" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="Enter town"  
+				formControlName="ville" required  >
 				
 			</mat-form-field>
-			  
+			
      
 			
 			
@@ -92,8 +94,6 @@
 		
 			<button style="font-weight: bold; margin-bottom: 30px; background: cornflowerblue;color: white;
 			width: 30%; margin-left: 40%;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
-			<!-- <button style="font-weight: bold;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
-			<button style="font-weight: bold;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button> -->
 		</form>
     </div>
     

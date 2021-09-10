@@ -13,13 +13,12 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
   formErrors = {
-    'email': '',
+    'username': '',
     'password': ''
   };
   validationMessages = {
-    'email': {
-      'required': 'Please enter your email',
-      'email': 'please enter your vaild email'
+    'username': {
+      'required': 'Please enter your username',
     },
     'password': {
       'required': 'please enter your password',
@@ -41,9 +40,8 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
     this.userForm = this.fb.group({
-      'email': ['', [
-        Validators.required,
-        Validators.email
+      'username': ['', [
+        Validators.required
       ]
       ],
       'password': ['', [
@@ -61,7 +59,7 @@ export class LoginComponent implements OnInit {
     this.onValueChanged();
   }
 
-  onValueChanged(data?: any) {  
+  onValueChanged(data?: any) {
     this.data=data;
     if (!this.userForm) {
       return;
@@ -86,20 +84,28 @@ export class LoginComponent implements OnInit {
     console.log(this.data)
     this.userService.authenticate(this.data).subscribe(data =>{
       console.log(data)
-      if(data.id){
+      if(data.jwtToken){
         let snackBarRef = this.snackbar.open('Authenticated successfully! You are redirected to dashboard','OK', {
-          duration: 3000
+          duration: 3000,
+          panelClass: ['green-snackbar']
         });
+        localStorage.setItem("user",JSON.stringify(data.utilisateur));
+        localStorage.setItem("token",data.jwtToken);
+        
   
-
         this.router.navigate(['/auth/dashboard']);
       }else{
         let snackBarRef = this.snackbar.open('Authentication error! Username or password incorrect','OK', {
-          duration: 2000,
-          panelClass: ['red-snackbar']  
+          duration: 3000,
+          panelClass: ['red-snackbar']
         });
       }
    
+   },error=>{
+     console.log(error)
+     let snackBarRef = this.snackbar.open('Authentication error! Try again','OK', {
+          duration: 3000
+        });
    })
 
     //this.router.navigate(['/']);

@@ -1,5 +1,7 @@
 import { Component, OnInit ,Input} from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
+import { Router } from '@angular/router';
+import { User } from '../user';
 
 
 
@@ -14,7 +16,7 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 export class AuthComponent implements OnInit{
   @Input() isVisible : boolean = true;
   visibility = 'shown';
-
+  private user:  User ;
   sideNavOpened: boolean = true;
   matDrawerOpened: boolean = false;
   matDrawerShow: boolean = true;
@@ -24,9 +26,15 @@ export class AuthComponent implements OnInit{
    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
 
-	constructor(private media: MediaObserver) { }
+	constructor(private media: MediaObserver,private route: Router) {
+    this.user=JSON.parse(localStorage.getItem("user"));
+    if(!this.user)
+    this.route.navigate(['login']);
+   }
 
 	ngOnInit() {
+ 
+    
 		this.media.asObservable().subscribe(() => {
             this.toggleView();
         });

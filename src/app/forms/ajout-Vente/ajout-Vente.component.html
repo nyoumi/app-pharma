@@ -7,96 +7,41 @@
 		    <div [hidden]="submitted" fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;">
        
 		
-        <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
+        <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" style="margin:20px;" >
 			<!-- <mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter pharmacieId"  formControlName="pharmacieId" required>
 			
 			</mat-form-field> -->
-			<mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter Date_Vente"  formControlName="Date_Vente" required  pattern="[0-255]*" >
 			
-			</mat-form-field>
-			
-			
-			<!-- <mat-error  align="end" style="color: red;" class="mat-body-1 center-align "> 
-				
-					Name must be at least 6 characters long.
-				
-			</mat-error> -->
+			<mat-form-field>
+				<mat-select  formControlName="Medicament" placeholder="select drug" (selectionChange)="onDrugChange($event)" >
+					<mat-option *ngFor="let medicament of medicaments" [value]="medicament.id">
+						{{medicament.nom_medoc}} -- {{medicament.code_cip}} 
+					  </mat-option>
+				</mat-select>
 
-			<!-- 
-			  <mat-form-field  class="width">
-				<input type="email" matInput placeholder="Enter  Email"  formControlName="Email"  required
-                pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
-			</mat-form-field>  -->
-			<!-- <mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
-				
-			
-			</mat-error>  -->
+
+			  </mat-form-field>
+
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Quantit_Sortie "  
-				formControlName="Quantit_Sortie" required pattern="[0-255]*">
+				<input type="number" matInput placeholder="quantity "  
+				formControlName="Quantit_Sortie" required pattern="[0-255]*" value="1" (keyup)="estimate($event)">
 			</mat-form-field>
 			
-			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-			
-			</mat-error>  -->
-			<!-- <mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter statutPharmacie"  
-				formControlName="statutPharmacie" required pattern="[0-255]*">
-			</mat-form-field>
-			<div style="text-align: center; width: 100%;">
-				<h1 class="mat-headline center-align" >ADDRESS</h1>
 
-			</div -->>
-
-			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
-				please enter Pharmacy adresse
-			</mat-error> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter adresse"  
-				formControlName="adresse" required pattern="[0-255]*">
-			</mat-form-field> -->
-			 
-			
-			
-			<!-- <mat-error align="end" style="color: rgb(2, 1, 1);" class="mat-body-1 center-align">
-				
-					Please enter drug Name
-			</mat-error> -->
-
-			<!-- <mat-form-field>
-    			   <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="pwd" >
-    			   <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    		</mat-form-field> -->
-		<!-- 	<button style="font-weight: bold;" mat-raised-button type="submit" 
-			*ngIf="username.valid && email.valid && number.valid" class="mat-headline center-align"
-			>Submit</button> -->
 			<button style="font-weight: bold; margin-bottom: 30px; background: cornflowerblue;color: white;
-			width: 30%; margin-left: 40%;" mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
+			width: 30%; margin-left: 40%;" 
+			 mat-raised-button type="submit"  class="mat-headline center-align">Submit</button>
 		</form>
     </div>
- <div [hidden]="!submitted" style="background-color: white;">
+ <div  style="background-color: white;margin:25px;">
 		<div fxLayout="column" fxLayoutAlign="space-around stretch" >
-			<h2 class="mat-headline center-align">You submitted the following:</h2>
-		<div fxLayout="row"  fxLayoutGap="20px" class="mat-body center-align">
-			<div >Name</div>
-			<div>{{ profileForm.value.username}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div>Number</div>
-			<div>{{profileForm.value.number }}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px"  class="mat-body center-align">
-			<div >Password</div>
-			<div>{{ profileForm.value.pwd}}</div>
-		</div>
-		<div fxLayout="row" fxLayoutGap="20px" class="mat-body center-align">
-			<div >Email</div>
-			<div>{{ profileForm.value.email}}</div>
-		</div>
-		<br>
-		<button mat-raised-button type="submit" (click)="submitted=false">Edit</button>
+			<h2 class="mat-headline center-align">Estimated Total Amount:{{ estimated_amount}}</h2>
+		
+		
+		
+		
+		
 	</div> 
 	</div>
 	</div>

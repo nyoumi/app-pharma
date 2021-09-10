@@ -20,6 +20,9 @@ import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.compo
 import { AjoutLotComponent } from './ajout-Lot/ajout-Lot.component';
 import { AjoutVenteComponent } from './ajout-Vente/ajout-Vente.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
 	imports: [
@@ -35,7 +38,10 @@ import { MatSelectModule } from '@angular/material/select';
 		 ReactiveFormsModule,
 		 FormsModule,
 		 MatSnackBarModule,
+		 MatDatepickerModule,
+		 MatNativeDateModule,
 		 MatSelectModule,
+		 MatDividerModule
 
 	],
 	declarations: [ReactiveFormsComponent, 

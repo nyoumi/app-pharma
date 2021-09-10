@@ -13,11 +13,15 @@ export class VenteService {
   
   constructor(private http: HttpClient ) { }
 
-  getAllVente(){ 
+  getAllVentePharmacie(id_pharmacie){ 
 
-    return this.http.get<any>(environment.serverAddress + "all"); 
+    return this.http.get<any>(environment.serverAddress + "Sortie/getByPharmacie/"+id_pharmacie); 
   }
   createVente(vente){
-    return this.http.post<any>(environment.serverAddress + "createVente",vente);
+    return this.http.post<any>(environment.serverAddress + "Sortie/addSortie",vente);
+  }
+  getPharmacieVente(id_pharmacie){ 
+
+    return this.http.get<any>(environment.serverAddress + "Sortie/getByPharmacie/"+id_pharmacie); 
   }
 }

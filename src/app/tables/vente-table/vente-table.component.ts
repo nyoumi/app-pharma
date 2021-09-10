@@ -1,7 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
-import { ExampleDatabase, ExampleDataSource } from './helpers.data';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
+import { User } from '../../user';
 import { VenteService } from '../../vente.service';
 
 @Component({
@@ -10,17 +10,32 @@ import { VenteService } from '../../vente.service';
   styleUrls: ['./vente-table.component.scss']
 })
 export class VenteTableComponent implements OnInit {
-	public displayedColumns = ['Date_Vente','Quantit_Sortie','delete','edit'];
-	public exampleDatabase = new ExampleDatabase();
-	public dataSource: ExampleDataSource | null;
+	public displayedColumns = ['date_Vente','quantit_Vente',
+	'medicament','montant_total','montant_unitaire','details'];
+	public dataSource:  [];
   	public showFilterTableCode;
-  	constructor(private venteService:VenteService) { }
+	private user:  User ;
+
+  	constructor(private venteService:VenteService) {
+		this.user=JSON.parse(localStorage.getItem("user"));
+	   }
 
   	ngOnInit() {
-  		this.dataSource = new ExampleDataSource(this.exampleDatabase);
-		  this.venteService.getAllVente().subscribe(data =>{
+  		this.dataSource = [];
+		  this.venteService.getAllVentePharmacie(this.user.id_pharma).subscribe(data =>{
 			console.log(data)
-		 this.dataSource =data;
+			const medicaments=data[1];
+			data[0].forEach(vente => {
+				if(vente.id_medoc!=null){
+					let medicament=medicaments.filter(medicament => medicament.id === vente.id_medoc)
+
+					vente.nom_medoc=medicament[0].nom_medoc;
+					
+				}
+				
+			});
+			
+		 this.dataSource =data[0];
 	   }
 
 	   );

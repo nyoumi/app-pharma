@@ -6,13 +6,16 @@ import { UserService } from '../../user.service';
 import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
 import { ActivatedRoute,Route,Router } from '@angular/router';
 import { LotService } from '../../lot.service';
+import { MedicamentService } from '../../medicament.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+
 @Component({
   selector: 'cdk-ajout-Lot',
   templateUrl: './ajout-Lot.component.html',
   styleUrls: ['./ajout-Lot.component.scss']
 })
 export class AjoutLotComponent implements OnInit {
-  public profileForm:FormGroup;
+  public profileForm:FormGroup; 
   
   private Numero_lot: AbstractControl;
   private Date_Entree_Lot: AbstractControl;
@@ -27,13 +30,12 @@ export class AjoutLotComponent implements OnInit {
   hide=true;
   lot: {};
   private user:  User ;
-  constructor(public form: FormBuilder,private route: Router,
+  medicaments: any;
+  constructor(public form: FormBuilder,private route: Router,private medicamentService:MedicamentService,
      public lotService:LotService,private snackbar:MatSnackBar) { 
+       this.user=JSON.parse(localStorage.getItem("user"));
     this.profileForm = this.form.group({
-      Numero_lot:['', {
-            validators: [Validators.required], 
-            updateOn: 'blur'
-          }],
+          Numero_lot:[''],
           Date_Entree_Lot:['', {
             validators: [Validators.required], 
             updateOn: 'blur'
@@ -80,28 +82,30 @@ export class AjoutLotComponent implements OnInit {
         this.Quantite_Recente= this.profileForm.controls['Quantite_Recente'];
         this.Prix_Lot= this.profileForm.controls['Prix_Lot'];
         this.Medicament= this.profileForm.controls['Medicament'];
-        this.Pharmacie= this.profileForm.controls['Pharmacie'];
-        this.Utilsateur= this.profileForm.controls['Utilsateur'];
        
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.medicamentService.getAllMedicament().subscribe(data =>{
+			console.log(data)
+		 this.medicaments =data;
+	   }
+
+	   );
   }
   
 createLot(){
   
   this.lot={
 
-    Numero_lot: this.Numero_lot.value,
-    Date_Entree_Lot:this.Date_Entree_Lot.value, 
-    Date_Peremtion_Lot: this.Date_Peremtion_Lot.value,
-    Quantite_Depart:this.Quantite_Depart.value,
-    Quantite_Recente:this.Quantite_Recente.value,
-    Prix_Lot:this.Prix_Lot.value,
-    Medicament:this.Medicament.value,
-   Pharmacie:this.Pharmacie.value,
-    Utilsateur:this.Utilsateur.value,
+    num_lot: this.Numero_lot.value,
+    datein_lot:this.Date_Entree_Lot.value, 
+    deteperem_lot: this.Date_Peremtion_Lot.value,
+    qtedepart_lot:this.Quantite_Depart.value,
+    prix_lot:this.Prix_Lot.value,
+    id_medicament:this.Medicament.value,
+    id_pharmacie:this.user.id_pharma,
+    id_utilisateur:this.user.id,
     
   }
   console.log(this.lot)
@@ -112,33 +116,61 @@ createLot(){
         duration: 3000
       });
 
-      this.route.navigate(['tables/lot']);
     }
  
  }
 
  );
 
-}
-  // checkUserExists() {
-    
-       
-  //         this.profileForm.value.userName.setErrors({ userExists: `User Name  already exists` });
-       
-  // }
-/*  onSubmit() { 
- 	console.log('');
- 	this.submitted = true; }
-  ngOnInit() {
-    if(this.lot){
-      this.Numero_lot.setValue(this.lot.Numero_lot)
-      this.firstname.setValue(this.user.firstname)
-      this.userphone.setValue(this.user.userphone)
-      this.email.setValue(this.user.email)
-      this.pays.setValue(this.user.adresse.pays)
-      this.ville.setValue(this.user.adresse.ville)
+ this.lotService.createLot(this.lot).subscribe(data =>{
+  console.log(data)
+  if(data.id){
+    let snackBarRef = this.snackbar.open('Lot created successfully!','OK', {
+      duration: 3000,
+      panelClass: ['green-snackbar']
+    });
 
+    
+  }else{
+    if (data.code==409 ||data.status==406){
+      let snackBarRef = this.snackbar.open(' already exist!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+      this.profileForm.reset()
     }
-  } */
+  }
+
+},error=>{
+  let snackBarRef2 = this.snackbar.open('Creation error verify your datas','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+if (error.code==409 ||error.status==406){
+  let snackBarRef = this.snackbar.open('already exist!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}else{
+  let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}
+}
+
+);
+
+}
+
+onDrugChange(event){
+  console.log(event.value)
+  let medoc=this.medicaments.filter(medicament => medicament.id === event.value)
+  console.log(medoc)
+  this.Prix_Lot.setValue( medoc[0].last_price)
+
+}
+    
+
 
 }
