@@ -6,7 +6,7 @@ import { FeatureTableComponent } from './feature-table/feature-table.component';
 import { ResponsiveTableComponent } from './responsive-table/responsive-table.component';
 import { UtilisateurTableComponent } from './utilisateur-table/utilisateur-table.component';
 import { PharmacieTableComponent } from './pharmacie-table/pharmacie-table.component';
-import { LotTableComponent } from './lot-table/lot-table.component';
+import { LotTableComponent } from './Lot-table/lot-table.component';
 import { VenteTableComponent } from './vente-table/vente-table.component';
 
 const materialWidgetRoutes: Routes = [
