@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'cdk-ajout-Pharmacie',
   templateUrl: './ajout-Pharmacie.component.html',
-  styleUrls: ['./ajout-pharmacie.component.scss']
+  styleUrls: ['./ajout-Pharmacie.component.scss']
 })
 export class AjoutPharmacieComponent implements OnInit {
   public nomPharmacie: AbstractControl;
