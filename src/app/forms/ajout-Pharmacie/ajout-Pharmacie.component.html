@@ -7,13 +7,13 @@
 		    <div [hidden]="submitted" fxLayout="column"  class="widgetHolder-content" fxLayoutAlign="space-around stretch" style="background-color: white;">
        
 		
-        <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
+        <form [formGroup]="profileForm"  (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" style="margin-right: 20px;" >
 			<!-- <mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter pharmacieId"  formControlName="pharmacieId" required>
 			
 			</mat-form-field> -->
 			<mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter nom Pharmacie"  formControlName="nomPharmacie" required  pattern="[0-255]*" >
+				<input type="text" matInput placeholder="Enter Pharmacy name"  formControlName="nomPharmacie" required  pattern="[0-255]*" >
 			
 			</mat-form-field>
 			
@@ -26,15 +26,15 @@
 
 			
 			  <mat-form-field  class="width">
-				<input type="email" matInput placeholder="Enter  Email"  formControlName="Email"  required
+				<input type="email" matInput placeholder="Email"  formControlName="Email"  required
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
 			</mat-form-field> 
-			<mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
+			<!-- <mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
 				
 					Please enter phone Pharmacie
-			</mat-error> 
+			</mat-error>  -->
 			<mat-form-field  class="width">
-				<input type="tel" matInput placeholder="Enter phone Pharmacie"  
+				<input type="tel" matInput placeholder="Enter  Pharmacy phone number"  
 				formControlName="tel" required pattern="[0-255]*">
 			</mat-form-field>
 			
