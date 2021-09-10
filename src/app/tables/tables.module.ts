@@ -37,8 +37,8 @@ import { FixedTableComponent } from './fixed-table/fixed-table.component';
 import { MedicamentTableComponent } from './medicament-table/medicament-table.component';
 import { UtilisateurTableComponent } from './utilisateur-table/utilisateur-table.component';
 import { PharmacieTableComponent } from './pharmacie-table/pharmacie-table.component';
-import { LotTableComponent } from './lot-table/lot-table.component';
 import { VenteTableComponent } from './vente-table/vente-table.component';
+import { LotTableComponent } from './Lot-table/lot-table.component';
 export function highlightJsFactory(): any {
   return {
     coreLibraryLoader: () => import('highlight.js/lib/core'),
