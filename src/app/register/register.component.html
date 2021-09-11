@@ -1,3 +1,81 @@
-<p>
-  register works!
-</p>
+<div fxLayout="column" fxFlexFill fxLayoutAlign="center center" style="background-image:url('../../../assets/login11.jpg');
+  height: auto;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: auto; ">
+   <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center" >
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>APP-PHARMA</mat-card-title>
+        <mat-card-subtitle>Sign Up</mat-card-subtitle>      
+      </mat-card-header>
+  
+      <form class="example-form" [formGroup]="userForm" (ngSubmit)="register()">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="firstname" class="input" placeholder="Please enter your firstname"
+            formControlName="firstname" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.firstname" class="help is-danger">
+                            {{ formErrors.firstname }}
+          </div>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="username" class="input" placeholder="Please enter your username"
+            formControlName="username" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.username" class="help is-danger">
+                            {{ formErrors.username }}
+          </div>
+          <mat-form-field class="example-full-width">
+            <input type="text" id="email" class="input" placeholder="Please enter your email"
+              formControlName="email" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.email" class="help is-danger">
+                              {{ formErrors.email }}
+          </div>
+        
+          <mat-form-field class="example-full-width">
+            <input type="text" id="userphone" class="input" placeholder="Please enter your phone number"
+            formControlName="userphone" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.userphone" class="help is-danger">
+                            {{ formErrors.userphone }}
+          </div>
+          <div class="radio-container" fxLayout="column">
+
+            <h4 class="mat-title"></h4>
+
+            <mat-radio-group  formControlName="sex" class="example-radio-button"> 
+              Sex:
+              <mat-radio-button style="margin-right: 20px;"  value=true class="example-radio-button">male</mat-radio-button>
+              <mat-radio-button   value=false class="example-radio-button">female</mat-radio-button>
+            </mat-radio-group>
+
+
+          </div>
+         
+          <mat-form-field class="example-full-width">
+            <input type="password" id="password" class="input" placeholder="please  enter your password"
+            formControlName="password" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.password" class="help is-danger">
+            {{ formErrors.password }}
+          </div>
+         
+          <mat-form-field class="example-full-width">
+            <input type="password" id="confirm_password" class="input" placeholder="please confirm password"
+            formControlName="confirm_password" required matInput>
+          </mat-form-field>
+          <div *ngIf="formErrors.password" class="help is-danger">
+            {{ formErrors.password }}
+          </div>          
+        </mat-card-content>
+        <button mat-stroked-button color="accent" [disabled]="!userForm.valid" class="btn-block">Sign-in</button>
+      </form>
+    </mat-card>
+  
+  </div>
+</div>

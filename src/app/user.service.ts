@@ -7,6 +7,10 @@ import { environment } from "../environments/environment";
   providedIn: 'root'
 })
 export class UserService {
+
+  register(data: any) {
+    return this.http.post<any>(environment.serverAddress + "register",data);
+  }
   authenticate(data: any) {
     return this.http.post<any>(environment.serverAddress + "authenticate",data);
   }
