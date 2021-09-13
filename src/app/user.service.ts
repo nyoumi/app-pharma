@@ -35,4 +35,7 @@ export class UserService {
   createUser(user){
     return this.http.post<any>(environment.serverAddress + "createUser",user);
   }
+  deleteUser(user){
+    return this.http.delete<any>(environment.serverAddress + "deleteUser", user);
+  }
 }

@@ -36,6 +36,7 @@ export class UtilisateurTableComponent implements OnInit {
 
 		  );
     }
+		
 
 	edit(user){
 		console.log(user)
