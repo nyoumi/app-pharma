@@ -6,7 +6,7 @@
 			<h1 class="mat-headline center-align" >Users list</h1>
 			<div class="styleUser">
 				
-				<a [routerLink]="['/auth/forms/utilisateur_forms']"  queryParamsHandling="merge" style="color: white;" >
+				<a [routerLink]="['/auth/forms/utilisateur_forms']"  queryParamsHandling="preserve" style="color: white;" >
 					 Add
 				</a>
 			  </div>
@@ -45,7 +45,7 @@
 				</ng-container>
 				<ng-container matColumnDef="adresse">
 					<mat-header-cell *matHeaderCellDef> Town </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.adresse.ville}} </mat-cell>
+					<mat-cell *matCellDef="let row" > {{row.adresse?.ville}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="delete">
 					<mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
@@ -62,7 +62,9 @@
 					
 					<mat-cell *matCellDef="let row" > 
 						<button id="basic" type="button" mat-icon-button (click)="edit(row)">
-						 
+							<a [routerLink]="['/auth/forms/utilisateur_forms',row]"   queryParamsHandling="preserve" style="color: white;" >
+								Add
+						   </a>
 						<mat-icon class="space">mode_edit </mat-icon> 
 					  </button>
 					</mat-cell>
