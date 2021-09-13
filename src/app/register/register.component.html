@@ -1,5 +1,5 @@
-<div fxLayout="column" fxFlexFill fxLayoutAlign="center center" style="background-image:url('../../../assets/login11.jpg');
-  height: auto;
+<div fxLayout="column"  fxLayoutAlign="center center" style="background-image:url('../../../assets/login11.jpg');
+  height: fit-content !important;
   padding-bottom: 20px;
   padding-top: 20px;
   background-repeat: repeat-y;
@@ -9,7 +9,7 @@
 
     <mat-card class="box">
       <mat-card-header>
-        <mat-card-title>APP-PHARMA</mat-card-title>
+        <mat-card-title>APP PHARMA</mat-card-title>
         <mat-card-subtitle>Sign Up</mat-card-subtitle>      
       </mat-card-header>
   
@@ -75,6 +75,12 @@
         </mat-card-content>
         <button mat-stroked-button color="accent" [disabled]="!userForm.valid" class="btn-block">Sign-in</button>
       </form>
+      <div class="register">
+        Already have an account? 
+        <a [routerLink]="['/login']" [queryParams]="{login: true}" queryParamsHandling="merge" >
+          login
+        </a>
+      </div>
     </mat-card>
   
   </div>

@@ -28,8 +28,15 @@ background-size: cover; ">
             {{ formErrors.password }}
         </div>
         </mat-card-content>
-        <button mat-stroked-button color="accent" [disabled]="!userForm.valid" class="btn-block">Sign-in</button>
+        <button mat-stroked-button color="accent" [disabled]="!userForm.valid && !working" class="btn-block">Sign-in</button>
       </form>
+      <div class="register">
+        No account? 
+        <a [routerLink]="['/register']" [queryParams]="{debug: true}" queryParamsHandling="merge" >
+          register
+        </a>
+      </div>
+     
     </mat-card>
   
   </div>

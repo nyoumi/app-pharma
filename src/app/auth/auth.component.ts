@@ -2,6 +2,7 @@ import { Component, OnInit ,Input} from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Router } from '@angular/router';
 import { User } from '../user';
+import { UserService } from '../user.service';
 
 
 
@@ -26,8 +27,10 @@ export class AuthComponent implements OnInit{
    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
 
-	constructor(private media: MediaObserver,private route: Router) {
-    this.user=JSON.parse(localStorage.getItem("user"));
+	constructor(private media: MediaObserver,private route: Router,private userService:UserService) {
+         this.user=userService.daoGetUser();
+        
+  
     if(!this.user)
     this.route.navigate(['login']);
    }
