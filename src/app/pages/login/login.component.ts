@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
     }
   };
   data: any;
+  working: boolean;
 
   constructor(private router: Router,private userService:UserService,
     private snackbar:MatSnackBar,
@@ -81,8 +82,10 @@ export class LoginComponent implements OnInit {
     }
   }
   login() {
+    this.working=true;
     console.log(this.data)
     this.userService.authenticate(this.data).subscribe(data =>{
+      this.working=false;
       console.log(data)
       if(data.jwtToken){
         let snackBarRef = this.snackbar.open('Authenticated successfully! You are redirected to dashboard','OK', {
@@ -102,6 +105,7 @@ export class LoginComponent implements OnInit {
       }
    
    },error=>{
+    this.working=false;
      console.log(error)
      let snackBarRef = this.snackbar.open('Authentication error! Try again','OK', {
           duration: 3000

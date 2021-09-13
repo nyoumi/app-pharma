@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../../user';
 import { UserService } from '../../user.service';
 import {MatButtonModule,MatButton} from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-utilisateur-table',
@@ -15,7 +16,9 @@ export class UtilisateurTableComponent implements OnInit {
 	'userPhone','adresse','pharmacie','details','edit','delete'];
 	public dataSource: Array<User>;
   	public showFilterTableCode;
-  	constructor(private userService:UserService) { }
+  	constructor(private userService:UserService,private router: Router) { 
+
+	  }
 
   	ngOnInit() {
   		 this.userService.getAllUser().subscribe(data =>{
@@ -39,7 +42,7 @@ export class UtilisateurTableComponent implements OnInit {
 		
 
 	edit(user){
-		console.log(user)
+		this.router.navigate(['/auth/forms/utilisateur_forms'],user);
 	}
 
 }
