@@ -1,119 +1,176 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators,FormBuilder,FormGroup, AbstractControl, FormControl } from '@angular/forms';
+import { Validators,FormBuilder,FormGroup, FormControl, AbstractControl } from '@angular/forms';
 import { EmailValidator } from '@angular/forms';
+import { User } from '../../user';
+import { UserService } from '../../user.service';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
+import { ActivatedRoute,Route,Router } from '@angular/router';
 import { LotService } from '../../lot.service';
 import { MedicamentService } from '../../medicament.service';
-import { PharmacieService } from '../../pharmacie.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+
 @Component({
   selector: 'cdk-ajout-Lot',
   templateUrl: './ajout-Lot.component.html',
   styleUrls: ['./ajout-Lot.component.scss']
 })
-
-
 export class AjoutLotComponent implements OnInit {
-public Numero_lot: AbstractControl;
-public Date_Entree_Lot: AbstractControl;
-public Date_Peremtion_Lot: AbstractControl;
-public Quantite_Recente: AbstractControl;
-public Quantite_Depart: AbstractControl;
-public Prix_Lot: AbstractControl;
-public Medicament: AbstractControl; 
-public Pharmacie: AbstractControl;
-public Utilsateur: AbstractControl;
-
-  public profileForm:FormGroup;
+  public profileForm:FormGroup; 
+  
+  private Numero_lot: AbstractControl;
+  private Date_Entree_Lot: AbstractControl;
+  private Date_Peremtion_Lot: AbstractControl;
+  private Quantite_Recente: AbstractControl;
+  private Quantite_Depart: AbstractControl;
+  private Prix_Lot: AbstractControl;
+  private Medicament: AbstractControl;
+  private Pharmacie: AbstractControl;
+  private Utilsateur:AbstractControl;
   submitted = false;
-  hide;
-  lot: { Numero_lot: any; Date_Entree_Lot: any; Date_Peremtion_Lot: any; Quantite_Recente: any; Quantite_Depart: any; Prix_Lot: any; Medicament: any; Pharmacie: any; Utilsateur: any; };
-  //lot: any;
- 
- 
-  constructor(public form: FormBuilder, public lotService: LotService) { 
+  hide=true;
+  lot: {};
+  private user:  User ;
+  medicaments: any;
+  constructor(public form: FormBuilder,private route: Router,private medicamentService:MedicamentService,
+     public lotService:LotService,private snackbar:MatSnackBar) { 
+       this.user=JSON.parse(localStorage.getItem("user"));
     this.profileForm = this.form.group({
-      Numero_lot:['', {
-            validators: [ Validators.required], 
+          Numero_lot:[''],
+          Date_Entree_Lot:['', {
+            validators: [Validators.required], 
             updateOn: 'blur'
           }],
-          Date_Entree_Lot:['', 
+          Date_Peremtion_Lot:['', 
             Validators.required
           ],
-          Date_Peremtion_Lot:[ '', {
-            validators: [Validators.required], updateOn: 'blur'
+          Quantite_Recente:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+
           }],
-          Quantite_Recente:['', 
+          Quantite_Depart:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+          }],
+          Prix_Lot:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+          }],
+          Medicament:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+          }],
+          Pharmacie:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+          }],
+          Utilsateur:['', {
+            validators: [Validators.required], 
+            updateOn: 'blur'
+          }],
+          
+         
+          /* pwd:['', 
             Validators.required
-          ],
-          Quantite_Depart:[ '', {
-            validators: [Validators.required], updateOn: 'blur'
-          }],
-          Prix_Lot:[ '', {
-            validators: [Validators.required], updateOn: 'blur'
-          }],
-          Medicament:[ '', {
-            validators: [Validators.required], updateOn: 'blur'
-          }],
-          Pharmacie:[ '', {
-            validators: [], updateOn: 'blur'
-          }],
-          Utilsateur:[ '', {
-            validators: [], updateOn: 'blur'
-          }]
+          ] */
+
         });
-
-   
-
-
         this.Numero_lot= this.profileForm.controls['Numero_lot'];
         this.Date_Entree_Lot= this.profileForm.controls['Date_Entree_Lot'];
         this.Date_Peremtion_Lot= this.profileForm.controls['Date_Peremtion_Lot'];
-        this.Quantite_Recente= this.profileForm.controls['Quantite_Recente'];
         this.Quantite_Depart= this.profileForm.controls['Quantite_Depart'];
+        this.Quantite_Recente= this.profileForm.controls['Quantite_Recente'];
         this.Prix_Lot= this.profileForm.controls['Prix_Lot'];
         this.Medicament= this.profileForm.controls['Medicament'];
-        this.Pharmacie= this.profileForm.controls['Pharmacie'];
-        this.Utilsateur= this.profileForm.controls['Utilsateur'];
-
-
+       
 
   }
+  ngOnInit(): void {
+    this.medicamentService.getAllMedicament().subscribe(data =>{
+			console.log(data)
+		 this.medicaments =data;
+	   }
 
-  onSubmit(){
-  
-    this.lot={
-  
-      Numero_lot: this.Numero_lot.value,
-      Date_Entree_Lot: this.Date_Entree_Lot.value,
-      Date_Peremtion_Lot: this.Date_Peremtion_Lot.value,
-      Quantite_Recente: this.Quantite_Recente.value,
-      Quantite_Depart: this.Quantite_Depart.value,
-      Prix_Lot: this.Prix_Lot.value,
-      Medicament: this.Medicament.value,
-      Pharmacie: this.Pharmacie.value,
-      Utilsateur: this.Utilsateur.value,
-      
-  
-      
-    }
-    console.log(this.lot) 
-    this.lotService.createLot(this.lot).subscribe(data =>{
-      console.log(data)
-   
-   }
-  
-   );
-  
+	   );
   }
   
+createLot(){
+  
+  this.lot={
 
-  // checkUserExists() {
+    num_lot: this.Numero_lot.value,
+    datein_lot:this.Date_Entree_Lot.value, 
+    deteperem_lot: this.Date_Peremtion_Lot.value,
+    qtedepart_lot:this.Quantite_Depart.value,
+    prix_lot:this.Prix_Lot.value,
+    id_medicament:this.Medicament.value,
+    id_pharmacie:this.user.id_pharma,
+    id_utilisateur:this.user.id,
     
-       
-  //         this.profileForm.value.userName.setErrors({ userExists: `User Name  already exists` });
-       
-  // }
- 
-  ngOnInit() {
   }
+  console.log(this.lot)
+  this.lotService.createLot(this.lot).subscribe(data =>{
+    console.log(data)
+    if(data.id){
+      let snackBarRef = this.snackbar.open('Lot created successfully!','OK', {
+        duration: 3000
+      });
+
+    }
+ 
+ }
+
+ );
+
+ this.lotService.createLot(this.lot).subscribe(data =>{
+  console.log(data)
+  if(data.id){
+    let snackBarRef = this.snackbar.open('Lot created successfully!','OK', {
+      duration: 3000,
+      panelClass: ['green-snackbar']
+    });
+
+    
+  }else{
+    if (data.code==409 ||data.status==406){
+      let snackBarRef = this.snackbar.open(' already exist!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+      this.profileForm.reset()
+    }
+  }
+
+},error=>{
+  let snackBarRef2 = this.snackbar.open('Creation error verify your datas','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+if (error.code==409 ||error.status==406){
+  let snackBarRef = this.snackbar.open('already exist!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}else{
+  let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}
+}
+
+);
+
+}
+
+onDrugChange(event){
+  console.log(event.value)
+  let medoc=this.medicaments.filter(medicament => medicament.id === event.value)
+  console.log(medoc)
+  this.Prix_Lot.setValue( medoc[0].last_price)
+
+}
+    
+
 
 }

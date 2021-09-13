@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators,FormBuilder,FormGroup, AbstractControl, FormControl } from '@angular/forms';
 import { EmailValidator } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentService } from '../../medicament.service';
 import { PharmacieService } from '../../pharmacie.service';
 @Component({
@@ -26,14 +27,18 @@ export class AjoutMedicamentComponent implements OnInit {
   hide;
   medicament:any ;
  
-  constructor(public form: FormBuilder, private medicamentService: MedicamentService) { 
+  constructor(public form: FormBuilder,private snackbar:MatSnackBar,
+     private medicamentService: MedicamentService) { 
     this.profileForm = this.form.group({
       code_cip:['', {
             validators: [ Validators.required], 
             updateOn: 'blur'
           }],
-          nom_medoc:['', 
-            Validators.required
+          nom_medoc:['',{
+            validators: [ Validators.required], 
+            updateOn: 'blur'
+          }
+           
           ],
           forme:[ '', {
             validators: [Validators.required], updateOn: 'blur'
@@ -86,8 +91,8 @@ export class AjoutMedicamentComponent implements OnInit {
       notice_medoc: this.notice_medoc.value,
       conditionnement_medoc: this.conditionnement_medoc.value,
       marque_medoc: this.marque_medoc.value,
-      categories: this.categories.value,
-      tag: this.tag.value,
+      categories: this.categories.value.split(","),
+      tag: this.tag.value.split(","),
       
   
       
@@ -95,7 +100,34 @@ export class AjoutMedicamentComponent implements OnInit {
     console.log(this.medicament) 
     this.medicamentService.createMedicament(this.medicament).subscribe(data =>{
       console.log(data)
+      if(data.id){
+        let snackBarRef = this.snackbar.open('Drug created successfully!','OK', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+  
+        
+      }else{
+        if (data.code==409 ||data.status==406){
+          let snackBarRef = this.snackbar.open(' already exist!','OK', {
+            duration: 3000,
+            panelClass: ['red-snackbar']
+          });
+        }
+      }
    
+   },error=>{
+    if (error.code==409 ||error.status==406){
+      let snackBarRef = this.snackbar.open('already exist!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+    }else{
+      let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+    }
    }
   
    );

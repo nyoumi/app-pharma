@@ -4,6 +4,7 @@ import { AjoutMedicamentComponent } from './ajout-Medicament/ajout-Medicament.co
 import { AjoutPharmacieComponent } from './ajout-Pharmacie/ajout-Pharmacie.component';
 import { AjoutUtilisateurComponent } from './ajout-Utilisateur/ajout-Utilisateur.component';
 import { AjoutLotComponent } from './ajout-Lot/ajout-Lot.component';
+import { AjoutVenteComponent } from './ajout-Vente/ajout-Vente.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { TemplateDrivenFormsComponent } from './template-driven-forms/template-driven-forms.component';
 const FormsRoutes: Routes = [
@@ -13,6 +14,7 @@ const FormsRoutes: Routes = [
     { path: 'utilisateur_forms', component: AjoutUtilisateurComponent },
     { path: 'pharmacie_forms', component: AjoutPharmacieComponent },
     { path: 'lot_forms', component: AjoutLotComponent },
+    { path: 'vente_forms', component: AjoutVenteComponent },
 
   	
 ];

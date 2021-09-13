@@ -13,7 +13,7 @@
 			
 			</mat-form-field> -->
 			<mat-form-field class="width">
-				<input type="text" matInput placeholder="Enter Code_cip"  formControlName="code_cip" required>
+				<input type="text" matInput placeholder="Enter cip_Code"  formControlName="code_cip" required>
 			
 			</mat-form-field>
 			
@@ -27,63 +27,78 @@
 			<!--  <mat-form-field  class="width">
 				<input type="email" matInput placeholder="Enter Your Email"  formControlName="email"  required
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
-			</mat-form-field> -->
+			</mat-form-field> 
 			<mat-error  align="end" style="color: red;" class="mat-body-1 center-align" >
 				
 					Please enter Drug Name
-			</mat-error> 
+			</mat-error> -->
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug name"  
 				formControlName="nom_medoc" required pattern="[0-255]*">
 			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			 <mat-error align="end" style="color: rgb(111, 0, 255);" class="mat-body-1 center-align">
 				please enter Drug Form
-			</mat-error> 
-			<mat-form-field  class="width">
+			</mat-error>  
+			<!-- <mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Form"  
 				formControlName="forme" required pattern="[0-255]*">
-			</mat-form-field>
+			</mat-form-field> -->
+			<mat-form-field>
+				<mat-select  formControlName="forme">
+				  <mat-option value="COMPRIME">COMPRIME</mat-option>
+				  <mat-option value="SIROP">sirop</mat-option>
+				  <mat-option value="POUDRE">poudre</mat-option>
+				</mat-select>
+			  </mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter  Drug Dosage
 			</mat-error> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Drug Dosage"  
+				<input type="text" matInput placeholder="Enter Drug Dosage (mg)"  
 				formControlName="dosage_medoc" required pattern="[0-255]*">
 			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			 <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug conditioning
-			</mat-error> 
-			<mat-form-field  class="width">
+			</mat-error>  
+			<!-- <mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug conditioning"  
 				formControlName="conditionnement_medoc" required pattern="[0-255]*">
-			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			</mat-form-field> -->
+			<mat-form-field>
+				<mat-select  formControlName="conditionnement_medoc">
+				  <mat-option value="boite">boite</mat-option>
+				  <mat-option value="sachet">sachet</mat-option>
+				  <mat-option value="flacon">flacon</mat-option>
+
+				</mat-select>
+			  </mat-form-field>
+			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug avis
-			</mat-error> 
+			</mat-error>  -->
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Drug avis"  
-				formControlName="notice_medoc" required pattern="[0-255]*">
+				<textarea type="text" matInput placeholder="Enter Drug avis"  
+				formControlName="notice_medoc" ></textarea>
 			</mat-form-field>
 			
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Mark
-			</mat-error> 
+			</mat-error> --> 
 			<mat-form-field  class="width">
 				<input type="text" matInput placeholder="Enter Drug Mark"  
-				formControlName="marque_medoc" required pattern="[0-255]*">
+				formControlName="marque_medoc" required >
 			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Category separated by comma
-			</mat-error> 
+			</mat-error> --> 
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Drug Category"  
-				formControlName="categories" required pattern="[0-255]*">
+				<input type="text" matInput placeholder="please enter Drug Category separated by comma"  
+				formControlName="categories" required >
 			</mat-form-field>
-			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
+			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter diseases separted by comma
-			</mat-error> 
+			</mat-error>  -->
 			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="disease"  
+				<input type="text" matInput placeholder="please enter diseases separted by comma"  
 				formControlName="tag" required pattern="[0-255]*">
 			</mat-form-field>
 			
@@ -102,5 +117,5 @@
 		</form>
     </div>
  
-	</div>
+	</div>  
 </div>

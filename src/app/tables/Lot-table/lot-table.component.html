@@ -12,51 +12,71 @@
 				The actual rendered columns are set as a property on the row definition" -->
 
 				<!-- ID Column -->
-				<ng-container matColumnDef="lotId">
-					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-				</ng-container>
+				
 
 				<!-- Progress Column -->
 				<ng-container matColumnDef="Numero_lot">
-					<mat-header-cell *matHeaderCellDef>Numero_lot </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.Numero_lot}} </mat-cell>
+					<mat-header-cell *matHeaderCellDef>Batch number </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.num_lot}} </mat-cell>
 				</ng-container>
-
+				<ng-container matColumnDef="Medicament">
+					<mat-header-cell *matHeaderCellDef> Drug </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.nom_medoc}} </mat-cell>
+				</ng-container>
 				<!-- Name Column -->
-				<ng-container matColumnDef="Date_Enntree_Lot">
-					<mat-header-cell *matHeaderCellDef> Date_Entree_Lot </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.Date_Entree_Lot}} </mat-cell>
+				<ng-container matColumnDef="Pharmacie">
+					<mat-header-cell *matHeaderCellDef> drugstore </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.pharma_name}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Quantite_Restante">
+					<mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.qte_lot}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Quantite_Depart">
+					<mat-header-cell *matHeaderCellDef> Entry quantity </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.qtedepart_lot}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Quantite_vendue">
+					<mat-header-cell *matHeaderCellDef> sold quantity </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.qte_vendue}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Prix_Lot">
+					<mat-header-cell *matHeaderCellDef> Selling Price  </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.prix_lot}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Date_fabrication_Lot">
+					<mat-header-cell *matHeaderCellDef> manufacture Date </mat-header-cell>
+					<mat-cell *matCellDef="let row"> {{row.datein_lot | date}} </mat-cell>
 				</ng-container>
 
 				<!-- form Column -->
-				<ng-container matColumnDef="Date_Peremtion_Lot">
-					<mat-header-cell *matHeaderCellDef> Date_Peremtion_Lot </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Date_Peremtion_Lot}} </mat-cell>
+				<ng-container matColumnDef="Date_Peremption_Lot">
+					<mat-header-cell *matHeaderCellDef> expiration date </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.deteperem_lot | date}} </mat-cell>
 				</ng-container>
-				<ng-container matColumnDef="Quantite_Recente">
-					<mat-header-cell *matHeaderCellDef> Quantite_Recente </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Quantite_Recente}} </mat-cell>
+
+
+		
+				
+				<ng-container matColumnDef="delete">
+					<mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
+					<mat-cell *matCellDef="let row" > 
+						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						 
+						<mat-icon class="space">delete</mat-icon> 
+					  </button>
+					</mat-cell>
+					
 				</ng-container>
-				<ng-container matColumnDef="Quantite_Depart">
-					<mat-header-cell *matHeaderCellDef> Quantite_Depart </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Quantite_Depart}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Prix_Lot">
-					<mat-header-cell *matHeaderCellDef> Prix_Lot </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Prix_Lot}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Medicament">
-					<mat-header-cell *matHeaderCellDef> Medicament </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Medicament}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Pharmacie">
-					<mat-header-cell *matHeaderCellDef> Pharmacie </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Pharmacie}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Utilsateur">
-					<mat-header-cell *matHeaderCellDef> Utilsateur </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Utilsateur}} </mat-cell>
+				<ng-container matColumnDef="archive">
+					<mat-header-cell *matHeaderCellDef> archive </mat-header-cell>
+					
+					<mat-cell *matCellDef="let row" > 
+						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						 
+						<mat-icon class="space">archive </mat-icon> 
+					  </button>
+					</mat-cell>
 				</ng-container>
 
 			 	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

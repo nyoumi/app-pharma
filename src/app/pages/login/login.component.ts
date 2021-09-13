@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // import { AuthService } from '../../core/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '../../user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,13 +13,12 @@ export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
   formErrors = {
-    'email': '',
+    'username': '',
     'password': ''
   };
   validationMessages = {
-    'email': {
-      'required': 'Please enter your email',
-      'email': 'please enter your vaild email'
+    'username': {
+      'required': 'Please enter your username',
     },
     'password': {
       'required': 'please enter your password',
@@ -26,8 +27,10 @@ export class LoginComponent implements OnInit {
       'maxlength': 'Please enter less than 25 characters',
     }
   };
+  data: any;
 
-  constructor(private router: Router,
+  constructor(private router: Router,private userService:UserService,
+    private snackbar:MatSnackBar,
               private fb: FormBuilder) {
   }
 
@@ -37,45 +40,75 @@ export class LoginComponent implements OnInit {
 
   buildForm() {
     this.userForm = this.fb.group({
-      'email': ['', [
-        Validators.required,
-        Validators.email
+      'username': ['', [
+        Validators.required
       ]
       ],
       'password': ['', [
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        //Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
         Validators.minLength(6),
         Validators.maxLength(25)
       ]
       ],
     });
 
-    this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.userForm.valueChanges.subscribe(data => {
+      this.onValueChanged(data)
+      console.log(data)
+    });
     this.onValueChanged();
   }
 
   onValueChanged(data?: any) {
-    // if (!this.userForm) {
-    //   return;
-    // }
-    // const form = this.userForm;
-    // for (const field in this.formErrors) {
-    //   if (Object.prototype.hasOwnProperty.call(this.formErrors, field)) {
-    //     this.formErrors[field] = '';
-    //     const control = form.get(field);
-    //     if (control && control.dirty && !control.valid) {
-    //       const messages = this.validationMessages[field];
-    //       for (const key in control.errors) {
-    //         if (Object.prototype.hasOwnProperty.call(control.errors, key)) {
-    //           this.formErrors[field] += messages[key] + ' ';
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+    this.data=data;
+    if (!this.userForm) {
+      return;
+    }
+    const form = this.userForm;
+    for (const field in this.formErrors) {
+      if (Object.prototype.hasOwnProperty.call(this.formErrors, field)) {
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (control && control.dirty && !control.valid) {
+          const messages = this.validationMessages[field];
+          for (const key in control.errors) {
+            if (Object.prototype.hasOwnProperty.call(control.errors, key)) {
+              this.formErrors[field] += messages[key] + ' ';
+            }
+          }
+        }
+      }
+    }
   }
   login() {
-    this.router.navigate(['/']);
+    console.log(this.data)
+    this.userService.authenticate(this.data).subscribe(data =>{
+      console.log(data)
+      if(data.jwtToken){
+        let snackBarRef = this.snackbar.open('Authenticated successfully! You are redirected to dashboard','OK', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+        localStorage.setItem("user",JSON.stringify(data.utilisateur));
+        localStorage.setItem("token",data.jwtToken);
+        
+  
+        this.router.navigate(['/auth/dashboard']);
+      }else{
+        let snackBarRef = this.snackbar.open('Authentication error! Username or password incorrect','OK', {
+          duration: 3000,
+          panelClass: ['red-snackbar']
+        });
+      }
+   
+   },error=>{
+     console.log(error)
+     let snackBarRef = this.snackbar.open('Authentication error! Try again','OK', {
+          duration: 3000
+        });
+   })
+
+    //this.router.navigate(['/']);
   }
 }
 

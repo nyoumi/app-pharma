@@ -3,6 +3,12 @@ import { Validators,FormBuilder,FormGroup, FormControl, AbstractControl } from '
 import { EmailValidator } from '@angular/forms';
 import { User } from '../../user';
 import { UserService } from '../../user.service';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
+import { ActivatedRoute,Route,Router } from '@angular/router';
+import { MedicamentService } from '../../medicament.service';
+import { PharmacieService } from '../../pharmacie.service';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+
 @Component({
   selector: 'cdk-ajout-Utilisateur',
   templateUrl: './ajout-Utilisateur.component.html',
@@ -19,42 +25,56 @@ export class AjoutUtilisateurComponent implements OnInit {
   private userphone: AbstractControl;
   private ville: AbstractControl;
   private pays: AbstractControl;
+  private pharmacie:AbstractControl;
+  private role:AbstractControl;
+
   submitted = false;
-  hide;
+  hide=true;
   private user:  User ;
-  constructor(public form: FormBuilder, private userService:UserService) { 
+  pharmacies: any;
+  constructor(public form: FormBuilder,private route: Router,
+    private pharmacieService:PharmacieService,
+     private userService:UserService,private snackbar:MatSnackBar) { 
     this.profileForm = this.form.group({
           username:['', {
             validators: [Validators.required], 
-            updateOn: 'blur'
+             
           }],
           firstname:['', {
             validators: [Validators.required], 
-            updateOn: 'blur'
+             
           }],
-          email:['', 
-            Validators.required,Validators.email
+          email:['',{
+            validators:[Validators.required,Validators.email], 
+             
+          } 
+           
           ],
           password:['', {
             validators: [Validators.minLength(6),Validators.required], 
-            updateOn: 'blur'
+             
 
           }],
           confirmpassword:['', {
             validators: [Validators.minLength(6),Validators.required], 
-            updateOn: 'blur'
+             
           }],
           userphone:['', {
             validators: [Validators.required], 
-            updateOn: 'blur'
+             
           }],
           ville:['', {
-            validators: [], 
-            updateOn: 'blur'
+             
           }],
          pays:['', {
-            validators: [], 
-            updateOn: 'blur'
+             
+          }],
+          pharmacie:['', {
+             
+          }],
+          role:['', {
+            validators: [Validators.required], 
+             
           }],
           
          
@@ -71,7 +91,8 @@ export class AjoutUtilisateurComponent implements OnInit {
         this.userphone= this.profileForm.controls['userphone'];
         this.ville= this.profileForm.controls['ville'];
         this.pays= this.profileForm.controls['pays'];
-       
+        this.pharmacie= this.profileForm.controls['pharmacie'];
+        this.role= this.profileForm.controls['role'];
 
   }
   
@@ -84,18 +105,51 @@ createUser(){
     password: this.password.value,
     email:this.email.value,
     userphone:this.userphone.value,
+    id_pharma:this.pharmacie.value,
+    roles:[this.role.value],
     adresse:{
       ville:this.ville.value,
       pays:this.pays.value,
     }
   }
   console.log(this.user)
-  this.userService.createUser(this.user).subscribe(data =>{
-    console.log(data)
- 
- }
 
- );
+
+
+ this.userService.createUser(this.user).subscribe(data =>{
+  console.log(data)
+  if(data.id){
+    let snackBarRef = this.snackbar.open('User created successfully!','OK', {
+      duration: 3000,
+      panelClass: ['green-snackbar']
+    });
+    this.route.navigate(['auth/tables/utilisateur']);
+
+    
+  }else{
+    if (data.code==409 ||data.status==406){
+      let snackBarRef = this.snackbar.open(' already exist!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+    }
+  }
+
+},error=>{
+if (error.code==409 ||error.status==406){
+  let snackBarRef = this.snackbar.open('already exist!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}else{
+  let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+    duration: 3000,
+    panelClass: ['red-snackbar']
+  });
+}
+}
+
+);
 
 }
   // checkUserExists() {
@@ -108,6 +162,21 @@ createUser(){
  	console.log('');
  	this.submitted = true; }
   ngOnInit() {
+    this.pharmacieService.getAllPharmacie().subscribe(data =>{
+			console.log(data)
+		 this.pharmacies =data;
+	   }
+
+	   );
+    if(this.user){
+      this.username.setValue(this.user.username)
+      this.firstname.setValue(this.user.firstname)
+      this.userphone.setValue(this.user.userphone)
+      this.email.setValue(this.user.email)
+      this.pays.setValue(this.user.adresse.pays)
+      this.ville.setValue(this.user.adresse.ville)
+
+    }
   }
 
 }

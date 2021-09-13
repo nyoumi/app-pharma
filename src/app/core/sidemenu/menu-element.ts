@@ -2,10 +2,10 @@ export const menus = [
     {
         'name': 'Dashboard',
         'icon': 'dashboard',
-        'link': false,
-        'open': false,
-        'chip': { 'value': 1, 'color': 'accent' },
-        'sub': [
+        'link': '/auth/dashboard',
+        'open': true,
+        //'chip': { 'value': 1, 'color': 'accent' },
+       /*  'sub': [
             {
                 'name': 'Dashboard',
                 'link': '/auth/dashboard',
@@ -13,27 +13,27 @@ export const menus = [
                 'chip': false,
                 'open': true,
             }
-        ]
+        ] */
     },
     {
 
-        'name': 'Gestion Ventes',
-        'icon': 'pie_chart_outlined',
+        'name': 'Sales management',
+        'icon': 'money',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'historique vente',
-                'icon': 'view_list',
-                'link': 'charts/chartjs',
+                'name': 'Sales history',
+                'icon': 'history',
+                'link': 'tables/vente',
                 'open': false,
 
             },
             {
-                'name': 'nouvelle vente',
-                'icon': 'show_chart',
+                'name': 'sell',
+                'icon': 'add_shopping_cart',
                 'open': false,
-                'link': 'charts/ngx-charts',
+                'link': 'forms/vente_forms',
             },
             // {
             //     'name': 'nvd3',
@@ -45,21 +45,21 @@ export const menus = [
     }, 
     {
 
-        'name': 'Gestion des utilisateurs',
-        'icon': 'pie_chart_outlined',
+        'name': 'User Management',
+        'icon': 'people',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'Ajouter Utilisateur',
-                'icon': 'view_list',
+                'name': 'Add User',
+                'icon': 'person_add',
                 'link': 'forms/utilisateur_forms',
                 'open': false,
 
             },
             {
-                'name': 'Lister les Utilisateurs',
-                'icon': 'show_chart',
+                'name': 'Users list',
+                'icon': 'people',
                 'open': false,
                 'link': 'tables/utilisateur',
             },
@@ -73,21 +73,21 @@ export const menus = [
     }, 
     {
 
-        'name': 'Gestion Medicament',
+        'name': 'Medicines management',
         'icon': 'pie_chart_outlined',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'Ajout Medicament',
-                'icon': 'view_list',
+                'name': 'Add Medicine',
+                'icon': 'add_circle',
                 'link': 'forms/medicament_forms',
                 'open': false,
 
             },
             {
-                'name': 'Lister Medicament',
-                'icon': 'show_chart',
+                'name': 'List Medicine',
+                'icon': 'list',
                 'open': false,
                 'link': 'tables/medicament',
             },
@@ -101,21 +101,21 @@ export const menus = [
     }, 
     {
 
-        'name': 'Gestion Pharmacie',
-        'icon': 'pie_chart_outlined',
+        'name': 'Pharma management',
+        'icon': 'local_hospital',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'Ajout Ajout Pharmacie',
-                'icon': 'view_list',
+                'name': 'add a drug store',
+                'icon': 'local_pharmacy',
                 'link': 'forms/pharmacie_forms',
                 'open': false,
 
             },
             {
-                'name': 'Lister Pharmacie',
-                'icon': 'show_chart',
+                'name': 'Drugstores list',
+                'icon': 'list',
                 'open': false,
                 'link': 'tables/pharmacie',
             },
@@ -129,21 +129,21 @@ export const menus = [
     }, 
     {
 
-        'name': 'Gestion Lot',
-        'icon': 'pie_chart_outlined',
+        'name': 'Batch management',
+        'icon': 'archive',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'Ajout Lot',
-                'icon': 'view_list',
+                'name': 'Add batch',
+                'icon': 'add_circle',
                 'link': 'forms/lot_forms',
                 'open': false,
 
             },
             {
-                'name': 'Lister Lot',
-                'icon': 'show_chart',
+                'name': 'List batch',
+                'icon': 'format_list_numbered',
                 'open': false,
                 'link': 'tables/lot',
             },
@@ -157,13 +157,13 @@ export const menus = [
     }, 
     {
 
-        'name': 'Effectuer une recherche',
-        'icon': 'pie_chart_outlined',
+        'name': 'search a medecine',
+        'icon': 'search',
         'open': false,
         'link': false,      
             
     }, 
-    {
+/*     {
 
         'name': 'Gestion des sorties',
         'icon': 'pie_chart_outlined',
@@ -190,8 +190,8 @@ export const menus = [
             //     'link': 'charts/nvd3-charts',
             // }
         ]
-    }, 
-    {
+    },  */
+   /*  {
         'name': 'Material Widget',
         'icon': 'widgets',
         'link': false,
@@ -319,7 +319,7 @@ export const menus = [
                 'open': false,
             },
         ]
-    },
+    }, */
     // {
     //     'name'   : 'Forms',
     //     'icon'   : 'mode_edit',
@@ -340,7 +340,7 @@ export const menus = [
     //                     }
     //                 ]
     // },
-    {
+   /*  {
         'name': 'Tables',
         'icon': 'list',
         'link': false,
@@ -455,7 +455,7 @@ export const menus = [
             //     'link': 'charts/nvd3-charts',
             // }
         ]
-    }, 
+    },  */
     // {
     //     'name': 'maps',
     //     'icon': 'map',

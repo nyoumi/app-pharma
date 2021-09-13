@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
 
 const routes: Routes = [
     {path: '', component: LoginComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
         MatInputModule,
         MatToolbarModule,
         FormsModule,
-        ReactiveFormsModule,
+        ReactiveFormsModule,MatSnackBarModule,
         RouterModule.forChild(routes)
     ],
     declarations: [   

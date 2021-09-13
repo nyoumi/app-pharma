@@ -2,24 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { Validators,FormBuilder,FormGroup, AbstractControl, AbstractControlOptions } from '@angular/forms';
 import { PharmacieService } from '../../pharmacie.service';
 import { EmailValidator } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'cdk-ajout-Pharmacie',
   templateUrl: './ajout-Pharmacie.component.html',
-  styleUrls: ['./ajout-pharmacie.component.scss']
+  styleUrls: ['./ajout-Pharmacie.component.scss']
 })
 export class AjoutPharmacieComponent implements OnInit {
   public nomPharmacie: AbstractControl;
   public Email:AbstractControl;
   public tel:AbstractControl;
-  public statutPharmacie:AbstractControl;
-  public adresse:AbstractControl
+  public country:AbstractControl
+  public ville:AbstractControl;
+  public region:AbstractControl;
+  public code_postal:AbstractControl;
 
 
   public profileForm:FormGroup;
   submitted = false;
   hide;
   phamarcie: {};
-  constructor(public form: FormBuilder, public pharmacieService: PharmacieService) { 
+  constructor(public form: FormBuilder, public pharmacieService: PharmacieService,private snackbar:MatSnackBar) { 
     this.profileForm = this.form.group({
       nomPharmacie:['', {
         validators: [ Validators.required], 
@@ -33,11 +36,19 @@ export class AjoutPharmacieComponent implements OnInit {
         validators: [ Validators.required], 
         updateOn: 'blur'
       }],
-      statutPharmacie:['', {
+      country:['', {
         validators: [ Validators.required], 
         updateOn: 'blur'
       }],
-      adresse:['', {
+      region:['', {
+        validators: [ Validators.required], 
+        updateOn: 'blur'
+      }],
+      ville:['', {
+        validators: [ Validators.required], 
+        updateOn: 'blur'
+      }],
+      code_postal:['', {
         validators: [ Validators.required], 
         updateOn: 'blur'
       }],
@@ -46,8 +57,11 @@ export class AjoutPharmacieComponent implements OnInit {
         this.nomPharmacie=this.profileForm.controls['nomPharmacie'];
         this.Email=this.profileForm.controls['Email'];
         this.tel=this.profileForm.controls['tel'];
-        this.statutPharmacie=this.profileForm.controls['statutPharmacie'];
-        this.adresse=this.profileForm.controls['adresse'];
+        this.country=this.profileForm.controls['country'];
+        this.region=this.profileForm.controls['region'];
+        this.ville=this.profileForm.controls['ville'];
+        this.code_postal=this.profileForm.controls['code_postal'];
+
 
   }
   /* get number() {
@@ -70,18 +84,49 @@ get Code_cip(){
   // }
  onSubmit() { 
    this.phamarcie={
-    nomPharmacie: this.nomPharmacie.value,
-    Email: this.Email.value,
-    tel: this.tel.value,
-    statutPharmacie: this.statutPharmacie.value,
-    adresse: this.adresse.value,
+    nom_phar: this.nomPharmacie.value,
+    email_phar: this.Email.value,
+    tel_phar: this.tel.value,
+    adresse: {
+      ville:this.ville.value,
+      pays:this.country.value,
+      region:this.region.value,
+      code_postal:this.code_postal.value
+    },
    
      
    }
    console.log(this.phamarcie) 
     this.pharmacieService.createPharmacie(this.phamarcie).subscribe(data =>{
       console.log(data)
+      if(data.id){
+        let snackBarRef = this.snackbar.open('Drugstore created successfully!','OK', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });
+  
+        
+      }else{
+        if (data.code==409 ||data.status==406){
+          let snackBarRef = this.snackbar.open(' already exist!','OK', {
+            duration: 3000,
+            panelClass: ['red-snackbar']
+          });
+        }
+      }
    
+   },error=>{
+    if (error.code==409 ||error.status==406){
+      let snackBarRef = this.snackbar.open('already exist!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+    }else{
+      let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+    }
    }
   
    );

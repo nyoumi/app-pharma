@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { AjoutPharmacieComponent } from './ajout-Vente.component';
+import { AjoutVenteComponent } from './ajout-Vente.component';
 
 describe('ReactiveFormsComponent', () => {
-  let component: AjoutPharmacieComponent;
-  let fixture: ComponentFixture<AjoutPharmacieComponent>;
+  let component: AjoutVenteComponent;
+  let fixture: ComponentFixture<AjoutVenteComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AjoutPharmacieComponent ]
+      declarations: [ AjoutVenteComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AjoutPharmacieComponent);
+    fixture = TestBed.createComponent(AjoutVenteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

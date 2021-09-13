@@ -10,6 +10,9 @@ export class User {
    public etatuser?:number,
    public statutuser?:boolean,
    public   id_pharma?:string,
+   public   pharma_name?:any,
+
+   public roles?:string [],
    public adresse?:{  
       id_adresse?: string,
       pays:string,
