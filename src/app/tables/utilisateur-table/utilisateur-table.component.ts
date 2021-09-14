@@ -26,10 +26,12 @@ export class UtilisateurTableComponent implements OnInit {
 			
 			const pharmacies=data[1];
 			data[0].forEach(user => {
-				if(user.id_pharma!=null){
-					let medoc=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
+				if(user.id_pharma!=null && user.id_pharma!=""){
+					let pharma=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
+					console.log(pharma)
+					console.log(user)
 
-					user.pharma_name=medoc[0].nom_phar;
+					user.pharma_name=pharma[0].nom_phar;
 					
 				}
 				
