@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Validators,FormBuilder,FormGroup, AbstractControl, FormControl } from '@angular/forms';
 import { EmailValidator } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MedicamentService } from '../../medicament.service';
 import { PharmacieService } from '../../pharmacie.service';
 @Component({
@@ -27,8 +28,11 @@ export class AjoutMedicamentComponent implements OnInit {
   hide;
   medicament:any ;
  
-  constructor(public form: FormBuilder,private snackbar:MatSnackBar,
+  constructor(public form: FormBuilder,private snackbar:MatSnackBar,private route: Router,
      private medicamentService: MedicamentService) { 
+      this.medicament =this.route.getCurrentNavigation().extras ;
+      console.log(this.medicament);
+
     this.profileForm = this.form.group({
       code_cip:['', {
             validators: [ Validators.required], 
@@ -143,6 +147,18 @@ export class AjoutMedicamentComponent implements OnInit {
   // }
  
   ngOnInit() {
+    if(this.medicament.id){
+     // console.log("ttttttttttttttttt");
+      this.code_cip.setValue( this.medicament.code_cip);
+      this.nom_medoc.setValue(this.medicament.nom_medoc);
+      this.forme.setValue(this.medicament.forme);
+      this.dosage_medoc.setValue(this.medicament.dosage_medoc);
+      this.notice_medoc.setValue(this.medicament.notice_medoc);
+      this.conditionnement_medoc.setValue(this.medicament.conditionnement_medoc);
+      this.marque_medoc.setValue(this.medicament.marque_medoc);
+      this.categories.setValue(this.medicament.categories);
+      this.tag.setValue(this.medicament.tag);
+    }
   }
 
 }

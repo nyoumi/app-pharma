@@ -1,4 +1,5 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
 
@@ -11,7 +12,9 @@ export class MedicamentTableComponent implements OnInit {
 	public displayedColumns = ['medicamentId', 'Code_cip', 'Dosage','Conditionnement','Marque','Categorie','Tag','forme','delete','edit'];
 	public dataSource: any | null;
   	public showFilterTableCode;
-  	constructor(private medicamentService:MedicamentService) { }
+  	constructor(private medicamentService:MedicamentService,private router: Router) {
+
+	   }
 
   	ngOnInit() {
   		
@@ -24,6 +27,10 @@ export class MedicamentTableComponent implements OnInit {
 	   
 	   
     }
+
+	edit(medicament){
+		this.router.navigate(['/auth/forms/medicament_forms'],medicament);
+	}
 		
 
 }

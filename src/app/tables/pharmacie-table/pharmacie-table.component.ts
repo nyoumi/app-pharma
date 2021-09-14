@@ -1,4 +1,6 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PharmacieService } from '../../pharmacie.service';
 
@@ -13,7 +15,7 @@ export class PharmacieTableComponent implements OnInit {
 	'adresse','add_user','edit','delete'];
 	public dataSource: any | null;
   	public showFilterTableCode;
-  	constructor(private pharmacieService:PharmacieService) { }
+  	constructor(private pharmacieService:PharmacieService, private router: Router) { }
 
   	ngOnInit() {
 		this.pharmacieService.getAllPharmacie().subscribe(data =>{
@@ -23,5 +25,9 @@ export class PharmacieTableComponent implements OnInit {
 
 	 );
     }
+	
+	edit(pharmacie){
+		this.router.navigate(['/auth/forms/pharmacie_forms'],pharmacie);
+	}
 
 }
