@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators,FormBuilder,FormGroup, AbstractControl, AbstractControlOptions } from '@angular/forms';
 import { PharmacieService } from '../../pharmacie.service';
+import { Pharmacie } from '../../pharmacie';
 import { EmailValidator } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
@@ -134,13 +135,13 @@ get Code_cip(){
   ngOnInit() {
     
    if (this.phamarcie){
-    this.nomPharmacie.setValue( this.phamarcie);
-    this.Email.setValue( this.phamarcie);
-    this.tel.setValue( this.phamarcie);
-    this.country.setValue( this.phamarcie);
-    this.region.setValue( this.phamarcie);
-    this.ville.setValue( this.phamarcie);
-    this.code_postal.setValue( this.phamarcie);
+    this.nomPharmacie.setValue( this.phamarcie)
+    this.Email.setValue( this.phamarcie)
+    this.tel.setValue( this.phamarcie)
+    this.country.setValue( this.phamarcie)
+    this.region.setValue( this.phamarcie)
+    this.ville.setValue( this.phamarcie)
+    this.code_postal.setValue( this.phamarcie)
 
    }
 

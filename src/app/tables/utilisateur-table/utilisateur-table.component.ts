@@ -24,7 +24,7 @@ export class UtilisateurTableComponent implements OnInit {
   		 this.userService.getAllUser().subscribe(data =>{
 			   console.log(data)
 			
-			const pharmacies=data[1];
+		//	const pharmacies=data[1];
 			data[0].forEach(user => {
 				/* if(user.id_pharma!=null){
 					let medoc=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
@@ -33,7 +33,7 @@ export class UtilisateurTableComponent implements OnInit {
 					
 				} */
 				
-			});
+		});
 			this.dataSource =data[0];
 		  }
 

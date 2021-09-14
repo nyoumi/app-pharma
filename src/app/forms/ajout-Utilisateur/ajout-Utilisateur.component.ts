@@ -115,9 +115,6 @@ createUser(){
     }
   }
   console.log(this.user)
-
-
-
  this.userService.createUser(this.user).subscribe(data =>{
   console.log(data)
   if(data.id){
