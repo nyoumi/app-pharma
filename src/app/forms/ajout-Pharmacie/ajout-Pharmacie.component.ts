@@ -3,6 +3,8 @@ import { Validators,FormBuilder,FormGroup, AbstractControl, AbstractControlOptio
 import { PharmacieService } from '../../pharmacie.service';
 import { EmailValidator } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute,Route,Router } from '@angular/router';
+
 @Component({
   selector: 'cdk-ajout-Pharmacie',
   templateUrl: './ajout-Pharmacie.component.html',
@@ -21,8 +23,15 @@ export class AjoutPharmacieComponent implements OnInit {
   public profileForm:FormGroup;
   submitted = false;
   hide;
-  phamarcie: {};
-  constructor(public form: FormBuilder, public pharmacieService: PharmacieService,private snackbar:MatSnackBar) { 
+  pharmacie:any;
+  action="ADD";
+  constructor(public form: FormBuilder, private route: Router,
+  public pharmacieService: PharmacieService,
+  private snackbar:MatSnackBar) { 
+    
+      this.pharmacie =this.route.getCurrentNavigation().extras ;
+      console.log(this.pharmacie);
+    
     this.profileForm = this.form.group({
       nomPharmacie:['', {
         validators: [ Validators.required], 
@@ -83,7 +92,8 @@ get Code_cip(){
        
   // }
  onSubmit() { 
-   this.phamarcie={
+   let pharmacie={
+     id:this.pharmacie.id,
     nom_phar: this.nomPharmacie.value,
     email_phar: this.Email.value,
     tel_phar: this.tel.value,
@@ -96,8 +106,8 @@ get Code_cip(){
    
      
    }
-   console.log(this.phamarcie) 
-    this.pharmacieService.createPharmacie(this.phamarcie).subscribe(data =>{
+   console.log(pharmacie) 
+    this.pharmacieService.createPharmacie(pharmacie).subscribe(data =>{
       console.log(data)
       if(data.id){
         let snackBarRef = this.snackbar.open('Drugstore created successfully!','OK', {
@@ -133,14 +143,16 @@ get Code_cip(){
  	 }
   ngOnInit() {
     
-   if (this.phamarcie){
-    this.nomPharmacie.setValue( this.phamarcie);
-    this.Email.setValue( this.phamarcie);
-    this.tel.setValue( this.phamarcie);
-    this.country.setValue( this.phamarcie);
-    this.region.setValue( this.phamarcie);
-    this.ville.setValue( this.phamarcie);
-    this.code_postal.setValue( this.phamarcie);
+   if (this.pharmacie.id){
+         this.action="EDIT";
+
+        this.nomPharmacie.setValue( this.pharmacie.nom_phar);
+        this.Email.setValue( this.pharmacie.email_phar);
+        this.tel.setValue( this.pharmacie.tel_phar);
+        this.country.setValue( this.pharmacie.adresse?.pays);
+        this.region.setValue( this.pharmacie.adresse?.region);
+        this.ville.setValue( this.pharmacie.adresse?.ville);
+        this.code_postal.setValue( this.pharmacie.adresse?.code_postal);
 
    }
 
