@@ -24,7 +24,7 @@ export class LotTableComponent implements OnInit {
 				if(lot.id_pharmacie!=null){
 					let pharmacie=pharmacies.filter(pharmacie => pharmacie.id === lot.id_pharmacie)
 
-					lot.pharma_name=pharmacie[0].nom_phar;
+					lot.pharma_name=pharmacie[0]?.nom_phar;
 					
 				}
 				
@@ -34,7 +34,7 @@ export class LotTableComponent implements OnInit {
 				if(lot.id_medicament!=null){
 					let medicament=medicaments.filter(medicament => medicament.id === lot.id_medicament)
 
-					lot.nom_medoc=medicament[0].nom_medoc;
+					lot.nom_medoc=medicament[0]?.nom_medoc;
 					
 				}
 				

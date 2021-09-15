@@ -39,6 +39,10 @@ import { UtilisateurTableComponent } from './utilisateur-table/utilisateur-table
 import { PharmacieTableComponent } from './pharmacie-table/pharmacie-table.component';
 import { VenteTableComponent } from './vente-table/vente-table.component';
 import { LotTableComponent } from './Lot-table/lot-table.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 export function highlightJsFactory(): any {
   return {
     coreLibraryLoader: () => import('highlight.js/lib/core'),
@@ -72,7 +76,9 @@ export function highlightJsFactory(): any {
     MatChipsModule,
     MatButtonToggleModule,
     HighlightModule,
-    TablesRouterModule
+    TablesRouterModule,
+    MatDialogModule,
+    MatSnackBarModule
   ],
   declarations: [
    FilterTableComponent,

@@ -8,6 +8,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class MedicamentService {
 
+
   constructor(private http: HttpClient) { }
 
   getAllMedicament(){
@@ -23,5 +24,11 @@ export class MedicamentService {
   }
   createMedicament(medicament){
     return this.http.post<any>(environment.serverAddress + "medicament/addMedoc",medicament);
+  }
+
+    deleteMedicament(medicament) {
+    return this.http.delete<any>(environment.serverAddress + "medicament/delete",{
+      body:medicament
+    });
   }
 }

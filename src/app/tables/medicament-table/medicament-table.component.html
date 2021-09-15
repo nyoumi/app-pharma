@@ -18,10 +18,7 @@
 				The actual rendered columns are set as a property on the row definition" -->
 
 				<!-- ID Column -->
-				<ng-container matColumnDef="medicamentId">
-					<mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
-				</ng-container>
+				
 
 				<!-- Progress Column -->
 				<ng-container matColumnDef="Code_cip">
@@ -65,7 +62,7 @@
 				<ng-container matColumnDef="delete">
 					<mat-header-cell *matHeaderCellDef> Delete </mat-header-cell>
 					<mat-cell *matCellDef="let row" > 
-						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						<button id="basic" type="button" mat-icon-button  (click)="delete(row)">
 						 
 						<mat-icon class="space">delete</mat-icon> 
 					  </button>

@@ -29,7 +29,7 @@ export class VenteTableComponent implements OnInit {
 				if(vente.id_medoc!=null){
 					let medicament=medicaments.filter(medicament => medicament.id === vente.id_medoc)
 
-					vente.nom_medoc=medicament[0].nom_medoc;
+					vente.nom_medoc=medicament[0]?.nom_medoc;
 					
 				}
 				
