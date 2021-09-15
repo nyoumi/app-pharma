@@ -19,11 +19,12 @@
 					<mat-list>
 					  <mat-list-item *ngFor="let element of elements">
 					    <mat-icon matListIcon>local_pharmacy</mat-icon>
-					    <h3 matLine> {{element.from}} </h3>
-					    <p matLine>
-					      <span> {{element.subject}} </span>
-					      <span class="demo-2"> -- {{element.content}} </span>
-					    </p>
+					    <h3 matLine> {{element.nom_phar}} </h3>
+						<h3 matLine> {{element.tel_phar}} </h3>
+						<h3 matLine> {{element.adresse?.pays}} </h3>
+						<h3 matLine> {{element.adresse?.ville}} </h3>
+
+					    
 					  </mat-list-item>
 					</mat-list>
 							           
@@ -31,7 +32,7 @@
 				</div>
 			
 			</div>
-		</div>
+		</div>   
 	</div>
 
 

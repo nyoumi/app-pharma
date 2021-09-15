@@ -12,15 +12,9 @@ export class MedicamentService {
   constructor(private http: HttpClient) { }
 
   findMedicament(text){
-    let token =localStorage.getItem("token");
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'Bearer '+token 
-      })
-    };
+  
 
-    return this.http.get<any>(environment.serverAddress + "medicament/findMedoc?nom_medoc="+text,httpOptions); 
+    return this.http.get<any>(environment.serverAddress + "medicament/findMedoc?nom_medoc="+text); 
   }
    getAllMedicament(){
     let token =localStorage.getItem("token");

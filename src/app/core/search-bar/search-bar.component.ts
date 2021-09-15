@@ -23,7 +23,7 @@ export class SearchBarComponent implements OnInit {
       console.log(data)
       if(data.length>0){
         
-		  		   this.router.navigate(['/research'],data);
+		  		   this.router.navigate(['/auth/material-widgets/list'],data);
 
         
       }else{
