@@ -7,9 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 	public bigMenu;
+	public searchtext;
 	@Input() open;
 	constructor() { }
 
-	ngOnInit() {}
+	ngOnInit() {
+		
+	}
+	search() {
+		console.log(this.searchtext)
+	}
 
 }
