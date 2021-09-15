@@ -1,5 +1,6 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PharmacieService } from '../../pharmacie.service';
@@ -15,7 +16,7 @@ export class PharmacieTableComponent implements OnInit {
 	'adresse','add_user','edit','delete'];
 	public dataSource: any | null;
   	public showFilterTableCode;
-  	constructor(private pharmacieService:PharmacieService, private router: Router) { }
+  	constructor(private pharmacieService:PharmacieService, private router: Router,private snackbar:MatSnackBar) { }
 
   	ngOnInit() {
 		this.pharmacieService.getAllPharmacie().subscribe(data =>{
@@ -29,5 +30,32 @@ export class PharmacieTableComponent implements OnInit {
 	edit(pharmacie){
 		this.router.navigate(['/auth/forms/pharmacie_forms'],pharmacie);
 	}
+	delete(pharmacie){
+		if(window.confirm('Are sure you want to delete this item ?')){
+			this.pharmacieService.deletePharmacie(pharmacie).subscribe((data:any) =>{
+				console.log(data)
+			 if(data.code==202){
+				let snackBarRef = this.snackbar.open('operation success','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }else{
+				let snackBarRef = this.snackbar.open('operation error!','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }
+		   },Error=>{
+			let snackBarRef = this.snackbar.open('operation error!','OK', {
+				duration: 3000,
+				panelClass: ['red-snackbar']
+			  });
+		   }
+	
+		   );
+		   }
+		
+	}
+		
 
 }

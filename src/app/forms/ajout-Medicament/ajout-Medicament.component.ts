@@ -25,12 +25,13 @@ export class AjoutMedicamentComponent implements OnInit {
 
   public profileForm:FormGroup;
   submitted = false;
-  hide;
+  hide: true;
+
   medicament:any ;
  
   constructor(public form: FormBuilder,private snackbar:MatSnackBar,private route: Router,
      private medicamentService: MedicamentService) { 
-      this.medicament =this.route.getCurrentNavigation().extras ;
+      this.medicament =this.route.getCurrentNavigation().extras  ;
       console.log(this.medicament);
 
     this.profileForm = this.form.group({
@@ -101,6 +102,7 @@ export class AjoutMedicamentComponent implements OnInit {
   
       
     }
+    
     console.log(this.medicament) 
     this.medicamentService.createMedicament(this.medicament).subscribe(data =>{
       console.log(data)
@@ -148,7 +150,7 @@ export class AjoutMedicamentComponent implements OnInit {
  
   ngOnInit() {
     if(this.medicament.id){
-     // console.log("ttttttttttttttttt");
+      
       this.code_cip.setValue( this.medicament.code_cip);
       this.nom_medoc.setValue(this.medicament.nom_medoc);
       this.forme.setValue(this.medicament.forme);

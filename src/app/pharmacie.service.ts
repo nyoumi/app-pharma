@@ -16,4 +16,9 @@ export class PharmacieService {
   createPharmacie(pharmacie){
     return this.http.post<any>(environment.serverAddress + "pharmacie/addPharma",pharmacie);
   }
+  deletePharmacie(pharmacie){
+    return this.http.delete<any>(environment.serverAddress + "delete", {
+      body:pharmacie
+    });
+  }
 }

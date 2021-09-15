@@ -5,6 +5,7 @@ import { User } from '../../user';
 import { UserService } from '../../user.service';
 import {MatButtonModule,MatButton} from '@angular/material/button';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-utilisateur-table',
@@ -16,7 +17,7 @@ export class UtilisateurTableComponent implements OnInit {
 	'userPhone','adresse','pharmacie','details','edit','delete'];
 	public dataSource: Array<User>;
   	public showFilterTableCode;
-  	constructor(private userService:UserService,private router: Router) { 
+  	constructor(private userService:UserService,private router: Router, private snackbar:MatSnackBar) { 
 
 	  }
 
@@ -24,21 +25,15 @@ export class UtilisateurTableComponent implements OnInit {
   		 this.userService.getAllUser().subscribe(data =>{
 			   console.log(data)
 			
-		//	const pharmacies=data[1];
+			const pharmacies=data[1];
 			data[0].forEach(user => {
-<<<<<<< HEAD
-				/* if(user.id_pharma!=null){
-					let medoc=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
-=======
 				if(user.id_pharma!=null && user.id_pharma!=""){
 					let pharma=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
 					console.log(pharma)
 					console.log(user)
->>>>>>> 14557e2eb104369ce7f40a81a82201491d167ffb
-
 					user.pharma_name=pharma[0].nom_phar;
 					
-				} */
+				} 
 				
 		});
 			this.dataSource =data[0];
@@ -51,5 +46,33 @@ export class UtilisateurTableComponent implements OnInit {
 	edit(user){
 		this.router.navigate(['/auth/forms/utilisateur_forms'],user);
 	}
+	delete(user){
+		if(window.confirm('Are sure you want to delete this item ?')){
+			this.userService.deleteUser(user).subscribe((data:any) =>{
+				console.log(data)
+			 if(data.code==202){
+				let snackBarRef = this.snackbar.open('operation success','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }else{
+				let snackBarRef = this.snackbar.open('operation error!','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }
+		   },Error=>{
+			let snackBarRef = this.snackbar.open('operation error!','OK', {
+				duration: 3000,
+				panelClass: ['red-snackbar']
+			  });
+		   }
+	
+		   );
+		   }
+		
+	}
+		
+
 
 }
