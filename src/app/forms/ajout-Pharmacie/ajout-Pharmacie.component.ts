@@ -28,7 +28,7 @@ export class AjoutPharmacieComponent implements OnInit {
   action="ADD";
   constructor(public form: FormBuilder, private route: Router,
   public pharmacieService: PharmacieService,
-  private snackbar:MatSnackBar) { 
+  private snackbar:MatSnackBar) {   
     
       this.pharmacie =this.route.getCurrentNavigation().extras ;
       console.log(this.pharmacie);

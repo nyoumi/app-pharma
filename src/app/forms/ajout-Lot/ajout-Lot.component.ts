@@ -109,23 +109,12 @@ createLot(){
     
   }
   console.log(this.lot)
-  this.lotService.createLot(this.lot).subscribe(data =>{
-    console.log(data)
-    if(data.id){
-      let snackBarRef = this.snackbar.open('Lot created successfully!','OK', {
-        duration: 3000
-      });
-
-    }
  
- }
-
- );
 
  this.lotService.createLot(this.lot).subscribe(data =>{
   console.log(data)
   if(data.id){
-    let snackBarRef = this.snackbar.open('Lot created successfully!','OK', {
+    let snackBarRef = this.snackbar.open('Batch created successfully!','OK', {
       duration: 3000,
       panelClass: ['green-snackbar']
     });

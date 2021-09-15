@@ -1,6 +1,7 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { LotService } from '../../lot.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-lot-table',
@@ -12,7 +13,7 @@ export class LotTableComponent implements OnInit {
 	'Date_Peremption_Lot','Quantite_Restante','Quantite_Depart','Quantite_vendue','Prix_Lot','delete','archive'];
 	public dataSource: Array<any>;
   	public showFilterTableCode;
-  	constructor(private lotService:LotService) { }
+  	constructor(private lotService:LotService,private snackbar:MatSnackBar) { }
 
   	ngOnInit() {
 
@@ -48,5 +49,32 @@ export class LotTableComponent implements OnInit {
 
 	   );
     }
+
+		delete(lot){
+		if(window.confirm('Are sure you want to delete this item ?')){
+			this.lotService.deleteLot(lot).subscribe((data:any) =>{
+				console.log(data)
+			 if(data.code==202){
+				let snackBarRef = this.snackbar.open('operation success','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }else{
+				let snackBarRef = this.snackbar.open('operation error!','OK', {
+					duration: 3000,
+					panelClass: ['red-snackbar']
+				  });
+			 }
+		   },Error=>{
+			let snackBarRef = this.snackbar.open('operation error!','OK', {
+				duration: 3000,
+				panelClass: ['red-snackbar']
+			  });
+		   }
+	
+		   );
+		   }
+		
+	}
 
 }

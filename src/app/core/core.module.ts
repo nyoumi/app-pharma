@@ -26,7 +26,8 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
-
+import { FormsModule } from '@angular/forms';
+import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
 
 // const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 //     suppressScrollX: true
@@ -62,6 +63,8 @@ import { MatSliderModule } from '@angular/material/slider';
         MatTabsModule,
         MatSliderModule,
         MatProgressBarModule,
+        FormsModule,
+        MatSnackBarModule
     ],
 
 

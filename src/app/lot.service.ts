@@ -32,4 +32,10 @@ export class LotService {
     
     return this.http.post<any>(environment.serverAddress + "lot/addLot",lot,httpOptions);
   }
+
+  deleteLot(lot) {
+    return this.http.delete<any>(environment.serverAddress + "lot/delete",{
+      body:lot
+    });
+  }
 }

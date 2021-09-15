@@ -1,9 +1,13 @@
-div
-<mat-form-field class="search"  [ngClass]="{'search-open': open == true}"> 
-  <input matInput placeholder="Search" autocomplete="off" (focus)="bigMenu = true" (ngModel)="searchtext" (focusout)="bigMenu = false">
- 
-</mat-form-field>
-<button mat-fab (click)="search();" class="search"  [ngClass]="{'search-open': open == true}">  
-  search
-  <i class="material-icons app-toolbar-menu">search </i> 
-</button>
+
+
+
+<div class="research-div" [ngClass]="{'research-div-open': open == true}">
+  <mat-form-field class="search"  [ngClass]="{'search-open': open == true}"> 
+    <input matInput placeholder="Search" autocomplete="off" (focus)="bigMenu = true" [(ngModel)]="searchtext" (focusout)="bigMenu = false">
+   
+  </mat-form-field>
+  <button mat-mini-fab (click)="search();" class="search-button"  [ngClass]="{'search-button-open': open == true}">  
+     
+    <i class="material-icons app-toolbar-menu">search </i> 
+  </button>
+</div>
