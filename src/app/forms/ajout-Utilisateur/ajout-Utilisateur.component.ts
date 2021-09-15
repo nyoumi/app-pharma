@@ -100,8 +100,9 @@ export class AjoutUtilisateurComponent implements OnInit {
   
 createUser(){
   
-  this.user={
+  let user={
 
+    id:this.user.id || null,
     username: this.username.value,
     firstname:this.firstname.value, 
     password: this.password.value,
@@ -114,8 +115,11 @@ createUser(){
       pays:this.pays.value,
     }
   }
-  console.log(this.user)
- this.userService.createUser(this.user).subscribe(data =>{
+  console.log(user)
+
+
+
+ this.userService.createUser(user).subscribe(data =>{
   console.log(data)
   if(data.id){
     let snackBarRef = this.snackbar.open('User created successfully!','OK', {
