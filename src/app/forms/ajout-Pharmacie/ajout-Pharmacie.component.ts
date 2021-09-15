@@ -93,7 +93,7 @@ get Code_cip(){
   // }
  onSubmit() { 
    let pharmacie={
-     id:this.pharmacie.id,
+     id:this.pharmacie.id || null,
     nom_phar: this.nomPharmacie.value,
     email_phar: this.Email.value,
     tel_phar: this.tel.value,
@@ -109,8 +109,14 @@ get Code_cip(){
    console.log(pharmacie) 
     this.pharmacieService.createPharmacie(pharmacie).subscribe(data =>{
       console.log(data)
-      if(data.id){
-        let snackBarRef = this.snackbar.open('Drugstore created successfully!','OK', {
+      if(data.id ){
+        let message=""
+        if(this.pharmacie.id){
+          message='Drugstore updated successfully!';
+        }else{
+           message='Drugstore created successfully!';
+        }
+        let snackBarRef = this.snackbar.open(message,'OK', {
           duration: 3000,
           panelClass: ['green-snackbar']
         });
@@ -132,7 +138,7 @@ get Code_cip(){
         panelClass: ['red-snackbar']
       });
     }else{
-      let snackBarRef = this.snackbar.open('Creation error verify your datas!','OK', {
+      let snackBarRef = this.snackbar.open('Operation error verify your datas!','OK', {
         duration: 3000,
         panelClass: ['red-snackbar']
       });
