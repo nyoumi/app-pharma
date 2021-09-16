@@ -12,10 +12,28 @@ export class SearchBarComponent implements OnInit {
 	public bigMenu;
 	public searchtext;
 	@Input() open;
+  medicaments: any;
 	constructor(private router: Router,private medicamentService: MedicamentService,private snackbar:MatSnackBar) { }
 
 	ngOnInit() {
-		
+				    this.medicamentService.getAllMedicament().subscribe(data =>{
+      console.log(data)
+      if(data.length>0){
+        
+		  		  this.medicaments=data;
+        
+      }else{
+           
+      }
+   
+   },error=>{
+    let snackBarRef = this.snackbar.open('database connection error!','OK', {
+        duration: 3000,
+        panelClass: ['red-snackbar']
+      });
+   }
+  
+   );
 	}
 	search() {
 		console.log(this.searchtext)

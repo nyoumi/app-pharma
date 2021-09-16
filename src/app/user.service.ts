@@ -40,4 +40,12 @@ export class UserService {
       body:user
     });
   }
+
+    getStatistiques(id_pharma?){
+      if(id_pharma) 
+      return this.http.get<any>(environment.serverAddress + "getstats?id_pharmacie="+id_pharma);
+
+      return this.http.get<any>(environment.serverAddress + "getstats");
+
+  }
 }

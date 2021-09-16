@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../user';
 import { UserService } from '../../user.service';
 import { menus } from './menu-element';
 
@@ -11,7 +12,7 @@ export class SidemenuComponent implements OnInit {
 
     @Input() iconOnly:boolean = false;
     public menus = menus;
-  currentUser: import("c:/Users/GOOGLE/app_pharma_front/dashbord/src/app/user").User;
+  currentUser: User;
 
     constructor(private userService:UserService) { }
 

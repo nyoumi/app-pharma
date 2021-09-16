@@ -73,20 +73,20 @@ export const menus = [
     }, 
     {
 
-        'name': 'Medicines management',
+        'name': 'Drugs management',
         'icon': 'pie_chart_outlined',
         'open': false,
         'link': false,
         'sub': [
             {
-                'name': 'Add Medicine',
+                'name': 'Add a drug',
                 'icon': 'add_circle',
                 'link': 'forms/medicament_forms',
                 'open': false,
 
             },
             {
-                'name': 'List Medicine',
+                'name': 'List drugs',
                 'icon': 'list',
                 'open': false,
                 'link': 'tables/medicament',

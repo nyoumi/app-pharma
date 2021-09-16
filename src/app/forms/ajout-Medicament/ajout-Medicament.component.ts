@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MedicamentService } from '../../medicament.service';
 import { PharmacieService } from '../../pharmacie.service';
+import { UserService } from '../../user.service';
 @Component({
   selector: 'cdk-ajout-Medicament',
   templateUrl: './ajout-Medicament.component.html',
@@ -30,7 +31,7 @@ export class AjoutMedicamentComponent implements OnInit {
   medicament:any ;
  
   constructor(public form: FormBuilder,private snackbar:MatSnackBar,private route: Router,
-     private medicamentService: MedicamentService) { 
+     private medicamentService: MedicamentService,private userService:UserService) { 
       this.medicament =this.route.getCurrentNavigation().extras  ;
       console.log(this.medicament);
 
@@ -98,6 +99,7 @@ export class AjoutMedicamentComponent implements OnInit {
       marque_medoc: this.marque_medoc.value,
       categories: this.categories.value.split(","),
       tag: this.tag.value.split(","),
+      id_pharmacie:this.userService.daoGetUser().id_pharma || null
       
   
       
