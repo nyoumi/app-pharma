@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ResearchComponent } from './research.component';
+import { HomeComponent } from './home.component';
 import { RouterModule, Routes } from '@angular/router'; 
 
 
@@ -27,8 +27,10 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { SearchModule } from '../core/search.module';
+
 const appRoutes: Routes = [
-    { path: '', component: ResearchComponent },
+    { path: '', component: HomeComponent },
 ]
 
 @NgModule({
@@ -61,7 +63,9 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSlideToggleModule,
     MatProgressBarModule,
+    SearchModule
+    
   ],
-  declarations: [ResearchComponent]
+  declarations: [HomeComponent]
 })
-export class ResearchModule { }
+export class HomeModule { }

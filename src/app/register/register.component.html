@@ -9,8 +9,7 @@
 
     <mat-card class="box">
       <mat-card-header>
-        <mat-card-title>APP PHARMA</mat-card-title>
-        <mat-card-subtitle>Sign Up</mat-card-subtitle>      
+        <mat-card-title>Sign Up</mat-card-title>
       </mat-card-header>
   
       <form class="example-form" [formGroup]="userForm" (ngSubmit)="register()">
@@ -84,4 +83,8 @@
     </mat-card>
   
   </div>
+  <button mat-fab [routerLink]="['/home']" class="search-button-link" color="primary"  >  
+	   
+		<i class="material-icons app-toolbar-menu">search </i> 
+	  </button>
 </div>

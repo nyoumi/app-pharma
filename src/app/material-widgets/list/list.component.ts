@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LIST_HELPERS,  Messages, Links} from './helpers.data';
+import { ActivatedRoute,Route,Router } from '@angular/router';
 
 @Component({
   selector: 'cdk-list',
@@ -9,15 +9,21 @@ import { LIST_HELPERS,  Messages, Links} from './helpers.data';
 })
 export class ListComponent implements OnInit {
 
-    listHelpers: any = LIST_HELPERS;
-     links = Links;
 
-    showMultiListCode: boolean = false;
-     messages = Messages;
-    constructor() { }
+ showMultiListCode: boolean = false;
+  elements:any = [];
+  research: any;
+ constructor(private route: Router) { 
+       console.log(this.route);
+       let datas=this.route.getCurrentNavigation().extras.state.data ;
+       this.elements =datas.results
+       console.log(datas.research);
+       this.research=datas.research;
+ }
 
-    ngOnInit() {
-    }
-  
+ ngOnInit() {
+      
+
+ }
 
 }

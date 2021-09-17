@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
     selector: 'app-dashboard-crm',
@@ -9,10 +12,10 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardCrmComponent implements OnInit {
 
     public dashCard = [
-        { colorDark: '#5C6BC0', colorLight: '#7986CB', number: 1221, title: 'SALES', icon: 'local_grocery_store' },
-        { colorDark: '#42A5F5', colorLight: '#64B5F6', number: 1221, title: 'LEADS', icon: 'new_releases' },
-        { colorDark: '#26A69A', colorLight: '#4DB6AC', number: 1221, title: 'ASSETS', icon: 'assignments' },
-        { colorDark: '#66BB6A', colorLight: '#81C784', number: 1221, title: 'BANKING', icon: 'account_balance' }
+        { colorDark: '#5C6BC0', colorLight: '#7986CB', number: 0, title: 'SALES', icon: 'local_grocery_store' },
+        { colorDark: '#42A5F5', colorLight: '#64B5F6', number: 0, title: 'DRUGS', icon: 'pie_chart_outlined' },
+        { colorDark: '#26A69A', colorLight: '#4DB6AC', number: 0, title: 'USERS', icon: 'people' },
+        { colorDark: '#66BB6A', colorLight: '#81C784', number: 0, title: 'DRUGSTORES', icon: 'local_pharmacy' }
     ];
 
     tableData = [
@@ -24,9 +27,51 @@ export class DashboardCrmComponent implements OnInit {
         { country: 'Brazil', sales: 100, percentage: '2.50%' },
     ];
 
-    constructor() { }
+    currentUser: User;
+    statistiques: any;
+
+    constructor(private userService:UserService,private snackbar:MatSnackBar) { }
 
     ngOnInit() {
-    }
+      this.currentUser=this.userService.daoGetUser();
+      let id_pharma;
+      console.log(this.currentUser.roles)
+      if((this.currentUser.roles.includes("SUPER_ADMIN") || this.currentUser.roles.includes("ADMIN")) ){
+          console.log("dddddd")
+          id_pharma=null;
+
+      }else{
+            id_pharma=this.currentUser.id_pharma;
+      }
+        
+
+        this.userService.getStatistiques(id_pharma).subscribe(data =>{
+            console.log(data)
+            if(data.utilisateurs){
+              
+                 this.statistiques=data;
+                 this.dashCard[0].number=   this.statistiques.ventes 
+                 this.dashCard[1].number=   this.statistiques.medicaments 
+                  this.dashCard[2].number=   this.statistiques.utilisateurs 
+                  this.dashCard[3].number=   this.statistiques.pharmacies       
+      
+              
+            }else{
+                  let snackBarRef = this.snackbar.open('No result from database!','OK', {
+              duration: 3000,
+              panelClass: ['red-snackbar']
+            });
+            }
+         
+         },error=>{
+          let snackBarRef = this.snackbar.open('No result from database!','OK', {
+              duration: 3000,
+              panelClass: ['red-snackbar']
+            });
+         }
+        
+         );
+      } 
+    
 
 }

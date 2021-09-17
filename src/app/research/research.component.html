@@ -1,3 +1,43 @@
-<p>
-  register works!
-</p>
+
+<div class="actions" >
+	<button mat-raised-button color="primary" [routerLink]="['/login']" class="action-button login">login</button>
+
+	<button mat-raised-button color="primary" [routerLink]="['/register']" class="action-button register">register</button>
+
+</div>
+<div fxLayout="column"  class="components-container-gt-xs"  [ngClass.xs]="'components-container-xs'"  fxLayoutGap="20px">
+
+	
+		
+		
+		<div class="list-container">
+			
+
+			<div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="20px">
+
+				<div fxFlex.xs="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.sm="100" >
+
+					<h4 class="mat-subheading-2 center-align">Results for {{research}}  </h4>
+					<mat-divider></mat-divider>
+			
+					<mat-list>
+					  <mat-list-item *ngFor="let element of elements">
+					    <mat-icon matListIcon>local_pharmacy</mat-icon>
+					    <h3 matLine> {{element.nom_phar}} </h3>
+						<h3 matLine> {{element.adresse?.ville}} </h3>
+
+					    
+					  </mat-list-item>
+					</mat-list>
+							           
+
+				</div>
+			
+			</div>
+		</div>   
+	
+
+	<button mat-raised-button color="primary" [routerLink]="['/home']" class="action-button register">back</button>
+
+
+</div>

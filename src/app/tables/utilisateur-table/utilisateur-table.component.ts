@@ -31,7 +31,7 @@ export class UtilisateurTableComponent implements OnInit {
 					let pharma=pharmacies.filter(pharmacie => pharmacie.id === user.id_pharma)
 					console.log(pharma)
 					console.log(user)
-					user.pharma_name=pharma[0].nom_phar;
+					if(pharma[0]) user.pharma_name=pharma[0].nom_phar;
 					
 				} 
 				

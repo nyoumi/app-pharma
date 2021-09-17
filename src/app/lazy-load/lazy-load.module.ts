@@ -9,8 +9,10 @@ const routes: Routes = [
     {path: 'register', loadChildren: () => import('../register/register.module').then(m => m.RegisterModule)},
     {path: 'login', loadChildren: () => import('../pages/login/login.module').then(m => m.LoginModule)},
      //{path: 'editor', loadChildren: () => import('../editor/editor.module').then(m => m.EditorModule)},
+    {path: 'research', loadChildren: () => import('../research/research.module').then(m => m.ResearchModule)},
+    {path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomeModule)},
 
-    {path: '**', redirectTo: 'auth/dashboard'},
+    {path: '**', redirectTo: 'home'},
 ]
 
 @NgModule({
