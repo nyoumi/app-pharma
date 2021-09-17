@@ -8,12 +8,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })
-export class SearchBarComponent implements OnInit {
+
+export class SearchBarComponent implements OnInit  {
 	public bigMenu;
-	public searchtext;
+	public searchInput:string;
 	@Input() open;
-  medicaments: any;
-	constructor(private router: Router,private medicamentService: MedicamentService,private snackbar:MatSnackBar) { }
+  public medicaments: any;
+  showProps: boolean;
+	constructor(private router: Router,
+    private medicamentService: MedicamentService,private snackbar:MatSnackBar) {
+
+   }
+
 
 	ngOnInit() {
 				    this.medicamentService.getAllMedicament().subscribe(data =>{
@@ -22,8 +28,6 @@ export class SearchBarComponent implements OnInit {
         
 		  		  this.medicaments=data;
         
-      }else{
-           
       }
    
    },error=>{
@@ -36,12 +40,17 @@ export class SearchBarComponent implements OnInit {
    );
 	}
 	search() {
-		console.log(this.searchtext)
-		    this.medicamentService.findMedicament(this.searchtext).subscribe(data =>{
+		console.log(this.searchInput)
+		    this.medicamentService.findMedicament(this.searchInput).subscribe(data =>{
       console.log(data)
       if(data.length>0){
         
-		  		   this.router.navigate(['/auth/material-widgets/list'],data);
+		  		   this.router.navigate(['/auth/material-widgets/list'],{state:{
+               data:{
+                results: data,
+                research: this.searchInput
+               }
+             },});
 
         
       }else{
@@ -60,5 +69,18 @@ export class SearchBarComponent implements OnInit {
   
    );
 	}
+
+  setInput(medicament){
+    console.log(medicament)
+    this.searchInput=medicament.nom_medoc
+
+  }
+  focusOutFunction(){
+    this.showProps=false;
+  }
+
+  focusFunction(){
+    this.showProps=true;
+  }
 
 }

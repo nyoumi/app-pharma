@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LIST_HELPERS,  Messages, Links} from './helpers.data';
 import { ActivatedRoute,Route,Router } from '@angular/router';
 
 @Component({
@@ -10,15 +9,16 @@ import { ActivatedRoute,Route,Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  listHelpers: any = LIST_HELPERS;
-  links = Links;
 
  showMultiListCode: boolean = false;
-  elements:any = Messages;
+  elements:any = [];
+  research: any;
  constructor(private route: Router) { 
        console.log(this.route);
-       this.elements =this.route.getCurrentNavigation().extras ;
-       console.log(this.elements);
+       let datas=this.route.getCurrentNavigation().extras.state.data ;
+       this.elements =datas.results
+       console.log(datas.research);
+       this.research=datas.research;
  }
 
  ngOnInit() {

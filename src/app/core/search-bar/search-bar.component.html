@@ -3,8 +3,16 @@
 
 <div class="research-div" [ngClass]="{'research-div-open': open == true}">
   <mat-form-field class="search"  [ngClass]="{'search-open': open == true}"> 
-    <input matInput placeholder="Search" autocomplete="off" (focus)="bigMenu = true" [(ngModel)]="searchtext" (focusout)="bigMenu = false">
-   
+    <input (focusout)="focusOutFunction()" (focus)="focusFunction()" matInput placeholder="Search" name="searchInput" autocomplete="off" (focus)="bigMenu = true" [(ngModel)]="searchInput" (focusout)="bigMenu = false">
+     <article class="results"   [ngClass]="{'results-hide': showProps != true}">
+     
+      <ul>
+        <div *ngFor="let medicament of     
+        medicaments | search: searchInput" (click)="setInput(medicament)">
+           {{medicament.nom_medoc}}
+      </div>
+      </ul>
+  </article> 
   </mat-form-field>
   <button mat-mini-fab (click)="search();" class="search-button"  [ngClass]="{'search-button-open': open == true}">  
      

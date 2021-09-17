@@ -38,3 +38,19 @@
     display: initial;
     height: fit-content;
 }
+
+.results{
+	background: white;
+    position: fixed;
+    width: inherit;
+    margin-top: 10px;
+	z-index: 1000;
+    /* border: 1px black solid; */
+    border-radius: 10px;
+	display: block;
+	transition: all .4s cubic-bezier(.35,0,.25,1);
+}
+.results-hide{
+	opacity: 0;
+	visibility: hidden;
+}

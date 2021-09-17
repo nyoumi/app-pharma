@@ -9,20 +9,20 @@ import { ActivatedRoute,Route,Router } from '@angular/router';
 })
 export class ResearchComponent implements OnInit {
 
-    listHelpers: any = LIST_HELPERS;
-     links = Links;
+  showMultiListCode: boolean = false;
+  elements:any = [];
+  research: any;
+ constructor(private route: Router) { 
+       console.log(this.route);
+       let datas=this.route.getCurrentNavigation().extras.state.data ;
+       this.elements =datas.results
+       console.log(datas.research);
+       this.research=datas.research;
+ }
 
-    showMultiListCode: boolean = false;
-     elements:any = Messages;
-    constructor(private route: Router) { 
-          console.log(this.route);
-          this.elements =this.route.getCurrentNavigation().extras ;
-          console.log(this.elements);
-    }
+ ngOnInit() {
+      
 
-    ngOnInit() {
-         
-
-    }
+ }
 
 }

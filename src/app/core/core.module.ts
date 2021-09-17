@@ -26,9 +26,10 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSliderModule } from '@angular/material/slider';
-import { FormsModule } from '@angular/forms';
-import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material/snack-bar';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import { FormsModule } from '@angular/forms';
+import { SearchModule } from './search.module';
 // const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 //     suppressScrollX: true
 // };
@@ -57,14 +58,15 @@ import {MatSnackBar,MatSnackBarModule,MatSnackBarConfig} from '@angular/material
         // PerfectScrollbarModule,
         NgScrollbarModule,
         FlexLayoutModule,
-        MatToolbarModule,
+        MatToolbarModule,  
         MatFormFieldModule,
         MatSidenavModule,
         MatTabsModule,
         MatSliderModule,
         MatProgressBarModule,
         FormsModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        SearchModule
     ],
 
 
