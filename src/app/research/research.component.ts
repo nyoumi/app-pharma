@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LIST_HELPERS,  Messages, Links} from './helpers.data';
 import { ActivatedRoute,Route,Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-research',
@@ -12,7 +13,8 @@ export class ResearchComponent implements OnInit {
   showMultiListCode: boolean = false;
   elements:any = [];
   research: any;
- constructor(private route: Router) { 
+  user:any;
+ constructor(private route: Router,private userService:UserService) { 
        console.log(this.route);
        let datas=this.route.getCurrentNavigation().extras.state.data ;
        this.elements =datas.results
@@ -21,7 +23,7 @@ export class ResearchComponent implements OnInit {
  }
 
  ngOnInit() {
-      
+  this.user=this.userService.daoGetUser();
 
  }
 
