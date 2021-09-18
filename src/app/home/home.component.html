@@ -1,8 +1,9 @@
 
 <div class="actions" >
-	<button mat-raised-button color="primary" [routerLink]="['/login']" class="action-button login">login</button>
+	<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/login']" class="action-button login">login</button>
 
-	<button mat-raised-button color="primary" [routerLink]="['/register']" class="action-button register">register</button>
+	<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/register']" class="action-button register">register</button>
+	<button *ngIf="user" mat-raised-button color="primary" [routerLink]="['/auth/dashboard']" class="action-button register">dashboard</button>
 
 </div>
 

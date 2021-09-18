@@ -3,6 +3,7 @@ import { LIST_HELPERS,  Messages, Links} from './helpers.data';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentService } from '../medicament.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-home',
@@ -19,14 +20,18 @@ export class HomeComponent implements OnInit {
 
     showMultiListCode: boolean = false;
      elements:any = Messages;
+  user: any;
     constructor(private router: Router,
-      private medicamentService: MedicamentService,private snackbar:MatSnackBar) { 
+      private medicamentService: MedicamentService,
+      private snackbar:MatSnackBar,private userService:UserService) { 
          
     }
 
   
 
 	ngOnInit() {
+    this.user=this.userService.daoGetUser();
+
     this.medicamentService.getAllMedicament().subscribe(data =>{
 console.log(data)
 if(data.length>0){
