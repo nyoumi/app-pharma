@@ -17,12 +17,14 @@ export class UtilisateurTableComponent implements OnInit {
 	'userPhone','adresse','pharmacie','details','edit','delete'];
 	public dataSource: Array<User>;
   	public showFilterTableCode;
+	  showSpinner=true;
   	constructor(private userService:UserService,private router: Router, private snackbar:MatSnackBar) { 
 
 	  }
 
   	ngOnInit() {
   		 this.userService.getAllUser().subscribe(data =>{
+			   this.showSpinner=false;
 			   console.log(data)
 			
 			const pharmacies=data[1];
