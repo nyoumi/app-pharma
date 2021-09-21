@@ -26,7 +26,7 @@ export class SearchBarComponent implements OnInit  {
       console.log(data)
       if(data.length>0){
         
-		  		  this.medicaments=data;
+		  		  this.medicaments=data[0];
         
       }
    
