@@ -103,16 +103,16 @@ createUser(){
   let user={
 
     id:this.user.id || null,
-    username: this.username.value,
-    firstname:this.firstname.value, 
+    username: this.username.value.trim(),
+    firstname:this.firstname.value.trim(), 
     password: this.password.value,
     email:this.email.value,
-    userphone:this.userphone.value,
+    userphone:this.userphone.value.trim(),
     id_pharma:this.pharmacie.value,
     roles:[this.role.value],
     adresse:{
-      ville:this.ville.value,
-      pays:this.pays.value,
+      ville:this.ville.value.trim(),
+      pays:this.pays.value.trim(),
     }
   }
   console.log(user)

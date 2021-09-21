@@ -160,7 +160,7 @@ export const menus = [
         'name': 'search a drug',
         'icon': 'search',
         'open': false,
-        'link': false,      
+        'link': 'home',      
             
     }, 
 

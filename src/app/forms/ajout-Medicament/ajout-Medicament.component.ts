@@ -87,23 +87,28 @@ export class AjoutMedicamentComponent implements OnInit {
   }
 
   onSubmit(){
+    console.log(this.categories.value)
   
     this.medicament={
+    
+      id:this.medicament.id||null,
   
-      code_cip: this.code_cip.value,
-      nom_medoc: this.nom_medoc.value,
-      forme: this.forme.value,
-      dosage_medoc: this.dosage_medoc.value,
-      notice_medoc: this.notice_medoc.value,
-      conditionnement_medoc: this.conditionnement_medoc.value,
-      marque_medoc: this.marque_medoc.value,
-      categories: this.categories.value.split(","),
-      tag: this.tag.value.split(","),
-      id_pharmacie:this.userService.daoGetUser().id_pharma || null
+      code_cip: this.code_cip.value.trim(),
+      nom_medoc: this.nom_medoc.value.trim(),
+      forme: this.forme.value.trim(),
+      dosage_medoc: this.dosage_medoc.value.trim(),
+      notice_medoc: this.notice_medoc.value.trim(),
+      conditionnement_medoc: this.conditionnement_medoc.value.trim(),
+      marque_medoc: this.marque_medoc.value.trim(),
+      categories: this.categories.value.trim().split(","),
+      tag: this.tag.value.trim().split(","),
+      id_pharmacie:this.userService.daoGetUser().id_pharma || null,
+      added_by:this.userService.daoGetUser().id
       
   
       
     }
+
     
     console.log(this.medicament) 
     this.medicamentService.createMedicament(this.medicament).subscribe(data =>{
@@ -160,8 +165,8 @@ export class AjoutMedicamentComponent implements OnInit {
       this.notice_medoc.setValue(this.medicament.notice_medoc);
       this.conditionnement_medoc.setValue(this.medicament.conditionnement_medoc);
       this.marque_medoc.setValue(this.medicament.marque_medoc);
-      this.categories.setValue(this.medicament.categories);
-      this.tag.setValue(this.medicament.tag);
+      this.categories.setValue(this.medicament.categories.toString());
+      this.tag.setValue(this.medicament.tag.toString());
     }
   }
 

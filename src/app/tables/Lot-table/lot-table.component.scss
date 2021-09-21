@@ -32,3 +32,14 @@ background: #fff;
 
 	margin-right: 20px;
 }
+
+mat-cell.mat-cell {
+    margin-left: 5px;
+}
+.spinner-hide{
+	display: none;
+}
+mat-spinner.mat-spinner.mat-progress-spinner.mat-primary.mat-progress-spinner-indeterminate-animation {
+    position: relative;
+    left: 40%;
+}

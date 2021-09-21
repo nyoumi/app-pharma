@@ -2,16 +2,6 @@ footer{
     position: fixed;
     bottom: 0;
 }
-.ng-scroll-content {
-    position: relative!important;
-    display: inline-block;
-    overflow: scroll!important;
-    min-width: 100%;
-}
-.ng-native-scrollbar-hider.ng-scroll-viewport {
-    overflow: scroll!important;
-}
-.ng-native-scrollbar-hider.ng-scroll-viewport {
-    /* max-width: 100%; */
-    overflow: scroll;
+mat-cell.mat-cell {
+    margin-left: 5px;
 }

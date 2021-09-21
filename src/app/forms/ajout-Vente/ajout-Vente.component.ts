@@ -101,7 +101,7 @@ if (error.code==409 ||error.status==406){
 );
  	 }
   ngOnInit() {
-        this.medicamentService.getAllMedicament().subscribe(data =>{
+        this.medicamentService.getAllMedicament(this.user.id_pharma).subscribe(data =>{
 			console.log(data)
 		 this.medicaments =data;
      /**

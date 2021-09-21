@@ -4,12 +4,14 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentService } from '../medicament.service';
 import { UserService } from '../user.service';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
+
 export class HomeComponent implements OnInit {
   public bigMenu;
 	public searchInput:string;
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
 	ngOnInit() {
     this.user=this.userService.daoGetUser();
 
-    this.medicamentService.getAllMedicament().subscribe(data =>{
+    this.medicamentService.getAllMedicament(null).subscribe(data =>{
 console.log(data)
 if(data.length>0){
 
@@ -83,6 +85,9 @@ panelClass: ['red-snackbar']
 setInput(medicament){
 console.log(medicament)
 this.searchInput=medicament.nom_medoc
+setTimeout(function(){
+  console.log("+++++++++++++++++++++++++")
+   this.showProps=false; }, 1000);
 
 }
 focusOutFunction(){

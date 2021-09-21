@@ -13,12 +13,14 @@ export class LotTableComponent implements OnInit {
 	'Date_Peremption_Lot','Quantite_Restante','Quantite_Depart','Quantite_vendue','Prix_Lot','delete','archive'];
 	public dataSource: Array<any>;
   	public showFilterTableCode;
+	showSpinner: boolean=true;
   	constructor(private lotService:LotService,private snackbar:MatSnackBar) { }
 
   	ngOnInit() {
 
   	this.dataSource = [];
 		  this.lotService.getAllLot().subscribe(data =>{
+			this.showSpinner=false;
 			console.log(data)
 			const pharmacies=data[1];
 			data[0].forEach(lot => {
@@ -45,6 +47,8 @@ export class LotTableComponent implements OnInit {
 				
 			});
 		 this.dataSource =data[0];
+	   },err=>{
+		this.showSpinner=false;
 	   }
 
 	   );

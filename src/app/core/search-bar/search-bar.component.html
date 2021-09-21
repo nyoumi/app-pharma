@@ -8,8 +8,8 @@
      
       <ul>
         <div *ngFor="let medicament of     
-        medicaments | search: searchInput" (click)="setInput(medicament)">
-           {{medicament.nom_medoc}}
+        medicaments | search: searchInput" (click)="setInput(medicament)" class="medoc-item">
+         {{medicament.nom_medoc}}
       </div>
       </ul>
   </article> 

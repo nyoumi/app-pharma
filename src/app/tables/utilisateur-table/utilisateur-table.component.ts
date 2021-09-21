@@ -23,6 +23,7 @@ export class UtilisateurTableComponent implements OnInit {
 	  }
 
   	ngOnInit() {
+		  
   		 this.userService.getAllUser().subscribe(data =>{
 			   this.showSpinner=false;
 			   console.log(data)
@@ -39,6 +40,8 @@ export class UtilisateurTableComponent implements OnInit {
 				
 		});
 			this.dataSource =data[0];
+		  },err=>{
+			this.showSpinner=false;
 		  }
 
 		  );

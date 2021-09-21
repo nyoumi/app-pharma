@@ -42,6 +42,7 @@ import { LotTableComponent } from './Lot-table/lot-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 export function highlightJsFactory(): any {
   return {
@@ -78,7 +79,8 @@ export function highlightJsFactory(): any {
     HighlightModule,
     TablesRouterModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
    FilterTableComponent,

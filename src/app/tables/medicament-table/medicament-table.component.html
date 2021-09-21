@@ -29,7 +29,7 @@
 				<!-- Name Column -->
 				<ng-container matColumnDef="medicamentName">
 					<mat-header-cell *matHeaderCellDef> Nom_Medicament </mat-header-cell>
-					<mat-cell *matCellDef="let row"> {{row.Nom_Medicament}} </mat-cell>
+					<mat-cell *matCellDef="let row"> {{row.nom_medoc}} </mat-cell>
 				</ng-container>
 
 				<!-- form Column -->
@@ -43,20 +43,17 @@
 				</ng-container>
 				
 				<ng-container matColumnDef="Conditionnement">
-					<mat-header-cell *matHeaderCellDef> Conditionnement </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef> Conditioning </mat-header-cell>
 					<mat-cell *matCellDef="let row" > {{row.conditionnement_medoc}} </mat-cell>
 				</ng-container>
 				<ng-container matColumnDef="Marque">
-					<mat-header-cell *matHeaderCellDef> Marque </mat-header-cell>
+					<mat-header-cell *matHeaderCellDef> brand </mat-header-cell>
 					<mat-cell *matCellDef="let row" > {{row.marque_medoc}} </mat-cell>
 				</ng-container>
-				<ng-container matColumnDef="Categorie">
-					<mat-header-cell *matHeaderCellDef> Categorie </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.categories}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Tag">
-					<mat-header-cell *matHeaderCellDef> Maladies </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.tag}} </mat-cell>
+
+				<ng-container matColumnDef="pharmacie">
+					<mat-header-cell *matHeaderCellDef> store </mat-header-cell>
+					<mat-cell *matCellDef="let row" > {{row.nom_phar}} </mat-cell>
 				</ng-container>
 
 				<ng-container matColumnDef="delete">
@@ -87,4 +84,6 @@
 			</mat-table>
 		</div>
 	</div>
+	<mat-spinner  [ngClass]="{'spinner-hide': showSpinner != true}"></mat-spinner>
+
 </div>

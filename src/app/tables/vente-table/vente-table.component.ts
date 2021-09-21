@@ -15,6 +15,7 @@ export class VenteTableComponent implements OnInit {
 	public dataSource:  [];
   	public showFilterTableCode;
 	private user:  User ;
+	showSpinner: boolean=true;
 
   	constructor(private venteService:VenteService) {
 		this.user=JSON.parse(localStorage.getItem("user"));
@@ -23,6 +24,8 @@ export class VenteTableComponent implements OnInit {
   	ngOnInit() {
   		this.dataSource = [];
 		  this.venteService.getAllVentePharmacie(this.user.id_pharma).subscribe(data =>{
+			this.showSpinner=false;
+
 			console.log(data)
 			const medicaments=data[1];
 			data[0].forEach(vente => {
@@ -36,6 +39,8 @@ export class VenteTableComponent implements OnInit {
 			});
 			
 		 this.dataSource =data[0];
+	   },err=>{
+		this.showSpinner=false;
 	   }
 
 	   );
