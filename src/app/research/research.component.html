@@ -1,11 +1,13 @@
 
-<div class="actions" >
-	<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/login']" class="action-button login">login</button>
+<mat-toolbar  class="mat-elevation-z4">
+	<div class="actions" >
+		<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/login']" class="action-button login">login</button>
 
-	<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/register']" class="action-button register">register</button>
-	<button *ngIf="user" mat-raised-button color="primary" [routerLink]="['/auth/dashboard']" class="action-button register">dashboard</button>
+		<button *ngIf="!user" mat-raised-button color="primary" [routerLink]="['/register']" class="action-button register">register</button>
+		<button *ngIf="user" mat-raised-button color="primary" [routerLink]="['/auth/dashboard']" class="action-button register">dashboard</button>
 
-</div>
+	</div>
+</mat-toolbar>
 <div fxLayout="column"  class="components-container-gt-xs"  [ngClass.xs]="'components-container-xs'"  fxLayoutGap="20px">
 
 	
