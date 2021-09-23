@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
 import { SearchModule } from '../core/search.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
@@ -63,7 +64,8 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatSlideToggleModule,
     MatProgressBarModule,
-    SearchModule
+    SearchModule,
+    MatTooltipModule,
     
   ],
   declarations: [HomeComponent]

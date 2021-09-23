@@ -27,14 +27,18 @@ export class AjoutUtilisateurComponent implements OnInit {
   private pays: AbstractControl;
   private pharmacie:AbstractControl;
   private role:AbstractControl;
+  private sex:AbstractControl;
 
   submitted = false;
   hide=true;
-  private user:  User ;
+  user:  User ;
   pharmacies: any;
+  selected_role: any;
+  currentUSer: User;
   constructor(public form: FormBuilder,private route: Router,
     private pharmacieService:PharmacieService,
      private userService:UserService,private snackbar:MatSnackBar) { 
+       this.currentUSer=userService.daoGetUser();
       this.user =this.route.getCurrentNavigation().extras as User;
       console.log(this.user);
     this.profileForm = this.form.group({
@@ -78,6 +82,10 @@ export class AjoutUtilisateurComponent implements OnInit {
             validators: [Validators.required], 
              
           }],
+          sex:['', {
+            validators: [Validators.required], 
+             
+          }]
           
          
           /* pwd:['', 
@@ -95,29 +103,31 @@ export class AjoutUtilisateurComponent implements OnInit {
         this.pays= this.profileForm.controls['pays'];
         this.pharmacie= this.profileForm.controls['pharmacie'];
         this.role= this.profileForm.controls['role'];
+        this.sex=this.profileForm.controls['sex']
 
   }
   
 createUser(){
   
-  let user={
+  let user:User={
 
     id:this.user.id || null,
-    username: this.username.value.trim(),
-    firstname:this.firstname.value.trim(), 
-    password: this.password.value,
-    email:this.email.value,
-    userphone:this.userphone.value.trim(),
+    username: this.username.value.trim() || this.user.username,
+    firstname:this.firstname.value.trim() || this.user.firstname, 
+    password: this.password.value || this.user.password,
+    email:this.email.value ||  this.user.email,
+    userphone:this.userphone.value.trim()  ||  this.user.userphone,
     id_pharma:this.pharmacie.value,
-    roles:[this.role.value],
+    roles:[this.role.value] || this.user.roles,
+    sex:this.sex.value ||  this.user.sex,
     adresse:{
       ville:this.ville.value.trim(),
       pays:this.pays.value.trim(),
     }
   }
-  console.log(user)
-
-
+  if(! (user.roles[0].trim().length>0)){
+    user.roles=this.user.roles
+  }
 
  this.userService.createUser(user).subscribe(data =>{
   console.log(data)
@@ -161,9 +171,7 @@ if (error.code==409 ||error.status==406){
   //         this.profileForm.value.userName.setErrors({ userExists: `User Name  already exists` });
        
   // }
- onSubmit() { 
- 	console.log('');
- 	this.submitted = true; }
+
   ngOnInit() {
     
     this.pharmacieService.getAllPharmacie().subscribe(data =>{
@@ -172,15 +180,19 @@ if (error.code==409 ||error.status==406){
 	   }
 
 	   );
-    if(this.user){
+    if(this.user.id){
       this.username.setValue(this.user.username)
       this.firstname.setValue(this.user.firstname)
       this.userphone.setValue(this.user.userphone)
       this.email.setValue(this.user.email)
       this.pays.setValue(this.user.adresse.pays)
       this.ville.setValue(this.user.adresse.ville)
+      this.sex.setValue(this.user.sex)
 
     }
   }
-
+  changeRole(role){
+    console.log(role.value)
+    this.selected_role=role.value;
+  }
 }

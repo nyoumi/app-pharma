@@ -23,6 +23,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
 	imports: [
@@ -41,7 +42,9 @@ import { MatDividerModule } from '@angular/material/divider';
 		 MatDatepickerModule,
 		 MatNativeDateModule,
 		 MatSelectModule,
-		 MatDividerModule
+		 MatDividerModule,
+		 MatRadioModule,
+
 
 	],
 	declarations: [ReactiveFormsComponent, 

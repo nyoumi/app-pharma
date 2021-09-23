@@ -14,6 +14,7 @@ export class PharmacieTableComponent implements OnInit {
 	[x: string]: any;
 	public displayedColumns = [ 'nomPharmacie', 'emailPharmacie', 'telPharmacie',
 	'adresse','add_user','edit','delete'];
+
 	public dataSource: any | null;
   	public showFilterTableCode;
 	  showSpinner:boolean=true;

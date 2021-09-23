@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MedicamentService } from '../medicament.service';
 import { UserService } from '../user.service';
-import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',

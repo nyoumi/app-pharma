@@ -20,12 +20,19 @@
 			<mat-form-field  class="width">
 				<input type="email" matInput placeholder="Enter  Email"  formControlName="email"  required
                 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  required >
-			</mat-form-field>  
-			<mat-form-field>
+			</mat-form-field> 
+				<mat-radio-group  formControlName="sex" class="sex-radio-button" color="primary"> 
+					Sex:
+					<mat-radio-button  color="primary" style="margin-right: 20px;"  value=true class="radio-button">male</mat-radio-button>
+					<mat-radio-button  color="primary" value=false class="example-radio-button">female</mat-radio-button>
+				  </mat-radio-group> 
+			
+
+			<mat-form-field *ngIf="currentUSer.id==user.id || !user.id || currentUSer.roles.includes('SUPER_ADMIN')">
 				<input matInput placeholder="Enter user password" [type]="hide ? 'password' : 'text'" required formControlName="password" >
 				<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 		 </mat-form-field>
-		 <mat-form-field>
+		 <mat-form-field *ngIf="currentUSer.id==user.id || !user.id || currentUSer.roles.includes('SUPER_ADMIN') ">
 			<input matInput placeholder="Confirm password" [type]="hide ? 'password' : 'text'" formControlName="confirmpassword" >
 			<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
 	 </mat-form-field>
@@ -49,22 +56,25 @@
 				formControlName="userphone" required >
 			</mat-form-field> 
 			<mat-form-field>
+				<mat-select  formControlName="role" placeholder="select role" (selectionChange)="changeRole($event)"  >
+
+					<mat-option value="EMPLOYE_PHARMA">PHARMA EMPLOYE </mat-option>
+
+					<mat-option value="PHARMACIST">PHARMACIST </mat-option>
+					<mat-option value="DOCTOR">DOCTOR </mat-option>
+					<mat-option *ngIf="currentUSer.roles.includes('ADMIN') || currentUSer.roles.includes('SUPER_ADMIN') " value="ADMIN">ADMIN </mat-option>
+					<mat-option *ngIf="currentUSer.roles.includes('SUPER_ADMIN') " value="SUPER_ADMIN">SUPER ADMIN </mat-option>
+				</mat-select>
+			  </mat-form-field>
+			<mat-form-field *ngIf="selected_role=='PHARMACIST' || selected_role=='EMPLOYE_PHARMA'">
 				<mat-select  formControlName="pharmacie" placeholder="select store"  required >
 					<mat-option *ngFor="let pharmacie of pharmacies" [value]="pharmacie.id">
-						{{pharmacie.nom_phar}} -- {{pharmacie.adresse.ville}} 
+						{{pharmacie.nom_phar}} - {{pharmacie.adresse.ville}} 
 					  </mat-option>
 				</mat-select>
 			  </mat-form-field>
 
-			  <mat-form-field>
-				<mat-select  formControlName="role" placeholder="select role"  >
-					<mat-option value="PHARMACIEN">PHARMACIST </mat-option>
-					<mat-option value="EMPLOYE_PHARMA">PHARMA_EMPLOYE </mat-option>
-					<mat-option value="DOCTOR">DOCTOR </mat-option>
-					<mat-option value="ADMIN">ADMIN </mat-option>
-					<mat-option value="SUPER_ADMIN">SUPER_ADMIN </mat-option>
-				</mat-select>
-			  </mat-form-field>
+			  
 			  <mat-divider></mat-divider>
 			<div style="text-align: center; width: 100%;">
 				<h1 class="mat-headline center-align" >ADDRESS</h1>

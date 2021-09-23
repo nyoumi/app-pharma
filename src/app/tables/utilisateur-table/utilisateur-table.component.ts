@@ -6,6 +6,7 @@ import { UserService } from '../../user.service';
 import {MatButtonModule,MatButton} from '@angular/material/button';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-utilisateur-table',
@@ -18,6 +19,7 @@ export class UtilisateurTableComponent implements OnInit {
 	public dataSource: Array<User>;
   	public showFilterTableCode;
 	  showSpinner=true;
+	  @ViewChild(MatTable) table: MatTable<User>;
   	constructor(private userService:UserService,private router: Router, private snackbar:MatSnackBar) { 
 
 	  }
@@ -60,6 +62,8 @@ export class UtilisateurTableComponent implements OnInit {
 					duration: 3000,
 					panelClass: ['red-snackbar']
 				  });
+				  this.ngOnInit()
+				  this.table.renderRows();
 			 }else{
 				let snackBarRef = this.snackbar.open('operation error!','OK', {
 					duration: 3000,
