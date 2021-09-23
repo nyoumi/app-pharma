@@ -15,11 +15,11 @@ export const menus = [
             }
         ] */
     },
-    {
+    {/* 
         'name': 'HomeUser',
         'icon': 'home',
         'link': 'tables/loading',
-        'open': true,
+        'open': true, */
         //'chip': { 'value': 1, 'color': 'accent' },
        /*  'sub': [
             {

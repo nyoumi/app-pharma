@@ -71,7 +71,7 @@
 					<mat-header-cell *matHeaderCellDef> details </mat-header-cell>
 					
 					<mat-cell *matCellDef="let row" > 
-						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						<button id="basic" type="button" mat-icon-button (click)="clicked = true"  [routerLink]="['/detail-user']" class="action-button details">
 						 
 						<mat-icon class="space">visibility </mat-icon> 
 					  </button>

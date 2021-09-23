@@ -5,13 +5,17 @@ import { LazyLoadModule } from './lazy-load/lazy-load.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { DetailUserComponent } from './detail-user/detail-user.component';
+//import { DetailUserComponent } from './detail-user/detail-user.component';
 
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DetailUserComponent,
+   // DetailUserComponent
     
   ],
   imports: [
