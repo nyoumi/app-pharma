@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { LotService } from '../../lot.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from '../../user.service';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-lot-table',
@@ -15,7 +16,7 @@ export class LotTableComponent implements OnInit {
 	public dataSource: Array<any>;
   	public showFilterTableCode;
 	showSpinner: boolean=true;
-	user: import("c:/Users/23769/app-pharma/src/app/user").User;
+	user: User;
   	constructor(private lotService:LotService,private snackbar:MatSnackBar,private userService:UserService) { }
 
   	ngOnInit() {
