@@ -28,7 +28,11 @@ export class UserService {
     this.daoGetUser();
    }
 
-  getAllUser(){
+  getAllUser(id_pharmacie){
+    if(id_pharmacie) 
+    return this.http.get<any>(environment.serverAddress + "all?id_pharmacie="+id_pharmacie); 
+    return this.http.get<any>(environment.serverAddress + "all"); 
+  
 
     return this.http.get<any>(environment.serverAddress + "all"); 
   }

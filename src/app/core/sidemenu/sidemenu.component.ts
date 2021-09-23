@@ -19,7 +19,7 @@ export class SidemenuComponent implements OnInit {
     ngOnInit() {
       
       this.currentUser=this.userService.daoGetUser();
-      
+            
       if(!(this.currentUser.roles.includes("SUPER_ADMIN") 
       || this.currentUser.roles.includes("ADMIN") ) ){
        

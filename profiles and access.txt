@@ -28,6 +28,8 @@ Pharmacist
 	- users statistics (only own pharmacy datas)
 	- research graph 
 	- connected users research graph
+	- create pharmacist 
+	- create employe
 Admin 
 -menu 
 	- (Pharmacist  functionalities)
@@ -38,8 +40,22 @@ Admin
 	- drugstores statistics
 	- global statistics (not only for a drugstore)
 	- research evolution graph
-	
+	- create admin
 Super_Admin	
 - (Admin  functionalities)
 - sales management
 - batch management
+- change users password
+- create super admin  and admin
+
+
+
+
+
+access:
+- user => login : user password: azerty
+- employe=> login : employe password: azerty
+- pharmacist=> login : mylan password: azerty
+- admin=> login : paulius password: azerty
+- super_admin=> login : nyoumie password: azerty
+

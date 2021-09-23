@@ -10,6 +10,7 @@ import { UserService } from '../user.service';
 })
 
 export class DashboardCrmComponent implements OnInit {
+    public showbar:boolean=true;
 
     public dashCard = [
         { colorDark: '#5C6BC0', colorLight: '#7986CB', number: 0, title: 'SALES', icon: 'local_grocery_store' },
@@ -29,11 +30,16 @@ export class DashboardCrmComponent implements OnInit {
 
     currentUser: User;
     statistiques: any;
+    evolution: boolean=true;
+    sales: { colorDark: string; colorLight: string; number: number; title: string; icon: string; }[];
 
-    constructor(private userService:UserService,private snackbar:MatSnackBar) { }
+    constructor(private userService:UserService,private snackbar:MatSnackBar) { 
+        this.currentUser=this.userService.daoGetUser();
+
+    }
 
     ngOnInit() {
-      this.currentUser=this.userService.daoGetUser();
+     
       let id_pharma;
       console.log(this.currentUser.roles)
       if((this.currentUser.roles.includes("SUPER_ADMIN") || this.currentUser.roles.includes("ADMIN")) ){
@@ -43,6 +49,7 @@ export class DashboardCrmComponent implements OnInit {
       }else{
             id_pharma=this.currentUser.id_pharma;
       }
+
         
 
         this.userService.getStatistiques(id_pharma).subscribe(data =>{
@@ -50,11 +57,13 @@ export class DashboardCrmComponent implements OnInit {
             if(data.utilisateurs){
               
                  this.statistiques=data;
+                
                  this.dashCard[0].number=   this.statistiques.ventes 
                  this.dashCard[1].number=   this.statistiques.medicaments 
                   this.dashCard[2].number=   this.statistiques.utilisateurs 
                   this.dashCard[3].number=   this.statistiques.pharmacies       
       
+                  this.filterProfile()
               
             }else{
                   let snackBarRef = this.snackbar.open('No result from database!','OK', {
@@ -72,6 +81,50 @@ export class DashboardCrmComponent implements OnInit {
         
          );
       } 
+    filterProfile() {
+        if(!(this.currentUser.roles.includes("SUPER_ADMIN") 
+        || this.currentUser.roles.includes("ADMIN") ) ){
+            this.evolution=false;
+         
+  
+          this.dashCard=this.dashCard.filter(function(value, index, arr){ 
+            return value.title !="DRUGSTORES";
+        });
+        
+  
+         
+        }
+
+        if(!(this.currentUser.roles.includes("SUPER_ADMIN") 
+        || this.currentUser.roles.includes("ADMIN") 
+        || this.currentUser.roles.includes("PHARMACIST") ) ){
+            this.showbar=false;
+            
+         
+  
+          this.dashCard=this.dashCard.filter(function(value, index, arr){ 
+            return value.title !="USERS";
+        });
+        
+  
+         
+        }
+        if(!(this.currentUser.roles.includes("SUPER_ADMIN") 
+        || this.currentUser.roles.includes("ADMIN") 
+        || this.currentUser.roles.includes("PHARMACIST")
+        || this.currentUser.roles.includes("EMPLOYE_PHARMA")  ) ){
+            
+            
+         
+  
+          this.dashCard=this.dashCard.filter(function(value, index, arr){ 
+            return value.title !="SALES";
+        });
+        
+  
+         
+        }
+    }
     
 
 }

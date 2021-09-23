@@ -2,6 +2,7 @@ import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { LotService } from '../../lot.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-lot-table',
@@ -14,12 +15,14 @@ export class LotTableComponent implements OnInit {
 	public dataSource: Array<any>;
   	public showFilterTableCode;
 	showSpinner: boolean=true;
-  	constructor(private lotService:LotService,private snackbar:MatSnackBar) { }
+	user: import("c:/Users/23769/app-pharma/src/app/user").User;
+  	constructor(private lotService:LotService,private snackbar:MatSnackBar,private userService:UserService) { }
 
   	ngOnInit() {
+		this.user=this.userService.daoGetUser()
 
   	this.dataSource = [];
-		  this.lotService.getAllLot().subscribe(data =>{
+		  this.lotService.getAllLot(this.user.id_pharma).subscribe(data =>{
 			this.showSpinner=false;
 			console.log(data)
 			const pharmacies=data[1];

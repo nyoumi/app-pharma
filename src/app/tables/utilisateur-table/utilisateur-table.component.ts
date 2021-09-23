@@ -20,13 +20,15 @@ export class UtilisateurTableComponent implements OnInit {
   	public showFilterTableCode;
 	  showSpinner=true;
 	  @ViewChild(MatTable) table: MatTable<User>;
+	user: User;
   	constructor(private userService:UserService,private router: Router, private snackbar:MatSnackBar) { 
 
 	  }
 
   	ngOnInit() {
+		this.user=this.userService.daoGetUser()
 		  
-  		 this.userService.getAllUser().subscribe(data =>{
+  		 this.userService.getAllUser(this.user.id_pharma).subscribe(data =>{
 			   this.showSpinner=false;
 			   console.log(data)
 			

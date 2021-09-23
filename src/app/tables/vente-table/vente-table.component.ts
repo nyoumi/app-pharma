@@ -2,6 +2,7 @@ import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
 import { User } from '../../user';
+import { UserService } from '../../user.service';
 import { VenteService } from '../../vente.service';
 
 @Component({
@@ -17,12 +18,14 @@ export class VenteTableComponent implements OnInit {
 	private user:  User ;
 	showSpinner: boolean=true;
 
-  	constructor(private venteService:VenteService) {
-		this.user=JSON.parse(localStorage.getItem("user"));
+  	constructor(private venteService:VenteService,private userService:UserService) {
+		//this.user=JSON.parse(localStorage.getItem("user"));
+		this.user=this.userService.daoGetUser()
 	   }
 
   	ngOnInit() {
   		this.dataSource = [];
+
 		  this.venteService.getAllVentePharmacie(this.user.id_pharma).subscribe(data =>{
 			this.showSpinner=false;
 
