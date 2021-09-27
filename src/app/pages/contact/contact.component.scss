@@ -1,6 +1,6 @@
-.full {
+/* .full {
 	width: 100%;
-}
+} */
 .contact-list-container {
 	background-color: white;
 	padding: 10px;
@@ -24,16 +24,16 @@
 		}
 	}
 	
-	.contact-list-header {
+	 .contact-list-header {
 		background-color: #eee;
 		padding: 10px;
 		div {
 			margin: auto;
 		}
 		
-	}
+	} 
 }
-.contact-add {
+ .contact-add {
 		padding: 10px;
 		background: white;
 		.avatar {
@@ -44,4 +44,5 @@
 		h3 {
 			margin: auto;
 		}
-	}
+	} 
+	
