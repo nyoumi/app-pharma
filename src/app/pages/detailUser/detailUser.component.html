@@ -32,7 +32,7 @@
 			</div>
 
 
-			<div fxFlex="10" class="contact-list-header" fxLayout="row" fxLayoutAlign="space-around stretch">
+			<!-- <div fxFlex="10" class="contact-list-header" fxLayout="row" fxLayoutAlign="space-around stretch">
 
 				<div fxFlex="10">
 					<mat-checkbox  class="checkbox"></mat-checkbox>
@@ -50,22 +50,22 @@
 
 				</div>
 
-			</div>
+			</div> -->
 			<div fxFlex="70" fxLayout="column" fxLayoutAlign="space-between stretch" class="contact-list-container">
 
 				<div class="contact-list">
-					<div fxLayout="row" *ngFor="let employee of employees" fxLayoutAlign="space-around none" class="mat-ripple"  >
+					<div fxLayout="row" *ngFor="let user of user" fxLayoutAlign="space-around none" class="mat-ripple"  >
 					
 						<div fxFlex="10" >
 							<mat-checkbox  class="checkbox"></mat-checkbox>
 						</div>
-						<div fxFlex="10">
+						<!-- <div fxFlex="10">
 							<img class="avatar" src="{{employee?.image}}">
-						</div>
+						</div> -->
 						<div fxFlex="50">
-							<h3 class="mat-subheading-1" > {{employee?.select}} </h3>
+							<h3 class="mat-subheading-1" > {{user?.userName}} </h3>
 							    <p class="mat-body-1" >
-							      {{employee?.position}} 
+							      {{user?.status}} 
 							    </p>
 						</div>
 						<div fxFlex="20" >
