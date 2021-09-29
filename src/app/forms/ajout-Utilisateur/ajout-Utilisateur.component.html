@@ -10,10 +10,17 @@
         <form [formGroup]="profileForm"  (ngSubmit)="createUser()" fxLayout="column" fxFlex="100" style="margin-right: 10px;margin-top:20px;" >
 			<mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter userName"  formControlName="username" required>
-			
 			</mat-form-field>
 			<mat-form-field class="width">
 				<input type="text" matInput placeholder="Enter firstName"  formControlName="firstname" required>
+			
+			</mat-form-field>
+			<mat-form-field class="width">
+				<input type="text" matInput placeholder="Enter profession"  formControlName="profession" required>
+			
+			</mat-form-field>
+			<mat-form-field class="width">
+				<input type="text" matInput placeholder="Enter SEXE"  formControlName="sexe" required>
 			
 			</mat-form-field>
 			
@@ -48,6 +55,7 @@
 				<input type="tel" matInput placeholder="Enter phone number"  
 				formControlName="userphone" required >
 			</mat-form-field> 
+			
 			<mat-form-field>
 				<mat-select  formControlName="pharmacie" placeholder="select store"  required >
 					<mat-option *ngFor="let pharmacie of pharmacies" [value]="pharmacie.id">

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../user';
 
 @Component({
   selector: 'app-contacts',
@@ -9,11 +11,15 @@ export class detailUserComponent implements OnInit {
 	checked = false;
     indeterminate = false;
   detailUserService: any;
+  user: User
   dataSource: any;
-  constructor() { }
+  constructor(private route: Router) {this.user =this.route.getCurrentNavigation().extras as User; 
+  console.log(this.user)
+ // console.log("tt")
+}
 
   ngOnInit() {
-    this.detailUserService.getAllUser().subscribe(data =>{
+   /*  this.detailUserService.getAllUser().subscribe(data =>{
       console.log(data)
    
    const pharmacies=data[1];
@@ -30,14 +36,14 @@ export class detailUserComponent implements OnInit {
    this.dataSource =data[0];
    }
 
-   );
+   ); */
   }
-  user = [
+  /* user = [
 				{userName: 'Hassan', status: 'Full stack developer'},
-				{select: 'Paul', position: 'Full stack developer'},
-				{select: 'Jullien', position: 'Full stack developer'},
-				{select: 'Germin', position: 'Full stack developer'},
-				{select: 'Bouba', position: 'Full stack developer'},
-				{select: 'Rodrigue', position: 'Full stack developer'},
-			];
+				{userName: 'Paul', status: 'Full stack developer'},
+				{userName: 'Jullien', status: 'Full stack developer'},
+				{userName: 'Germin', status: 'Full stack developer'},
+				{userName: 'Bouba', status: 'Full stack developer'},
+				{userName: 'Rodrigue', status: 'Full stack developer'},
+			]; */
 }
