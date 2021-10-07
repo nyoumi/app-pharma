@@ -13,7 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { PagesRouterModule } from './pages.routes';
 import { ContactComponent } from './contact/contact.component';
 import { detailUserComponent } from './detailUser/detailUser.component';
+import { detailDrugComponent } from './detailDrug/detailDrug.component';
 import { AboutComponent } from './about/about.component';
+
 import { ServicesComponent } from './services/services.component';
 import { CoreModule } from '../core/core.module';
 
@@ -36,7 +38,9 @@ import { CoreModule } from '../core/core.module';
         ContactComponent,
         AboutComponent,
         ServicesComponent,
-        detailUserComponent
+        detailUserComponent,
+        detailDrugComponent
+        
     ],
     exports: [
     ],
