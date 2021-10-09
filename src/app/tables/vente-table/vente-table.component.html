@@ -76,7 +76,7 @@
 				<ng-container matColumnDef="details">
 					<mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
 					<mat-cell *matCellDef="let row" > 
-						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						<button id="basic" type="button" mat-icon-button (click)="details(row) ">
 						 
 						<mat-icon class="space">visibility</mat-icon> 
 					  </button>

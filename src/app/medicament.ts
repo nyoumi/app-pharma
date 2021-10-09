@@ -10,6 +10,7 @@
      public conditionnement_medoc:number,
      public categories:boolean,
      public tag:string,
+     public marque_medoc: string,
      
   
     ) {  }

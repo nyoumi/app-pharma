@@ -1,8 +1,10 @@
 import { Component, OnInit , ElementRef, ViewChild} from '@angular/core';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
+import { Router } from '@angular/router';
 import { User } from '../../user';
 import { VenteService } from '../../vente.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vente-table',
@@ -15,8 +17,10 @@ export class VenteTableComponent implements OnInit {
 	public dataSource:  [];
   	public showFilterTableCode;
 	private user:  User ;
+	
+	
 
-  	constructor(private venteService:VenteService) {
+  	constructor(private venteService:VenteService,private router: Router, private snackbar:MatSnackBar) {
 		this.user=JSON.parse(localStorage.getItem("user"));
 	   }
 
@@ -40,5 +44,8 @@ export class VenteTableComponent implements OnInit {
 
 	   );
     }
-
+	 details(vente){
+		this.router.navigate(['/auth/pages/detailVente'], vente);
+	}
+ 
 }
