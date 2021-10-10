@@ -6,11 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 
+//import { DetailUserComponent } from './detail-user/detail-user.component';
+
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+   
+   // DetailUserComponent
     
   ],
   imports: [

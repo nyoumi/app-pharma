@@ -1,0 +1,278 @@
+/* /*
+menu hrozontale
+*/
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: Avenir,sans-serif;
+    
+}
+nav{
+    width: 100%;
+    margin: 0px auto 40px auto;/*centre notre menu*/
+    position: sticky;/*centre le menu*/    background-color:#ccc;
+
+    top: 0px;
+}
+
+nav ul li{
+    list-style-type: none;/*enleve les points devants les li*/
+}
+nav li{
+    float: left;
+    width: 20%;/*100% divisé par le numero d'éléments de menu'*/
+    text-align: center;/*centre le texte dans les éléments de menu*/
+    position: relative;
+}
+
+
+/*Evite que le menu n'ait une hauteur nulle */
+nav ul::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+nav a{
+    display: block;/*toute la surface sera cliquable*/
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid transparent;/*Evite le decalage des éléments
+    sous le menu à cause de la bordure en :hoverf */
+    padding: 10px 0px;/*Agrandit le menu et espace la bordure du texte*/
+}
+nav a:hover{
+    color: orange;
+    border-bottom: 2px solid gold;
+}
+.sous{
+    display: none;
+    box-shadow: 0px 1px 2px  #ccc;
+    background-color: white;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+}
+nav > ul li:hover .sous{
+    display: block;
+}
+.sous li{
+    float: none;
+    width: 100%;
+    text-align: left;
+}
+.sous a{
+    padding: 10px;
+    border-bottom: none;
+}
+P{
+     text-align: center;
+    width: 350px;
+    margin: auto;
+    border: 10% solid brown;
+    color: #ccc;
+    font-family:impact;
+    font-size: 50px;
+}
+/* enleve les marge externe du navigateur */
+body{
+	margin:0;
+}
+
+/*
+	-------------------------------------
+			ENTÊTE DU SITE
+	-------------------------------------
+*/
+
+/*Applique une couleur rouge à l'entête de mon site */
+.header{
+
+	background-color: #ccc;
+	height: 100px;
+        margin-top: 10px;
+
+}
+
+.classEntete{
+  font-size:24px;
+}
+
+/*
+	-------------------------------------
+			MENU DE NAVIGATION
+	-------------------------------------
+*/
+
+.nav{
+
+	background-color: #ccc;
+	height: 100px;
+	margin-top: 10px;
+}
+
+/*
+	-------------------------------------------------
+			CONTENU DYNAMIQUE DE MON SITE
+	-------------------------------------------------
+*/
+.contenu{
+
+	height: 300px;
+	margin-top: 10px;
+
+}
+
+/*
+	-------------------------------------------------
+			CONTENU COMPLEMENTAIRE
+	-------------------------------------------------
+*/
+
+
+.aside{
+    float: left;
+    background-color: #ccc;
+    height: 290px;
+    width: 40%;
+    margin-top: 10px;
+    
+}
+    /* 
+.hassan{float: left;
+    background-image: url("images/BEAC5.jfif");
+    height: 145px;
+    width: 20%;
+    margin-top: 10px;  
+    
+} */
+
+/* 
+.houssein{
+    float: right;
+    background-image: url("images/BEAC3_1.jfif");
+    height: 145px;
+    width: 20%;
+    margin-top: 10px;
+    
+} */
+/* .muhammad{ float: right;
+    background-image: url("images/CAMPOST.jfif");
+    height: 145px;
+    width: 20%;
+    margin-top: 10px;
+    
+    
+} */
+/* 
+.adam{
+     float: left;
+    background-image: url("images/UBA.jfif");
+    height: 145px;
+    width: 20%;
+    margin-top: 10px;
+}
+.marafa{float: left;
+    background-image: url("images/TEXTEIMG2.jfif");
+    height: 145px;
+    width: 20%;
+    margin-top: 10px;   
+}  */
+
+
+   
+
+/*
+	-------------------------------------
+			CONTENU THEMATIQUE
+	-------------------------------------
+*/
+.section{
+	
+	float: right;
+	background-color: #ccc;
+	height: 300px;
+	width: 58%;
+	/*margin-left: 10px;*/
+	box-sizing: border-box;
+	
+}
+/* .hassan1{
+     float: left;
+    background-image: url("images/TEXTEIMG2.jfif");
+    height: 145px;
+    width: 50%;
+    margin-top: 10px;  
+   animation: fondu 15s ease-in-out infinite both;
+} */
+/* .houssein1{
+    float: left;
+    background-image: url("images/beac1.jfif");
+    height: 145px;
+    width: 50%;
+    margin-top: 10px;
+    animation: fondu 30s ease-in-out infinite both;
+} */
+/* .hassan1:hover, .houssein1:hover{
+     animation-play-state: paused;
+} */
+/* @keyframes fondu{
+    0%{background-image: url("images/TEXTEIMG2.jfif");}
+    33.33%{background-image: url("images/BEAC6.jfif");}
+    
+} */
+img{
+    height: 150px;
+     width: 50%;
+     
+}
+/* .mefire{ float: right;
+    background-image: url("images/BEAC6.jfif");
+    height: 150px;
+    width: 50%;
+    animation: fondu 30s ease-in-out infinite both;
+    
+} */
+.aside img{
+     height: 135px;
+     width: 100%;
+      transition-property: background-color, border;
+    transition-duration: 5s;
+}
+
+/*
+	-------------------------------------
+			PIED DU SITE
+	-------------------------------------
+*/
+.footer{
+	clear: both;
+	background-color:#ccc;
+	height: 85px;
+	margin-top: 10px;
+}
+p{
+    color: blue;
+     text-align: center;
+    width: 350px;
+    margin: auto;
+    border: 10% solid brown;
+    font-family:impact;
+    font-size: 150%;
+     transition-property: width;
+    transition-duration: 2s;
+     transition-timing-function: ease;
+     text-align: center;
+     
+}
+p:hover{
+    width: 100%;
+}
+.safiatou{
+    float: left;
+}
+h1,h2,h3{
+    color: blue;
+}
+ 
+

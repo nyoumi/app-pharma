@@ -71,7 +71,7 @@
 					<mat-header-cell *matHeaderCellDef> details </mat-header-cell>
 					
 					<mat-cell *matCellDef="let row" > 
-						<button id="basic" type="button" mat-icon-button (click)="clicked = true">
+						<button id="basic" type="button" mat-icon-button (click)="details(row)">
 						 
 						<mat-icon class="space">visibility </mat-icon> 
 					  </button>
@@ -81,7 +81,9 @@
 				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 				
 			</mat-table>
-	<!-- 		<mat-progress-spinner
+
+			<!-- <mat-progress-spinner
+
 			class="spinner"  [ngClass]="{'spinner-hide': showSpinner != true}"
 			color="primary"
 			mode="indeterminate"

@@ -24,6 +24,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 
 
 // import * as hljs from 'highlight.js';
@@ -41,6 +43,8 @@ import { VenteTableComponent } from './vente-table/vente-table.component';
 import { LotTableComponent } from './Lot-table/lot-table.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { LoadingTableComponent } from './loading-table/loading.component';
+
 
 
 export function highlightJsFactory(): any {
@@ -78,7 +82,8 @@ export function highlightJsFactory(): any {
     HighlightModule,
     TablesRouterModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   declarations: [
    FilterTableComponent,
@@ -90,7 +95,11 @@ export function highlightJsFactory(): any {
    UtilisateurTableComponent,
    PharmacieTableComponent,
    LotTableComponent,
-   VenteTableComponent
+   VenteTableComponent,
+   LoadingTableComponent,
+  
+   
+
   ],
   providers: [
     {

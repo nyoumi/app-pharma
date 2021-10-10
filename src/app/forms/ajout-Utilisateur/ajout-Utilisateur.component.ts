@@ -36,7 +36,7 @@ export class AjoutUtilisateurComponent implements OnInit {
     private pharmacieService:PharmacieService,
      private userService:UserService,private snackbar:MatSnackBar) { 
       this.user =this.route.getCurrentNavigation().extras as User;
-      console.log(this.user);
+      console.log(this.user); 
     this.profileForm = this.form.group({
           username:['', {
             validators: [Validators.required], 

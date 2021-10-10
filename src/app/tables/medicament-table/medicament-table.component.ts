@@ -10,7 +10,7 @@ import { MedicamentService } from '../../medicament.service';
   styleUrls: ['./medicament-table.component.scss']
 })
 export class MedicamentTableComponent implements OnInit {
-	public displayedColumns = ['Code_cip', 'Dosage','Conditionnement','Marque','Categorie','Tag','forme','delete','edit'];
+	public displayedColumns = ['Code_cip', 'Dosage','Conditionnement','Marque','Categorie','Tag','forme','delete','edit','details'];
 	public dataSource: any | null;
   	public showFilterTableCode;
   	constructor(private medicamentService:MedicamentService,private router: Router,private snackbar:MatSnackBar) {
@@ -31,6 +31,9 @@ export class MedicamentTableComponent implements OnInit {
 
 	edit(medicament){
 		this.router.navigate(['/auth/forms/medicament_forms'],medicament);
+	}
+	details(medicament){
+		this.router.navigate(['/auth/pages/detailDrug'], medicament);
 	}
 	delete(medicament){
 		if(window.confirm('Are sure you want to delete this item ?')){

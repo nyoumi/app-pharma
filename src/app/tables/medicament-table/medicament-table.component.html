@@ -80,6 +80,16 @@
 					  </button>
 					</mat-cell>
 				</ng-container>
+				<ng-container matColumnDef="details">
+					<mat-header-cell *matHeaderCellDef> details </mat-header-cell>
+					
+					<mat-cell *matCellDef="let row" > 
+						<button id="basic" type="button" mat-icon-button (click)="details(row)">
+						 
+						<mat-icon class="space">visibility </mat-icon> 
+					  </button>
+					</mat-cell>
+				</ng-container>
 
 			 	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row> 

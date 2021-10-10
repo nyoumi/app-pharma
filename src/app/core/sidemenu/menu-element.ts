@@ -15,6 +15,22 @@ export const menus = [
             }
         ] */
     },
+    {/* 
+        'name': 'HomeUser',
+        'icon': 'home',
+        'link': 'tables/loading',
+        'open': true, */
+        //'chip': { 'value': 1, 'color': 'accent' },
+       /*  'sub': [
+            {
+                'name': 'Dashboard',
+                'link': '/auth/dashboard',
+                'icon': 'dashboard',
+                'chip': false,
+                'open': true,
+            }
+        ] */
+    },
     {
 
         'name': 'Sales management',
