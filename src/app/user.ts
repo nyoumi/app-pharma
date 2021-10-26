@@ -8,6 +8,7 @@ export class User {
     public email:string,
     public profession:string,
     public sexe: string,
+   public sex:boolean,
    public userphone:string,
    public etatuser?:number,
    public statutuser?:boolean,

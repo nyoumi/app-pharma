@@ -45,7 +45,7 @@ export class LineGraphComponent implements OnInit {
                     },
                     title: {
                         display: true,
-                        text: 'ASSIGNMENTS GRAPH '
+                        text: 'Researchs evolution '
                     }
                 }
         })

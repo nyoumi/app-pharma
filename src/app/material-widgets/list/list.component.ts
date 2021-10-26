@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute,Route,Router } from '@angular/router';
+import { fadeAnimation } from '../animation';
 
 @Component({
   selector: 'cdk-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  //animations: [fadeAnimation]
+  animations: [fadeAnimation]
 })
 export class ListComponent implements OnInit {
 

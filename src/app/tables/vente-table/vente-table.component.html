@@ -41,37 +41,7 @@
 					<mat-header-cell *matHeaderCellDef> Unit price </mat-header-cell>
 					<mat-cell *matCellDef="let row"> {{row.unit_price}} </mat-cell>
 				</ng-container>
-				
 
-				<!-- form Column -->
-				<!-- <ng-container matColumnDef="forme">
-					<mat-header-cell *matHeaderCellDef> Forme </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Forme}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Dosage">
-					<mat-header-cell *matHeaderCellDef> Dosage </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Dosage}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Notice">
-					<mat-header-cell *matHeaderCellDef> Notice </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Notice}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Conditionnement">
-					<mat-header-cell *matHeaderCellDef> Conditionnement </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Conditionnement}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Marque">
-					<mat-header-cell *matHeaderCellDef> Marque </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Marque}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Categorie">
-					<mat-header-cell *matHeaderCellDef> Categorie </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Categorie}} </mat-cell>
-				</ng-container>
-				<ng-container matColumnDef="Tag">
-					<mat-header-cell *matHeaderCellDef> Tag </mat-header-cell>
-					<mat-cell *matCellDef="let row" > {{row.Tag}} </mat-cell>
-				</ng-container> -->
 				
 				<ng-container matColumnDef="details">
 					<mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
@@ -99,4 +69,6 @@
 			</mat-table>
 		</div>
 	</div>
+	<mat-spinner  [ngClass]="{'spinner-hide': showSpinner != true}"></mat-spinner>
+
 </div>

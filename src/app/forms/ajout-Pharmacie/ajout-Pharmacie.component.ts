@@ -95,14 +95,14 @@ get Code_cip(){
  onSubmit() { 
    let pharmacie={
      id:this.pharmacie.id || null,
-    nom_phar: this.nomPharmacie.value,
-    email_phar: this.Email.value,
-    tel_phar: this.tel.value,
+    nom_phar: this.nomPharmacie.value.trim(),
+    email_phar: this.Email.value.trim(),
+    tel_phar: this.tel.value.trim(),
     adresse: {
-      ville:this.ville.value,
-      pays:this.country.value,
-      region:this.region.value,
-      code_postal:this.code_postal.value
+      ville:this.ville.value.trim(),
+      pays:this.country.value.trim(),
+      region:this.region.value.trim(),
+      code_postal:this.code_postal.value.trim()
     },
    
      

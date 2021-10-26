@@ -86,9 +86,9 @@ export class AjoutLotComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.medicamentService.getAllMedicament().subscribe(data =>{
+    this.medicamentService.getAllMedicament(this.user.id_pharma).subscribe(data =>{
 			console.log(data)
-		 this.medicaments =data;
+		 this.medicaments =data[0];
 	   }
 
 	   );
@@ -98,7 +98,7 @@ createLot(){
   
   this.lot={
 
-    num_lot: this.Numero_lot.value,
+    num_lot: this.Numero_lot.value.trim(),
     datein_lot:this.Date_Entree_Lot.value, 
     deteperem_lot: this.Date_Peremtion_Lot.value,
     qtedepart_lot:this.Quantite_Depart.value,

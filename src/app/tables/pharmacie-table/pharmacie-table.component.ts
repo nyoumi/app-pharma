@@ -14,15 +14,20 @@ export class PharmacieTableComponent implements OnInit {
 	[x: string]: any;
 	public displayedColumns = [ 'nomPharmacie', 'emailPharmacie', 'telPharmacie',
 	'adresse','add_user','edit','delete'];
+
 	public dataSource: any | null;
   	public showFilterTableCode;
+	  showSpinner:boolean=true;
   	constructor(private pharmacieService:PharmacieService, private router: Router,private snackbar:MatSnackBar) { }
 
   	ngOnInit() {
 		this.pharmacieService.getAllPharmacie().subscribe(data =>{
+			this.showSpinner=false;
 		  console.log(data)
 	   this.dataSource =data;
-	 }
+	 },err=>{
+		this.showSpinner=false;
+	   }
 
 	 );
     }

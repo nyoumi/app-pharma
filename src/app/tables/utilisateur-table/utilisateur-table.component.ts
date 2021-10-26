@@ -6,7 +6,8 @@ import { UserService } from '../../user.service';
 import {MatButtonModule,MatButton} from '@angular/material/button';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
- 
+import { MatTable } from '@angular/material/table';
+
 @Component({
   selector: 'app-utilisateur-table',
   templateUrl: './utilisateur-table.component.html',
@@ -18,12 +19,16 @@ export class UtilisateurTableComponent implements OnInit {
 	public dataSource: Array<User>;
   	public showFilterTableCode;
 	  showSpinner=true;
+	  @ViewChild(MatTable) table: MatTable<User>;
+	user: User;
   	constructor(private userService:UserService,private router: Router, private snackbar:MatSnackBar) { 
 
 	  }
 
   	ngOnInit() {
-  		 this.userService.getAllUser().subscribe(data =>{
+		this.user=this.userService.daoGetUser()
+		  
+  		 this.userService.getAllUser(this.user.id_pharma).subscribe(data =>{
 			   this.showSpinner=false;
 			   console.log(data)
 			
@@ -39,6 +44,8 @@ export class UtilisateurTableComponent implements OnInit {
 				 
 		});
 			this.dataSource =data[0];
+		  },err=>{
+			this.showSpinner=false;
 		  }
 
 		  );
@@ -60,6 +67,8 @@ export class UtilisateurTableComponent implements OnInit {
 					duration: 3000,
 					panelClass: ['red-snackbar']
 				  });
+				  this.ngOnInit()
+				  this.table.renderRows();
 			 }else{
 				let snackBarRef = this.snackbar.open('operation error!','OK', {
 					duration: 3000,
@@ -81,3 +90,4 @@ export class UtilisateurTableComponent implements OnInit {
 
 
 }
+ 

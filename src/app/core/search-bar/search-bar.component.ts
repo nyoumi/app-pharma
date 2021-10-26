@@ -22,11 +22,11 @@ export class SearchBarComponent implements OnInit  {
 
 
 	ngOnInit() {
-				    this.medicamentService.getAllMedicament().subscribe(data =>{
+				    this.medicamentService.getAllMedicament(null).subscribe(data =>{
       console.log(data)
       if(data.length>0){
         
-		  		  this.medicaments=data;
+		  		  this.medicaments=data[0];
         
       }
    

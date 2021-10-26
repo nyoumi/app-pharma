@@ -46,6 +46,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { LoadingTableComponent } from './loading-table/loading.component';
 
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 export function highlightJsFactory(): any {
   return {
@@ -83,7 +84,8 @@ export function highlightJsFactory(): any {
     TablesRouterModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ],
   declarations: [
    FilterTableComponent,

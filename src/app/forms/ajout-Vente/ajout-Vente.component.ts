@@ -76,12 +76,15 @@ export class AjoutVenteComponent implements OnInit {
 
     
   }else{
-    if (data.code==409 ||data.status==406){
-      let snackBarRef = this.snackbar.open(' operation failure!','OK', {
+    console.log("----------------------")
+    console.log(data.message)
+    
+     
+      let snackBarRef = this.snackbar.open(data.message,'OK', {
         duration: 3000,
         panelClass: ['red-snackbar']
       });
-    }
+    
   }
 
 },error=>{
@@ -101,9 +104,9 @@ if (error.code==409 ||error.status==406){
 );
  	 }
   ngOnInit() {
-        this.medicamentService.getAllMedicament().subscribe(data =>{
+        this.medicamentService.getAllMedicament(this.user.id_pharma).subscribe(data =>{
 			console.log(data)
-		 this.medicaments =data;
+		 this.medicaments =data[0];
      /**
       * eliminerr les élléments vides
       

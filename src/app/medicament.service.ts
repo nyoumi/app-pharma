@@ -16,7 +16,10 @@ export class MedicamentService {
 
     return this.http.get<any>(environment.serverAddress + "medicament/findMedoc?nom_medoc="+text); 
   }
-   getAllMedicament(){
+   getAllMedicament(id_pharmacie){
+    if(id_pharmacie) 
+    return this.http.get<any>(environment.serverAddress + "medicament/findAllMedoc?id_pharmacie="+id_pharmacie); 
+    return this.http.get<any>(environment.serverAddress + "medicament/findAllMedoc"); 
   
     
     return this.http.get<any>(environment.serverAddress + "medicament/findAllMedoc"); 

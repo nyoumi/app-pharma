@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MedicamentService } from '../../medicament.service';
+import { UserService } from '../../user.service';
 
 @Component({
   selector: 'app-medicament-table',
@@ -13,15 +14,30 @@ export class MedicamentTableComponent implements OnInit {
 	public displayedColumns = ['Code_cip', 'Dosage','Conditionnement','Marque','Categorie','Tag','forme','delete','edit','details'];
 	public dataSource: any | null;
   	public showFilterTableCode;
-  	constructor(private medicamentService:MedicamentService,private router: Router,private snackbar:MatSnackBar) {
+	showSpinner: boolean=true;
+  	constructor(private medicamentService:MedicamentService,private router: Router,private snackbar:MatSnackBar,private userService:UserService) {
 
 	   }
 
   	ngOnInit() {
   		
-		  this.medicamentService.getAllMedicament().subscribe(data =>{
+		  this.medicamentService.getAllMedicament(this.userService.user.id_pharma).subscribe(data =>{
+			this.showSpinner=false;
+
 			console.log(data)
-		 this.dataSource =data;
+		 this.dataSource =data[0];
+		 const pharmacies=data[1];
+		 data[0].forEach(med => {
+			 if(med.id_pharmacie!=null){
+				 let pharmacie=pharmacies.filter(pharma => pharma.id === med.id_pharmacie)
+
+				 med.nom_phar=pharmacie[0]?.nom_phar;
+				 
+			 }
+			 
+		 });
+	   },err=>{
+		this.showSpinner=false;
 	   }
 
 	   );

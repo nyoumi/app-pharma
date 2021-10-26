@@ -36,6 +36,10 @@
 				<input type="text" matInput placeholder="Enter Drug name"  
 				formControlName="nom_medoc" required pattern="[0-255]*">
 			</mat-form-field>
+			<mat-form-field  class="width">
+				<input type="text" matInput placeholder="Enter Drug Mark"  
+				formControlName="marque_medoc" required >
+			</mat-form-field>
 			 <mat-error align="end" style="color: rgb(111, 0, 255);" class="mat-body-1 center-align">
 				please enter Drug Form
 			</mat-error>  
@@ -48,6 +52,8 @@
 				  <mat-option value="COMPRIME">COMPRIME</mat-option>
 				  <mat-option value="SIROP">SIROP</mat-option>
 				  <mat-option value="POUDRE">POUDRE</mat-option>
+				  <mat-option value="POUDRE">POMMADE</mat-option>
+
 				</mat-select>
 			  </mat-form-field>
 			<mat-error align="end" style="color: red;" class="mat-body-1 center-align">
@@ -83,10 +89,7 @@
 			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Mark
 			</mat-error> --> 
-			<mat-form-field  class="width">
-				<input type="text" matInput placeholder="Enter Drug Mark"  
-				formControlName="marque_medoc" required >
-			</mat-form-field>
+
 			<!-- <mat-error align="end" style="color: red;" class="mat-body-1 center-align">
 				please enter Drug Category separated by comma
 			</mat-error> --> 

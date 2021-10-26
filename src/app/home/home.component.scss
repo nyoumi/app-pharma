@@ -12,8 +12,8 @@ transition: all .4s cubic-bezier(.35,0,.25,1);
 
 .search-button {
     margin-left: 20px;
-    margin-top: 5px;
-    position: inherit;
+    margin-top: 0px;
+    top: -5px;
 }
 .app-pharma {
     font-size: xxx-large;
@@ -60,7 +60,7 @@ transition: all .4s cubic-bezier(.35,0,.25,1);
 }
 .medoc-item {
 	
-	padding: 5px;
+	padding: 10px;
 }
 ul{
 	padding: 0;

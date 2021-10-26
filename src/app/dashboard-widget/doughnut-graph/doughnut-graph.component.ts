@@ -30,19 +30,11 @@ export class DoughnutGraphComponent implements OnInit {
     createDoughnutData() {
         this.graphData = [
             {
-                "name": "Germany",
+                "name": "connected users",
                 "value": this.randomNumber()
             },
             {
-                "name": "USA",
-                "value": this.randomNumber()
-            },
-            {
-                "name": "France",
-                "value": this.randomNumber()
-            },
-                {
-                "name": "UK",
+                "name": "non connected",
                 "value": this.randomNumber()
             }
         ]

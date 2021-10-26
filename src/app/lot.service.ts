@@ -9,16 +9,12 @@ export class LotService {
 
   constructor( private http:HttpClient) { }
 
-  getAllLot(){
-    let token =localStorage.getItem("token");
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        Authorization: 'Bearer '+token
-      })
-    };
+  getAllLot(id_pharmacie){
+    if(id_pharmacie) 
+    return this.http.get<any>(environment.serverAddress + "lot/allLot?id_pharmacie="+id_pharmacie); 
+    return this.http.get<any>(environment.serverAddress + "lot/allLot"); 
 
-    return this.http.get<any>(environment.serverAddress + "lot/allLot",httpOptions); 
+    
   }
   createLot(lot){
     let token =localStorage.getItem("token");

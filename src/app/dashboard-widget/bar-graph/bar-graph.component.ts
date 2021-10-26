@@ -70,7 +70,7 @@ export class BarGraphComponent implements OnInit {
                 },
                 title: {
                     display: true,
-                    text: 'SALES GRAPH'
+                    text: 'Research GRAPH'
                 }
             }
         })

@@ -12,7 +12,7 @@ export class WorldMapComponent implements OnInit {
 	constructor() { }
 
   	ngOnInit() {
-  		var map = AmCharts.makeChart( "chartdiv", {
+/*   		var map = AmCharts.makeChart( "chartdiv", {
 
 		  	"type": "map",
 		  	"theme": "light",
@@ -26,6 +26,6 @@ export class WorldMapComponent implements OnInit {
 		    	"autoZoom": true,
 		    	"selectedColor": "#CC0000"
 		  	},
-		} );
+		} ); */
   	}
 }

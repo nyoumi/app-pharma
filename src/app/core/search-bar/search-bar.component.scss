@@ -42,7 +42,7 @@
 .results{
 	background: white;
     position: fixed;
-    width: inherit;
+    width: max-content;
     margin-top: 10px;
 	z-index: 1000;
     /* border: 1px black solid; */
@@ -53,4 +53,14 @@
 .results-hide{
 	opacity: 0;
 	visibility: hidden;
+}
+.medoc-item:hover {
+	background: rgb(229, 242, 248);
+}
+.medoc-item {
+	
+	padding: 10px;
+}
+ul{
+	padding: 0;
 }
