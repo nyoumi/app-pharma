@@ -6,9 +6,7 @@ export class User {
     public firstname:string,
   	public password: string,
     public email:string,
-    public profession:string,
-    public sexe: string,
-   public sex:boolean,
+ 
    public userphone:string,
    public etatuser?:number,
    public statutuser?:boolean,
@@ -26,7 +24,8 @@ export class User {
       latitude?: string
     },
     public id?: string,
-
+    public profession?:string,
+    public sex?:boolean,
   ) {  }
 
 }
